@@ -22,7 +22,7 @@ const Signup = () => {
             <label>Password</label> <br></br>
             <input type="password" placeholder="Type Password here" style={{margin: '4px'}} onChange={(event) =>setPassword(event.target.value)} /><br></br><br></br>
             
-            <button onClick={() => signup({ username: email, password: password, fullname: fullname})}>Save</button>
+            <button onClick={() => signup({})}>Save</button>
             </div>
         </Layout>
     )
