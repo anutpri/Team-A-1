@@ -13,6 +13,7 @@ const Login = () => {
   
     return (
         <Layout>
+        
             <div>
             <label>Email</label> <br></br>
             <input type="text" placeholder="Type Email here" style={{margin: '4px'}} onChange={(event) =>setEmail(event.target.value)} /><br></br><br></br>

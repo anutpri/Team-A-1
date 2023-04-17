@@ -22,6 +22,9 @@ import {
 import Login from './Login';
 import Signup from './Signup';
 import Error from './Error';
+import Create from './Create';
+import Update from './Update';
+import Delete from './Delete';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -36,6 +39,18 @@ const router = createBrowserRouter([
   {
     path: '/Signup',
     element: <Signup />
+  },
+  {
+    path: '/Create',
+    element: <Create />
+  },
+  {
+    path: '/Update',
+    element: <Update />
+  },
+  {
+    path: '/Delete',
+    element: <Delete />
   },
   
 ])
