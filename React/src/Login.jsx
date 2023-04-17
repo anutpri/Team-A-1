@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 const Login = () => {
     
-    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     // const { login } = useContext(Context)
 
@@ -14,11 +14,11 @@ const Login = () => {
     return (
         <Layout>
             <div>
-            <label>Username</label> <br></br>
-            <input type="text" placeholder="Type Username here" style={{margin: '4px'}} onChange={(event) =>setUsername(event.target.value)} /><br></br><br></br>
+            <label>Email</label> <br></br>
+            <input type="text" placeholder="Type Email here" style={{margin: '4px'}} onChange={(event) =>setEmail(event.target.value)} /><br></br><br></br>
             <label>Password</label> <br></br>
             <input type="password" placeholder="Type Password here" style={{margin: '4px'}} onChange={(event) =>setPassword(event.target.value)} /><br></br><br></br>
-            <button onClick={() => login({ username: username, password: password})}>Login</button>
+            <button onClick={() => login({ username: email, password: password})}>Login</button>
             </div>
             
         </Layout>
