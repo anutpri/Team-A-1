@@ -8283,16 +8283,16 @@ h1, h2, h3, h4, h5,
     padding: 35px;
     padding-top: 0; }
     .work .text h3 {
-      font-size: 34px;
+      font-size: 22px;
       font-weight: 400;
-      font-family: "Arial", serif; /*change fonts*/
+      font-family: "Poppins", Arial, sans-serif; /*change fonts*/
       margin-bottom: 0; }
       .work .text h3 a {
         color: #fff; }
     .work .text .cat {
-      font-size: 12px;
+      font-size: 25px;
       color: #b063c5;
-      font-weight: 400;
+      font-weight: 800;
       background: rgba(255, 255, 255, 0.9);
       padding: 1px 8px;
       text-transform: uppercase;
