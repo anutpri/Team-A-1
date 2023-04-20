@@ -20,16 +20,29 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault(); 
-        const user = userData.find(user => user.email === email && user.password === password); // Check for a user email and password match the userData mockup
-        if(user) {
-            // If a user is found, the login is successful and redirected to App (main)
-            alert('Login successful!');
-            navigate("/");
-
-        } else {
-            // If a user is not found, display an error message 
-            setError('Invalid email or password');
-        }
+        // Check if email is valid
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                setError('Please enter a valid email');
+                return;
+            }
+            
+            // Check if password meets minimum requirements
+            if (password.length < 6) {
+                setError('Password must be at least 6 characters long');
+                return;
+            }
+            
+            // Check if email and password match a user in the userData array
+            const user = userData.find(user => user.email === email && user.password === password);
+            if(user) {
+                // If a user is found, the login is successful and redirected to App (main)
+                alert('Login successful!');
+                navigate("/");
+            } else {
+                // If a user is not found, display an error message 
+                setError('Invalid email or password');
+            }
     }
   
     return (
