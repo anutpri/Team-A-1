@@ -27,6 +27,7 @@ import Error from './Error';
 import Create from './Create';
 import Update from './Update';
 import Delete from './Delete';
+import Profile from './Profile';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -51,8 +52,8 @@ const router = createBrowserRouter([
     element: <Update />
   },
   {
-    path: '/Delete',
-    element: <Delete />
+    path: '/Profile',
+    element: <Profile />
   },
   
 ])
