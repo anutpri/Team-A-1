@@ -3,12 +3,15 @@ import Layout from "./Layout";
 // import { useContext } from "react"
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 const Signup = () => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cfPassword, setCfPassword] = useState("");
+  const navigate = useNavigate();
 
   // const { signup } = useContext(Context)
 
@@ -22,11 +25,12 @@ const Signup = () => {
 
   return (
     <Layout>
-      <div>
-        <label>Create New Account</label>
-        <br />
-        <br />
-        <label class="withFB">Sign up with Facebook </label>
+      <div class="header">
+        <div class="create">
+          <h1>Create Account</h1>
+        </div>
+      </div>
+      {/* <label class="withFB">Sign up with Facebook </label>
         <br />
         <label class="withGG">Sign up with Google</label>
         <br />
@@ -35,22 +39,13 @@ const Signup = () => {
         <br />
         <a>- OR -</a>
         <br />
-        <br />
-        {/* <label>Name</label> <br></br> */}
+        <br /> */}
+      <div class="Signup">
         <input
           type="text"
-          placeholder="First Name *"
+          placeholder="Username *"
           style={{ margin: "4px" }}
-          onChange={(event) => setName(event.target.value)}
-        />
-        <br />
-        <br />
-        {/* <label>Last Name</label> <br></br> */}
-        <input
-          type="text"
-          placeholder="Last Name *"
-          style={{ margin: "4px" }}
-          onChange={(event) => setLastName(event.target.value)}
+          onChange={(event) => setUserName(event.target.value)}
         />
         <br />
         <br />
@@ -72,9 +67,17 @@ const Signup = () => {
         />
         <br />
         <br />
+        <input
+          type="password"
+          placeholder="Confirm Password *"
+          style={{ margin: "4px" }}
+          onChange={(event) => setCfPassword(event.target.value)}
+        />
+        <br />
+        <br />
         <button onClick={() => signup({})}>Create Account</button>
         <br />
-        <br /> <button>Cancel</button>
+        <br /> <button onClick={() => navigate("/")}>Cancel</button>
       </div>
     </Layout>
   );
