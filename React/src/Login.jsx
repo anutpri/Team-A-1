@@ -39,7 +39,7 @@ const Login = () => {
                 <p>Sign In to</p>
                 <p>Change</p>
                 <p>Your Life</p> <br />
-                <p id='if'>If you don't an account <br></br><span>you can</span> <a class="Regis" href={'/Signup'}>Register Here!</a></p>
+                <p id='if'>If you don't have an account,<br></br><span>you can</span> <a class="Regis" href={'/Signup'}>Register Here!</a></p>
                  </div>
             </div>
             <div class = "Login">
