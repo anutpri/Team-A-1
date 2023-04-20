@@ -52,10 +52,10 @@ const Login = () => {
                 <p>Sign In to</p>
                 <p>Change</p>
                 <p>Your Life</p> <br />
-                <p id='if'>If you don't have an account,<br></br><span>you can</span> <a class="Regis" href={'/Signup'}>Register Here!</a></p>
+                <p id='if'>If you don't have an account <br></br><span>you can</span> <a class="Regis" href={'/Signup'}>Register Here!</a></p>
                  </div>
             </div>
-            
+
             <div class = "Login">  
             <input type="text" placeholder="Enter Email" style={{margin: '4px'}} onChange={(event) =>setEmail(event.target.value)} /><br></br><br></br>
             <input type="password" placeholder="Password" style={{margin: '4px'}} onChange={(event) =>setPassword(event.target.value)} /><br></br>
