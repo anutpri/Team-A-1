@@ -13,7 +13,13 @@ const Create = () => {
     const [durationTime, setDurationTime] = useState('');
     const [distance, setDistance] = useState('');
     const [error, setError] = useState(null);
-    const activityTypeList = ['Running','Walking','Bike cycling','weight training','dancing'];
+    const activityTypeList = [
+        {id:1,type:'Running'},
+        {id:2,type:'Walking'},
+        {id:3,type:'Bike cycling'},
+        {id:4,type:'weight training'},
+        {id:5,type:'dancing'},
+        ];
 
 
     const handleAddUserActivity = () => {
@@ -48,8 +54,8 @@ const Create = () => {
         acName.value = '';
         descript.value = '';
         start.value = '';
-        finish.value = '';  
-        setAc.value = '';
+        finish.value = '';
+        acType.value = '';  
         setDu.value = '';
         setDis.value = '';
         };
@@ -66,7 +72,12 @@ const Create = () => {
             <label>Finish-DateTime</label> <br></br>
             <input id="finish" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br>
             <label>Activity Type</label> <br></br>
-            <input id="setAc" type="text" placeholder="Select" onChange={(event) =>setActivityType(event.target.value)} /><br></br><br></br>
+            
+            <select id="acType" onChange={(event) => setActivityType(event.target.value)}>
+            <option value="">-- Select --</option>
+            {activityTypeList.map((activity) => (<option key={activity.id} value={activity.type}>{activity.type}</option>))}
+            </select><br></br><br></br>
+            
             <label>Duration Time</label> <br></br>
             <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} /><br></br><br></br>
             <label>Distance</label> <br></br>
