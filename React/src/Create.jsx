@@ -62,15 +62,15 @@ const Create = () => {
             <label>Description</label> <br></br>
             <input id="descript" type="text" onChange={(event) =>setDescription(event.target.value)} /><br></br><br></br>
             <label>Start-DateTime</label> <br></br>
-            <input id="start" type="text" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} /><br></br><br></br>
+            <input id="start" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} /><br></br><br></br>
             <label>Finish-DateTime</label> <br></br>
-            <input id="finish" type="text" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br>
+            <input id="finish" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br>
             <label>Activity Type</label> <br></br>
             <input id="setAc" type="text" placeholder="Select" onChange={(event) =>setActivityType(event.target.value)} /><br></br><br></br>
-            <label>DurationTime</label> <br></br>
-            <input id="setDu" type="text" onChange={(event) =>setDurationTime(event.target.value)} /><br></br><br></br>
+            <label>Duration Time</label> <br></br>
+            <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} /><br></br><br></br>
             <label>Distance</label> <br></br>
-            <input id="setDis" type="text" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
+            <input id="setDis" placeholder="kilometer" min="0.1" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
 
             <button id="save" onClick={handleAddUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
