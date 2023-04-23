@@ -32,6 +32,10 @@ const Create = () => {
             setError('Description is required');
             return;
           }
+          if (new Date(startDateTime)< new Date()) {
+            setError('Start date-time must be after current date-time');
+            return;
+          }
           if (!startDateTime || !finishDateTime) {
             setError('Start and Finish date-time are required');
             return;
@@ -80,6 +84,7 @@ const Create = () => {
         setActivityType('');
         setDurationTime('');
         setDistance('');
+        setError('');
         acName.value = '';
         descript.value = '';
         start.value = '';
