@@ -24,7 +24,36 @@ const Create = () => {
 
     const handleAddUserActivity = () => {
     
-        const newUserActivity = {
+        if (!activityName.trim()) {
+            setError('Activity name is required');
+            return;
+          }
+          if (!description.trim()) {
+            setError('Description is required');
+            return;
+          }
+          if (!startDateTime || !finishDateTime) {
+            setError('Start and Finish date-time are required');
+            return;
+          }
+          if (new Date(startDateTime) >= new Date(finishDateTime)) {
+            setError('Finish date-time must be after start date-time');
+            return;
+          }
+          if (!activityType) {
+            setError('Activity type is required');
+            return;
+          }
+          if (!durationTime || durationTime < 10) {
+            setError('Duration time is required and should be at least 10 minutes');
+            return;
+          }
+          if (!distance || distance < 0.1) {
+            setError('Distance is required and should be at least 0.1 kilometer');
+            return;
+          }
+
+    const newUserActivity = {
           id: userActivity.length + 1,
           activityName,
           description,
@@ -82,7 +111,7 @@ const Create = () => {
             <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} /><br></br><br></br>
             <label>Distance</label> <br></br>
             <input id="setDis" placeholder="kilometer" min="0.1" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
-
+            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
             <button id="save" onClick={handleAddUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
             </div>
