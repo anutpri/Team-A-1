@@ -17,6 +17,9 @@ const Signup = () => {
   // to navigate the cancel button to main
   const navigate = useNavigate();
 
+  // this is the test
+  // const
+
   // to maintain all the states so that on submit button you can send all the required information to the backend APIs
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -51,6 +54,9 @@ const Signup = () => {
       // If a user is not found, display an error message
       setError("Invalid email or password");
     }
+
+    // Check if password doesn't match with confirm password
+    // const
 
     // console.log(userName, email, password, cfPassword);
   };
