@@ -3,60 +3,60 @@
 // import App from './App'
 // import './index.css'
 
-
 // ReactDOM.createRoot(document.getElementById('root')).render(
 //   <React.StrictMode>
 //     <App />
 //   </React.StrictMode>,
 // )
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Login from './Login';
-import Signup from './Signup';
-import Error from './Error';
-import Create from './Create';
-import Update from './Update';
-import Delete from './Delete';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup";
+import Error from "./Error";
+import Create from "./Create";
+import Update from "./Update";
+import Delete from "./Delete";
+import Card from "./Card";
 
 const router = createBrowserRouter([
   // insert your path here
   {
-    path: '/',
-    element: <App />
+    path: "/",
+    element: <App />,
   },
   {
-    path: '/Login',
-    element: <Login />
+    path: "/Login",
+    element: <Login />,
   },
   {
-    path: '/Signup',
-    element: <Signup />
+    path: "/Signup",
+    element: <Signup />,
   },
   {
-    path: '/Create',
-    element: <Create />
+    path: "/Create",
+    element: <Create />,
   },
   {
-    path: '/Update',
-    element: <Update />
+    path: "/Update",
+    element: <Update />,
   },
   {
-    path: '/Delete',
-    element: <Delete />
+    path: "/Delete",
+    element: <Delete />,
   },
-  
-])
+  {
+    path: "/Card",
+    element: <Card />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
-)
+);
