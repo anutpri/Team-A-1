@@ -1,5 +1,5 @@
 import Layout from './Layout'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
@@ -23,8 +23,18 @@ const Edit = () => {
         {id:5,type:'Dancing'},
         ];
 
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem('userActivity'));
+        if (storedData) {
+          setUserActivity(storedData);
+        }
+      }, []);
 
-    const handleEditUserActivity = () => {
+      useEffect(() => {
+        localStorage.setItem('userActivity', JSON.stringify(userActivity));
+      }, [userActivity]);
+
+    const handleAddUserActivity = () => {
     
         if (!activityName.trim()) {
             setError('Activity name is required');
@@ -54,10 +64,10 @@ const Edit = () => {
             setError('Duration time is required and should be at least 10 minutes');
             return;
           }
-          if (!distance || distance < 0.1) {
-            setError('Distance is required and should be at least 0.1 kilometer');
-            return;
-          }
+          // if (!distance || distance < 0.1) {
+          //   setError('Distance is required and should be at least 0.1 kilometer');
+          //   return;
+          // }
 
     const newUserActivity = {
           id: userActivity.length + 1,
@@ -71,6 +81,7 @@ const Edit = () => {
         };
         setUserActivity([...userActivity, newUserActivity]);
         clearDataForm()
+        alert('Save successful!');
       };
 
     const handleCancel= () => {
@@ -120,16 +131,16 @@ const Edit = () => {
             {activityTypeList.map((activity) => (<option key={activity.id} value={activity.type}>{activity.type}</option>))}
             </select>
             <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
-            <input id="setDis" placeholder="kilometer" min="0.1" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
+            <input id="setDis" placeholder="kilometer" min="0.0" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
-            <button id="save" onClick={handleEditUserActivity}>Save</button>
+            <button id="save" onClick={handleAddUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
             
             </div>
 
             <br></br> <br></br>
-            {/* <p>Show data for test only</p> */}
-            {/* <table>
+            <p>Show data for test only</p>
+            <table>
             <thead>
             <tr>
                 <th>ID</th>
@@ -153,11 +164,11 @@ const Edit = () => {
                 <td>{user.activityType}</td>
                 <td>{user.durationTime}</td>
                 <td>{user.distance}</td>
-
+                
                 </tr>
                 ))}
                 </tbody>
-            </table> */}
+            </table>
             </div>
     )
 }
