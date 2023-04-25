@@ -2,6 +2,7 @@ import Layout from './Layout'
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Create.css'
+import fitbook from './assets/FITBOOK.png';
 
 const Create = () => {
     const navigate = useNavigate();
@@ -96,35 +97,39 @@ const Create = () => {
         };
 
     return (
-        <Layout>
-            <div className='Create'>
+        <div className='Create'>
+        <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom customBackgroundColor">
+          <a href={'/'} className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src={fitbook} alt="fitbook" width="300" height="50" />
+          </a>
+        </header>
+            <h2 id='header1'>CREATE A NEW CARD</h2>
+            <div className='inputData'>
+            
             <label>Activity Name</label> <br></br>
             <input id="acName" type="text" onChange={(event) =>setActivityName(event.target.value)} /><br></br><br></br>
             <label>Description</label> <br></br>
             <input id="descript" type="text" onChange={(event) =>setDescription(event.target.value)} /><br></br><br></br>
-            <label>Start-DateTime</label> <br></br>
-            <input id="start" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} /><br></br><br></br>
-            <label>Finish-DateTime</label> <br></br>
-            <input id="finish" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br>
-            <label>Activity Type</label> <br></br>
+            <label id='startL'>Start-DateTime</label> <label id='finishL'>Finish-DateTime</label><br></br>
+            <input id="start" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} />
+            <input id="finish" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br><br></br>
             
+            <label id='acTypeL'>Activity Type</label> <label id='setDuL'>Duration Time</label> <label id="setDisL">Distance       </label>
             <select id="acType" onChange={(event) => setActivityType(event.target.value)}>
             <option value="">-- Select --</option>
             {activityTypeList.map((activity) => (<option key={activity.id} value={activity.type}>{activity.type}</option>))}
-            </select><br></br><br></br>
-            
-            <label>Duration Time</label> <br></br>
-            <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} /><br></br><br></br>
-            <label>Distance</label> <br></br>
+            </select>
+            <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
             <input id="setDis" placeholder="kilometer" min="0.1" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
             <button id="save" onClick={handleAddUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
+            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
             </div>
 
             <br></br>
-            <p>Show data for test only</p>
-            <table>
+            {/* <p>Show data for test only</p> */}
+            {/* <table>
             <thead>
             <tr>
                 <th>ID</th>
@@ -152,8 +157,8 @@ const Create = () => {
                 </tr>
                 ))}
                 </tbody>
-            </table>
-        </Layout>
+            </table> */}
+            </div>
     )
 }
 
