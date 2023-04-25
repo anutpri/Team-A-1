@@ -1,6 +1,7 @@
 import Layout from './Layout'
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import './Create.css'
 
 const Create = () => {
     const navigate = useNavigate();
@@ -96,7 +97,7 @@ const Create = () => {
 
     return (
         <Layout>
-            <div>
+            <div className='Create'>
             <label>Activity Name</label> <br></br>
             <input id="acName" type="text" onChange={(event) =>setActivityName(event.target.value)} /><br></br><br></br>
             <label>Description</label> <br></br>
