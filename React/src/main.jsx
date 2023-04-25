@@ -25,7 +25,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Error from './Error';
 import Create from './Create';
-import Update from './Update';
+import Edit from './Edit';
 import Delete from './Delete';
 
 const router = createBrowserRouter([
@@ -47,8 +47,8 @@ const router = createBrowserRouter([
     element: <Create />
   },
   {
-    path: '/Update',
-    element: <Update />
+    path: '/Edit',
+    element: <Edit />
   },
   {
     path: '/Delete',

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Layout from './Layout'
 import Create from './Create';
-import Update from './Update';
+import Edit from './Edit';
 
 function App() {
   
