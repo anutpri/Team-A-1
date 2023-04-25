@@ -1,19 +1,33 @@
 .Create {
     width: 50%;
-    height: 50%;
+    height: auto;
     position: absolute;
-    top: 30%;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
     align-items: center; 
-    
+    border: 1px solid rgb(160, 158, 158);
+    box-sizing: border-box;
+    border-radius: 0.6rem;
 }
 
 .Create header {
-    border-radius: 0.6rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: #6F67B4;
+    width: 100%;
+    height: 4.5rem;
 }
+
+.Create header img{
+    margin-left: 5%;
+    margin-top: 1.5%;
+    width: 8rem;
+    height: 2.5rem;
+}
+
 #header1 {
+    margin-top: 1.5%;
     text-align: center;
 }
 

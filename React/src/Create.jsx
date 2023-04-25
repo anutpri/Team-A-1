@@ -98,9 +98,9 @@ const Create = () => {
 
     return (
         <div className='Create'>
-        <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom customBackgroundColor">
-          <a href={'/'} className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <img src={fitbook} alt="fitbook" width="300" height="50" />
+        <header>
+          <a href={'/'}>
+            <img src={fitbook} alt="fitbook"/>
           </a>
         </header>
             <h2 id='header1'>CREATE A NEW CARD</h2>
@@ -124,10 +124,10 @@ const Create = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
             <button id="save" onClick={handleAddUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
-            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+            
             </div>
 
-            <br></br>
+            <br></br> <br></br>
             {/* <p>Show data for test only</p> */}
             {/* <table>
             <thead>
