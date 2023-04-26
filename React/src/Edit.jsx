@@ -1,11 +1,15 @@
 import Layout from './Layout'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
+import Create from './Create';
 
 const Edit = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const id = location.state.id;
     const [userActivity, setUserActivity] = useState([]);
     const [activityName, setActivityName] = useState('');
     const [description, setDescription] = useState('');
@@ -23,18 +27,50 @@ const Edit = () => {
         {id:5,type:'Dancing'},
         ];
 
+        // useEffect(() => {
+        // const activityToEdit = editActivity;
+        //   if (activityToEdit) {
+        //     setUserActivity(activityToEdit);
+        //     setActivityName(activityToEdit.activityName);
+        //     setDescription(activityToEdit.description);
+        //     setStartDateTime(activityToEdit.startDateTime);
+        //     setFinishDateTime(activityToEdit.finishDateTime);
+        //     setActivityType(activityToEdit.activityType);
+        //     setDurationTime(activityToEdit.durationTime);
+        //     setDistance(activityToEdit.distance);
+        //   } else {
+        //     setError(editActivity);
+        //   }
+        //   }, [editActivity]);
+
     useEffect(() => {
+      
+      alert('Go'+ id);
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
-          setUserActivity(storedData);
+          const activityToEdit = storedData.find(activityEdit => activityEdit.id === id);
+          if (activityToEdit) {
+            setUserActivity(activityToEdit);
+            setActivityName(activityToEdit.activityName);
+            setDescription(activityToEdit.description);
+            setStartDateTime(activityToEdit.startDateTime);
+            setFinishDateTime(activityToEdit.finishDateTime);
+            setActivityType(activityToEdit.activityType);
+            setDurationTime(activityToEdit.durationTime);
+            setDistance(activityToEdit.distance);
+          } else {
+            setError("Activity not found1");
+          }
+        } else {
+          setError("Activity not found2");
         }
       }, []);
 
-      useEffect(() => {
-        localStorage.setItem('userActivity', JSON.stringify(userActivity));
-      }, [userActivity]);
+      // useEffect(() => {
+      //   localStorage.setItem('userActivity', JSON.stringify(userActivity));
+      // }, [userActivity]);
 
-    const handleAddUserActivity = () => {
+    const handleEditUserActivity = () => {
     
         if (!activityName.trim()) {
             setError('Activity name is required');
@@ -107,6 +143,7 @@ const Edit = () => {
         setDis.value = '';
         };
 
+        
     return (
         <div className='Create'>
         <header>
@@ -118,7 +155,7 @@ const Edit = () => {
             <div className='inputData'>
             
             <label>Activity Name</label> <br></br>
-            <input id="acName" type="text" onChange={(event) =>setActivityName(event.target.value)} /><br></br><br></br>
+            <input id="acName" type="text" value={activityName} onChange={(event) =>setActivityName(event.target.value)} /><br></br><br></br>
             <label>Description</label> <br></br>
             <input id="descript" type="text" onChange={(event) =>setDescription(event.target.value)} /><br></br><br></br>
             <label id='startL'>Start-DateTime</label> <label id='finishL'>Finish-DateTime</label><br></br>
@@ -133,7 +170,7 @@ const Edit = () => {
             <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
             <input id="setDis" placeholder="kilometer" min="0.0" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
-            <button id="save" onClick={handleAddUserActivity}>Save</button>
+            <button id="save" onClick={handleEditUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
             
             </div>

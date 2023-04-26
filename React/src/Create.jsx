@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Create.css'
 import fitbook from './assets/FITBOOK.png';
+import Edit from './Edit';
 
 const Create = () => {
     const navigate = useNavigate();
@@ -109,6 +110,17 @@ const Create = () => {
         setDis.value = '';
         };
 
+   const handleEditButton = id => {
+  //  const editActivity = userActivity.filter(userActivity => userActivity.id == id);
+        navigate({pathname: '/Edit',state: { id }});
+        alert('Go'+ id);
+        };
+      
+  const handleDeleteButton = id => {
+  const deleteActivity = userActivity.filter(userActivity => userActivity.id !== id);
+        setUserActivity(deleteActivity);
+        };
+
     return (
         <div className='Create'>
         <header>
@@ -166,7 +178,8 @@ const Create = () => {
                 <td>{user.activityType}</td>
                 <td>{user.durationTime}</td>
                 <td>{user.distance}</td>
-                
+                <td><button id='Edit' onClick={() => handleEditButton(user.id)}>Edit</button></td>
+                <td><button id='delete' onClick={() => handleDeleteButton(user.id)}>Delete</button></td>
                 </tr>
                 ))}
                 </tbody>
