@@ -1,10 +1,10 @@
 import Layout from './Layout'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import './Create.css'
+import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
-const Create = () => {
+const Edit = () => {
     const navigate = useNavigate();
     const [userActivity, setUserActivity] = useState([]);
     const [activityName, setActivityName] = useState('');
@@ -23,7 +23,6 @@ const Create = () => {
         {id:5,type:'Dancing'},
         ];
 
-        //Get data in local database
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
@@ -31,7 +30,6 @@ const Create = () => {
         }
       }, []);
 
-      //Set data to local database
       useEffect(() => {
         localStorage.setItem('userActivity', JSON.stringify(userActivity));
       }, [userActivity]);
@@ -116,7 +114,7 @@ const Create = () => {
             <img src={fitbook} alt="fitbook"/>
           </a>
         </header>
-            <h2 id='header1'>CREATE A NEW CARD</h2>
+            <h2 id='header1'>EDIT AN ACTIVITY CARD</h2>
             <div className='inputData'>
             
             <label>Activity Name</label> <br></br>
@@ -175,4 +173,5 @@ const Create = () => {
     )
 }
 
-export default Create
+
+export default Edit

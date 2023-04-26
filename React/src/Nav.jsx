@@ -13,8 +13,9 @@ const Navbar = () => {
             <li className="nav-item"><a href={'/'} className="nav-link text-white" aria-current="page">Main</a></li>
             <li className="nav-item"><a href={'/Login'} className="nav-link text-white">Log in</a></li>
             <li className="nav-item"><a href={'/Signup'} className="nav-link text-white">Sign up</a></li>
+            <li className="nav-item"><a href={'/Dashboard'} className="nav-link text-white">Dashboard</a></li>
             <li className="nav-item"><a href={'/Create'} className="nav-link text-white">Create</a></li>
-            <li className="nav-item"><a href={'/Update'} className="nav-link text-white">Update</a></li>
+            <li className="nav-item"><a href={'/Edit'} className="nav-link text-white">Edit</a></li>
             <li className="nav-item"><a href={'/Delete'} className="nav-link text-white">Delete</a></li>
           </ul>
         </header>
