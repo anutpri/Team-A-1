@@ -1,0 +1,40 @@
+.Card {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+    align-items: center; 
+    border: 1px solid rgb(160, 158, 158);
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+}
+
+#startL {
+    padding-left: 0%;
+    width: 37%;
+    float: right;
+}
+#finishL {
+    padding-left: 0%;
+    width: 37%;
+    float: right;
+    margin-right: 10%;
+    text-align: left;
+    
+}
+#setDuL {
+    padding-left: 0%;
+    width: 25%;
+    margin-left: 2%;
+    
+  }
+
+  #setDisL {
+    padding-left: 0%;
+    width: 25%;
+    
+    margin-left: 2%;
+    
+  }
