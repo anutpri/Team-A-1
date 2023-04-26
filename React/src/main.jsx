@@ -27,6 +27,7 @@ import Error from './Error';
 import Create from './Create';
 import Edit from './Edit';
 import Delete from './Delete';
+import Dashboard from './Dashboard';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: '/Signup',
     element: <Signup />
+  },
+  {
+    path: '/Dashboard',
+    element: <Dashboard />
   },
   {
     path: '/Create',

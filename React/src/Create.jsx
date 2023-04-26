@@ -23,6 +23,7 @@ const Create = () => {
         {id:5,type:'Dancing'},
         ];
 
+        //Get data in local database
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
@@ -30,6 +31,7 @@ const Create = () => {
         }
       }, []);
 
+      //Set data to local database
       useEffect(() => {
         localStorage.setItem('userActivity', JSON.stringify(userActivity));
       }, [userActivity]);
