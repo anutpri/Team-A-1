@@ -49,11 +49,11 @@ const Create = () => {
       setError('Start date-time must be after current date-time');
       return;
     }
-    if (!startDateTime || !finishDateTime) {
+    if (!startDateTime && !finishDateTime) {
       setError('Start and Finish date-time are required');
       return;
     }
-    if (new Date(finishDateTime) >= new Date(startDateTime)) {
+    if (new Date(startDateTime) >= new Date(finishDateTime)) {
       setError('Finish date-time must be after start date-time');
       return;
     }
@@ -133,9 +133,8 @@ const Create = () => {
           />
           <br></br>
           <br></br>
-          <label id='startL'>Start-DateTime</label>{' '}
           <label id='finishL'>Finish-DateTime</label>
-          <br></br>
+          <label id='startL'>Start-DateTime</label> <br></br>
           <input
             id='start'
             type='datetime-local'
