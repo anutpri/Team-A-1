@@ -39,8 +39,8 @@ const Navbar = () => {
             </a>
           </li>
           <li className='nav-item'>
-            <a href={'/Edit'} className='nav-link text-white'>
-              Edit
+            <a href={'/Card'} className='nav-link text-white'>
+              Card
             </a>
           </li>
           <li className='nav-item'>

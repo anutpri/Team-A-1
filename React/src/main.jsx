@@ -21,7 +21,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Error from './Error';
 import Create from './Create';
-import Edit from './Edit';
+import Card from './Card';
 import Delete from './Delete';
 import Dashboard from './Dashboard';
 
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
     element: <Create />,
   },
   {
-    path: '/Edit',
-    element: <Edit />,
+    path: '/Card',
+    element: <Card />,
   },
   {
     path: '/Delete',

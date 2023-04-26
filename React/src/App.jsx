@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Layout from './Layout';
 import Create from './Create';
-import Edit from './Edit';
+// import Edit from './Edit';
 
 function App() {
   //Mock database on localhost
