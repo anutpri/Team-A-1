@@ -29,23 +29,23 @@ const Navbar = () => {
             </a>
           </li>
           <li className='nav-item'>
+            <a href={'/Dashboard'} className='nav-link text-white'>
+              Dashboard
+            </a>
+          </li>
+          <li className='nav-item'>
             <a href={'/Create'} className='nav-link text-white'>
               Create
             </a>
           </li>
           <li className='nav-item'>
-            <a href={'/Update'} className='nav-link text-white'>
-              Update
+            <a href={'/Edit'} className='nav-link text-white'>
+              Edit
             </a>
           </li>
           <li className='nav-item'>
             <a href={'/Delete'} className='nav-link text-white'>
               Delete
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a href={'/Card'} className='nav-link text-white'>
-              Card
             </a>
           </li>
         </ul>

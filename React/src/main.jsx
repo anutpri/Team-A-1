@@ -21,9 +21,9 @@ import Login from './Login';
 import Signup from './Signup';
 import Error from './Error';
 import Create from './Create';
-import Update from './Update';
+import Edit from './Edit';
 import Delete from './Delete';
-import Card from './Card';
+import Dashboard from './Dashboard';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -40,20 +40,20 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
   {
+    path: '/Dashboard',
+    element: <Dashboard />,
+  },
+  {
     path: '/Create',
     element: <Create />,
   },
   {
-    path: '/Update',
-    element: <Update />,
+    path: '/Edit',
+    element: <Edit />,
   },
   {
     path: '/Delete',
     element: <Delete />,
-  },
-  {
-    path: '/Card',
-    element: <Card />,
   },
 ]);
 
