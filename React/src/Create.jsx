@@ -53,7 +53,7 @@ const Create = () => {
       setError('Start and Finish date-time are required');
       return;
     }
-    if (new Date(startDateTime) >= new Date(finishDateTime)) {
+    if (new Date(finishDateTime) >= new Date(startDateTime)) {
       setError('Finish date-time must be after start date-time');
       return;
     }
