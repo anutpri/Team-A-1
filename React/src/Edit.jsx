@@ -26,21 +26,7 @@ const Edit = () => {
         {id:5,type:'Dancing'},
         ];
 
-        // useEffect(() => {
-        // const activityToEdit = editActivity;
-        //   if (activityToEdit) {
-        //     setUserActivity(activityToEdit);
-        //     setActivityName(activityToEdit.activityName);
-        //     setDescription(activityToEdit.description);
-        //     setStartDateTime(activityToEdit.startDateTime);
-        //     setFinishDateTime(activityToEdit.finishDateTime);
-        //     setActivityType(activityToEdit.activityType);
-        //     setDurationTime(activityToEdit.durationTime);
-        //     setDistance(activityToEdit.distance);
-        //   } else {
-        //     setError(editActivity);
-        //   }
-        //   }, [editActivity]);
+        
 
     useEffect(() => {
       
@@ -79,10 +65,10 @@ const Edit = () => {
             setError('Description is required');
             return;
           }
-          if (new Date(startDateTime)< new Date()) {
-            setError('Start date-time must be after current date-time');
-            return;
-          }
+          // if (new Date(startDateTime)< new Date()) {
+          //   setError('Start date-time must be after current date-time');
+          //   return;
+          // }
           if (!startDateTime || !finishDateTime) {
             setError('Start and Finish date-time are required');
             return;
