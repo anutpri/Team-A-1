@@ -1,9 +1,7 @@
-import Layout from './Layout'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Create.css'
 import fitbook from './assets/FITBOOK.png';
-import Edit from './Edit';
 export let acId = '';
 const Create = () => {
     const navigate = useNavigate();
@@ -114,8 +112,7 @@ const Create = () => {
   
         const editActivity = userActivity.filter(userActivity => userActivity.id === id)[0];
         acId = editActivity.id;
-        console.log(acId);
-        navigate({pathname: '/Edit',state: { id }});
+        navigate({pathname: '/Edit'});
       
         };
        
