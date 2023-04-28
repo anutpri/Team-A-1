@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Create.css'
 import fitbook from './assets/FITBOOK.png';
 import Edit from './Edit';
-export const acId = 1;
+export let acId = '';
 const Create = () => {
     const navigate = useNavigate();
     const [userActivity, setUserActivity] = useState([]);
@@ -111,10 +111,14 @@ const Create = () => {
         };
 
    const handleEditButton = id => {
-  //  const editActivity = userActivity.filter(userActivity => userActivity.id == id);
+  
+        const editActivity = userActivity.filter(userActivity => userActivity.id === id)[0];
+        acId = editActivity.id;
+        console.log(acId);
         navigate({pathname: '/Edit',state: { id }});
-        alert('Go'+ id);
+      
         };
+       
       
   const handleDeleteButton = id => {
   const deleteActivity = userActivity.filter(userActivity => userActivity.id !== id);
