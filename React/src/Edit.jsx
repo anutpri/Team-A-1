@@ -1,15 +1,14 @@
 import Layout from './Layout'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { acId } from './Create';
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 import Create from './Create';
 
 const Edit = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const id = location.state.id;
+    
     const [userActivity, setUserActivity] = useState([]);
     const [activityName, setActivityName] = useState('');
     const [description, setDescription] = useState('');
@@ -45,10 +44,10 @@ const Edit = () => {
 
     useEffect(() => {
       
-      alert('Go'+ id);
+      
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
-          const activityToEdit = storedData.find(activityEdit => activityEdit.id === id);
+          const activityToEdit = storedData.find(activityEdit => activityEdit.id === acId);
           if (activityToEdit) {
             setUserActivity(activityToEdit);
             setActivityName(activityToEdit.activityName);
@@ -105,8 +104,8 @@ const Edit = () => {
           //   return;
           // }
 
-    const newUserActivity = {
-          id: userActivity.length + 1,
+    const editUserActivity = {
+          id,
           activityName,
           description,
           startDateTime,
@@ -115,7 +114,7 @@ const Edit = () => {
           durationTime,
           distance
         };
-        setUserActivity([...userActivity, newUserActivity]);
+        setUserActivity(editUserActivity);
         clearDataForm()
         alert('Save successful!');
       };
@@ -157,55 +156,25 @@ const Edit = () => {
             <label>Activity Name</label> <br></br>
             <input id="acName" type="text" value={activityName} onChange={(event) =>setActivityName(event.target.value)} /><br></br><br></br>
             <label>Description</label> <br></br>
-            <input id="descript" type="text" onChange={(event) =>setDescription(event.target.value)} /><br></br><br></br>
+            <input id="descript" type="text" value={description} onChange={(event) =>setDescription(event.target.value)} /><br></br><br></br>
             <label id='startL'>Start-DateTime</label> <label id='finishL'>Finish-DateTime</label><br></br>
-            <input id="start" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} />
-            <input id="finish" type="datetime-local" placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br><br></br>
+            <input id="start" type="datetime-local" value={startDateTime} placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setStartDateTime(event.target.value)} />
+            <input id="finish" type="datetime-local" value={finishDateTime} placeholder="YYYY-MM-DD:HH:MM:SS" onChange={(event) =>setFinishDateTime(event.target.value)} /><br></br><br></br><br></br>
             
             <label id='acTypeL'>Activity Type</label> <label id='setDuL'>Duration Time</label> <label id="setDisL">Distance       </label>
-            <select id="acType" onChange={(event) => setActivityType(event.target.value)}>
+            <select id="acType" value={activityType} onChange={(event) => setActivityType(event.target.value)}>
             <option value="">-- Select --</option>
             {activityTypeList.map((activity) => (<option key={activity.id} value={activity.type}>{activity.type}</option>))}
             </select>
-            <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
-            <input id="setDis" placeholder="kilometer" min="0.0" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
+            <input id="setDu" placeholder="Minutes" value={durationTime} min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
+            <input id="setDis" placeholder="kilometer" value={distance} min="0.0" step="0.1" type="number" onChange={(event) =>setDistance(event.target.value)} /><br></br><br></br>
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
             <button id="save" onClick={handleEditUserActivity}>Save</button>
             <button id="cancel" onClick={handleCancel}>Cancel</button>
             
             </div>
 
-            <br></br> <br></br>
-            <p>Show data for test only</p>
-            <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>activityName</th>
-                <th>description</th>
-                <th>startDateTime</th>
-                <th>finishDateTime</th>
-                <th>activityType</th>
-                <th>durationTime</th>
-                <th>distance</th>
-            </tr>
-            </thead>
-            <tbody>
-                {userActivity.map(user => (
-                <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.activityName}</td>
-                <td>{user.description}</td>
-                <td>{user.startDateTime}</td>
-                <td>{user.finishDateTime}</td>
-                <td>{user.activityType}</td>
-                <td>{user.durationTime}</td>
-                <td>{user.distance}</td>
-                
-                </tr>
-                ))}
-                </tbody>
-            </table>
+            
             </div>
     )
 }
