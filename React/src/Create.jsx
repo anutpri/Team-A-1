@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import './Create.css'
 import fitbook from './assets/FITBOOK.png';
-export let acId = '';
+
 
 const Create = () => {
     const navigate = useNavigate();
@@ -36,6 +36,8 @@ const Create = () => {
         localStorage.setItem('userActivity', JSON.stringify(userActivity));
       }, [userActivity]);
 
+      
+
     const handleAddUserActivity = () => {
     
         if (!activityName.trim()) {
@@ -66,13 +68,9 @@ const Create = () => {
             setError('Duration time is required and should be at least 10 minutes');
             return;
           }
-          // if (!distance || distance < 0.1) {
-          //   setError('Distance is required and should be at least 0.1 kilometer');
-          //   return;
-          // }
 
     const newUserActivity = {
-          id: userActivity.length + 1,
+          id: Date.now(),
           activityName,
           description,
           startDateTime,
@@ -82,13 +80,16 @@ const Create = () => {
           distance
         };
         setUserActivity([...userActivity, newUserActivity]);
-        clearDataForm()
+        localStorage.setItem('userActivity', JSON.stringify([...userActivity, newUserActivity]));
+
+        clearDataForm();
         alert('Save successful!');
+        navigate('/Dashboard');     
       };
 
     const handleCancel= () => {
-        clearDataForm()
-        
+        clearDataForm();
+        navigate('/Dashboard'); 
       };
 
     const clearDataForm= () => {
@@ -108,16 +109,7 @@ const Create = () => {
         setDu.value = '';
         setDis.value = '';
         };
-
-   const handleEditButton = id => {
-  
-        const editActivity = userActivity.filter(userActivity => userActivity.id === id)[0];
-        acId = editActivity.id;
-        navigate({pathname: '/Edit'});
-      
-        };
-       
-      
+    
   const handleDeleteButton = id => {
   const deleteActivity = userActivity.filter(userActivity => userActivity.id !== id);
         setUserActivity(deleteActivity);
@@ -153,40 +145,7 @@ const Create = () => {
             <button id="cancel" onClick={handleCancel}>Cancel</button>
             
             </div>
-
-            <br></br> <br></br>
-            <p>Show data for test only</p>
-            <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>activityName</th>
-                <th>description</th>
-                <th>startDateTime</th>
-                <th>finishDateTime</th>
-                <th>activityType</th>
-                <th>durationTime</th>
-                <th>distance</th>
-            </tr>
-            </thead>
-            <tbody>
-                {userActivity.map(user => (
-                <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.activityName}</td>
-                <td>{user.description}</td>
-                <td>{user.startDateTime}</td>
-                <td>{user.finishDateTime}</td>
-                <td>{user.activityType}</td>
-                <td>{user.durationTime}</td>
-                <td>{user.distance}</td>
-                <td><button id='Edit' onClick={() => handleEditButton(user.id)}>Edit</button></td>
-                <td><button id='delete' onClick={() => handleDeleteButton(user.id)}>Delete</button></td>
-                </tr>
-                ))}
-                </tbody>
-            </table>
-            </div>
+        </div>
     )
 }
 

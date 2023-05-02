@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
-import { acId } from './Create';
+import { acId } from './Activities-Temp';
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
 
 const Edit = () => {
     const navigate = useNavigate();
-    
     const [userActivity, setUserActivity] = useState([]);
     const [activityName, setActivityName] = useState('');
     const [description, setDescription] = useState('');
@@ -98,11 +97,12 @@ const Edit = () => {
     setUserActivity(updatedUserActivity);
     clearDataForm();
     alert('Save successful!');
-
+    navigate('/Dashboard');  
   };
 
     const handleCancel= () => {
-        clearDataForm()
+        clearDataForm();
+        navigate('/Dashboard');  
         
       };
 

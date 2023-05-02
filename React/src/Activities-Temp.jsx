@@ -1,16 +1,24 @@
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 export let acId = '';
 
 
 const Activities = () => {
+    const navigate = useNavigate();
+    const [userActivity, setUserActivity] = useState([]);
+    
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem('userActivity'));
+        if (storedData) {
+          setUserActivity(storedData);
+        }
+      }, []);
 
-    
-    
-    
     const handleEditButton = id => {
   
         const editActivity = userActivity.filter(userActivity => userActivity.id === id)[0];
         acId = editActivity.id;
-        navigate({pathname: '/Edit'});
+        navigate("/Edit");
       
         };
 
