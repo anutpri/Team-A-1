@@ -198,12 +198,12 @@ const Edit = () => {
             
             {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display the error message */}
             <button id="save" onClick={handleEditUserActivity}>Save</button> {/* Call handleEditUserActivity when click */}
-            <button id="cancel" onClick={handleCancel}>Cancel</button>
+            <button id="cancel" onClick={handleCancel}>Cancel</button> {/* Call handleCancel when click */}
             
             </div>
 
             
-            </div>
+        </div>
     )
 }
 
