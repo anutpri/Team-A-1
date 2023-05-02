@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import Layout from './Layout'
+import Activities from './Activities-Temp';
 
 const Dashboard = () => {
 
-    //Mock database on localhost
+  //Mock database on localhost
   const [userActivity, setUserActivity] = useState([]);
 
   //Get data in local database
@@ -15,38 +16,10 @@ const Dashboard = () => {
     return (
         <Layout>
             <div>
-      
-            <p>Show data for test only</p>
-            <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>activityName</th>
-                <th>description</th>
-                <th>startDateTime</th>
-                <th>finishDateTime</th>
-                <th>activityType</th>
-                <th>durationTime</th>
-                <th>distance</th>
-            </tr>
-            </thead>
-            <tbody>
-                {userActivity.map(user => (
-                <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.activityName}</td>
-                <td>{user.description}</td>
-                <td>{user.startDateTime}</td>
-                <td>{user.finishDateTime}</td>
-                <td>{user.activityType}</td>
-                <td>{user.durationTime}</td>
-                <td>{user.distance}</td>
-                
-                </tr>
-                ))}
-                </tbody>
-            </table>
-    </div>
+            {/* call Activities from ./Activities-Temp */}
+            <Activities />
+            
+            </div>
         </Layout>
     )
 }
