@@ -16,6 +16,7 @@ const Dashboard = () => {
     return (
         <Layout>
             <div>
+            {/* call Activities from ./Activities-Temp */}
             <Activities />
             
             </div>
