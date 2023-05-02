@@ -89,21 +89,42 @@ const Edit = () => {
           //   setError('Distance is required and should be at least 0.1 kilometer');
           //   return;
           // }
+    
+    // const editUserActivity = {
+    //       id: acId,
+    //       activityName,
+    //       description,
+    //       startDateTime,
+    //       finishDateTime,
+    //       activityType,
+    //       durationTime,
+    //       distance
+    //     };
+    //     console.log(editUserActivity);
+    //     setUserActivity(editUserActivity);
+    //     clearDataForm()
+    //     alert('Save successful!');
+    const updatedUserActivity = {
+      ...userActivity,
+      activityName,
+      description,
+      startDateTime,
+      finishDateTime,
+      activityType,
+      durationTime,
+      distance
+    };
+    
+    const storedData = JSON.parse(localStorage.getItem('userActivity'));
+    const index = storedData.findIndex(activityEdit => activityEdit.id === acId);
+    storedData[index] = updatedUserActivity;
+    localStorage.setItem('userActivity', JSON.stringify(storedData));
+    
+    setUserActivity(updatedUserActivity);
+    clearDataForm();
+    alert('Save successful!');
 
-    const editUserActivity = {
-          id,
-          activityName,
-          description,
-          startDateTime,
-          finishDateTime,
-          activityType,
-          durationTime,
-          distance
-        };
-        setUserActivity(editUserActivity);
-        clearDataForm()
-        alert('Save successful!');
-      };
+  };
 
     const handleCancel= () => {
         clearDataForm()
