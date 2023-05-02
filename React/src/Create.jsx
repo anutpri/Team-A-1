@@ -167,11 +167,11 @@ const Create = () => {
             <label id='acTypeL'>Activity Type</label> <label id='setDuL'>Duration Time</label> <label id="setDisL">Distance       </label>
             {/* setActivityType when input onChange */}
             <select id="acType" onChange={(event) => setActivityType(event.target.value)}>
-
             <option value="">-- Select --</option>
             {/* Map data from activityTypeList to dropdown input */}
             {activityTypeList.map((activity) => (<option key={activity.id} value={activity.type}>{activity.type}</option>))}
             </select>
+            
             {/* setDurationTime when input onChange */}
             <input id="setDu" placeholder="Minutes" min="10" step="10" type="number" onChange={(event) =>setDurationTime(event.target.value)} />
             {/* setDistance when input onChange */}
