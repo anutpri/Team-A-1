@@ -110,10 +110,7 @@ const Create = () => {
         setDis.value = '';
         };
     
-  const handleDeleteButton = id => {
-  const deleteActivity = userActivity.filter(userActivity => userActivity.id !== id);
-        setUserActivity(deleteActivity);
-        };
+  
 
     return (
         <div className='Create'>

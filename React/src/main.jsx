@@ -1,14 +1,4 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App'
-// import './index.css'
 
-
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-// )
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -23,10 +13,8 @@ import {
 } from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
-import Error from './Error';
 import Create from './Create';
 import Edit from './Edit';
-import Delete from './Delete';
 import Dashboard from './Dashboard';
 
 const router = createBrowserRouter([
@@ -54,10 +42,6 @@ const router = createBrowserRouter([
   {
     path: '/Edit',
     element: <Edit />
-  },
-  {
-    path: '/Delete',
-    element: <Delete />
   },
   
 ])

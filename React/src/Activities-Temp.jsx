@@ -22,6 +22,19 @@ const Activities = () => {
       
         };
 
+    const handleDeleteButton = id => {
+
+        const deleteActivity = userActivity.filter(userActivity => userActivity.id !== id);
+        const storedData = JSON.parse(localStorage.getItem('userActivity'));
+        const index = storedData.findIndex(activityEdit => activityEdit.id === acId);
+
+            storedData.splice(index, 1, ...deleteActivity); // delete deleteActivity 
+            localStorage.setItem('userActivity', JSON.stringify(storedData));
+            setUserActivity(deleteActivity);
+            alert('Delete successful!');
+
+        };
+
         return (
             <div>
             <p>Show data for test only</p>
