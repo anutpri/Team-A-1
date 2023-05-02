@@ -16,7 +16,7 @@ const Create = () => {
     const [distance, setDistance] = useState('');
     const [error, setError] = useState(null);
     
-    //Mockup data for activities list
+    //mockup data for activities list
     const activityTypeList = [
         {id:1,type:'Running'},
         {id:2,type:'Walking'},
@@ -25,7 +25,7 @@ const Create = () => {
         {id:5,type:'Dancing'},
         ];
 
-        //Get data in local database
+        //get data from local database
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
@@ -33,7 +33,7 @@ const Create = () => {
         }
       }, []);
 
-      //Set data to local database
+      //set data to local database
       useEffect(() => {
         localStorage.setItem('userActivity', JSON.stringify(userActivity));
       }, [userActivity]);
@@ -107,7 +107,7 @@ const Create = () => {
         navigate('/Dashboard');     
       };
 
-    // Define a function to handle the cancel button click event
+    // define a function to handle the cancel button click event
     const handleCancel= () => {
         clearDataForm();
         navigate('/Dashboard'); 

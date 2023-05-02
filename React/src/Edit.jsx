@@ -16,6 +16,8 @@ const Edit = () => {
     const [durationTime, setDurationTime] = useState('');
     const [distance, setDistance] = useState('');
     const [error, setError] = useState(null);
+
+    //mockup data for activities list
     const activityTypeList = [
         {id:1,type:'Running'},
         {id:2,type:'Walking'},
@@ -25,7 +27,7 @@ const Edit = () => {
         ];
 
         
-
+    //get data from local database
     useEffect(() => {
       
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
@@ -52,32 +54,49 @@ const Edit = () => {
 
     const handleEditUserActivity = () => {
     
-        if (!activityName.trim()) {
-            setError('Activity name is required');
-            return;
-          }
-          if (!description.trim()) {
-            setError('Description is required');
-            return;
-          }
+      // check if activityName is empty
+      if (!activityName.trim()) {
+          setError('Activity name is required');
+          return;
+      }
+
+      // check if description is empty
+      if (!description.trim()) {
+          setError('Description is required');
+          return;
+      }
+
+      // check if startDateTime is before current date-time
+      if (new Date(startDateTime)< new Date()) {
+          setError('Start date-time must be after current date-time');
+          return;
+      }
+
+      // check if startDateTime or finishDateTime is empty
+      if (!startDateTime || !finishDateTime) {
+          setError('Start and Finish date-time are required');
+          return;
+      }
+
+      // check if finishDateTime is before startDateTime
+      if (new Date(startDateTime) >= new Date(finishDateTime)) {
+          setError('Finish date-time must be after start date-time');
+          return;
+      }
+
+      // check if activityType is empty
+      if (!activityType) {
+          setError('Activity type is required');
+          return;
+      }
+
+      // check if durationTime is empty or less than 10
+      if (!durationTime || durationTime < 10) {
+          setError('Duration time is required and should be at least 10 minutes');
+          return;
+        }
           
-          if (!startDateTime || !finishDateTime) {
-            setError('Start and Finish date-time are required');
-            return;
-          }
-          if (new Date(startDateTime) >= new Date(finishDateTime)) {
-            setError('Finish date-time must be after start date-time');
-            return;
-          }
-          if (!activityType) {
-            setError('Activity type is required');
-            return;
-          }
-          if (!durationTime || durationTime < 10) {
-            setError('Duration time is required and should be at least 10 minutes');
-            return;
-          }
-          
+    // update a user activity object
     const updatedUserActivity = {
       ...userActivity,
       activityName,
