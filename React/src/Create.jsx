@@ -5,7 +5,7 @@ import fitbook from './assets/FITBOOK.png';
 
 
 const Create = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // getting the navigate function from react-router-dom
     const [userActivity, setUserActivity] = useState([]);
     const [activityName, setActivityName] = useState('');
     const [description, setDescription] = useState('');
@@ -14,7 +14,7 @@ const Create = () => {
     const [activityType, setActivityType] = useState('');
     const [durationTime, setDurationTime] = useState('');
     const [distance, setDistance] = useState('');
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null); //correct an error message
     
     //mockup data for activities list
     const activityTypeList = [
