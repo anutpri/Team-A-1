@@ -1,10 +1,9 @@
-import Layout from './Layout'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { acId } from './Create';
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
-import Create from './Create';
+
 
 const Edit = () => {
     const navigate = useNavigate();
@@ -30,7 +29,6 @@ const Edit = () => {
 
     useEffect(() => {
       
-      
         const storedData = JSON.parse(localStorage.getItem('userActivity'));
         if (storedData) {
           const activityToEdit = storedData.find(activityEdit => activityEdit.id === acId);
@@ -51,9 +49,7 @@ const Edit = () => {
         }
       }, []);
 
-      // useEffect(() => {
-      //   localStorage.setItem('userActivity', JSON.stringify(userActivity));
-      // }, [userActivity]);
+     
 
     const handleEditUserActivity = () => {
     
@@ -65,10 +61,7 @@ const Edit = () => {
             setError('Description is required');
             return;
           }
-          // if (new Date(startDateTime)< new Date()) {
-          //   setError('Start date-time must be after current date-time');
-          //   return;
-          // }
+          
           if (!startDateTime || !finishDateTime) {
             setError('Start and Finish date-time are required');
             return;
@@ -85,25 +78,7 @@ const Edit = () => {
             setError('Duration time is required and should be at least 10 minutes');
             return;
           }
-          // if (!distance || distance < 0.1) {
-          //   setError('Distance is required and should be at least 0.1 kilometer');
-          //   return;
-          // }
-    
-    // const editUserActivity = {
-    //       id: acId,
-    //       activityName,
-    //       description,
-    //       startDateTime,
-    //       finishDateTime,
-    //       activityType,
-    //       durationTime,
-    //       distance
-    //     };
-    //     console.log(editUserActivity);
-    //     setUserActivity(editUserActivity);
-    //     clearDataForm()
-    //     alert('Save successful!');
+          
     const updatedUserActivity = {
       ...userActivity,
       activityName,

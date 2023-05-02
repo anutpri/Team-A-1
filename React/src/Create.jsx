@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './Create.css'
 import fitbook from './assets/FITBOOK.png';
 export let acId = '';
+
 const Create = () => {
     const navigate = useNavigate();
     const [userActivity, setUserActivity] = useState([]);
