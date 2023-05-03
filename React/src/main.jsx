@@ -1,62 +1,51 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App'
-// import './index.css'
 
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-// )
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import Login from './Login';
 import Signup from './Signup';
-import Error from './Error';
 import Create from './Create';
-import Card from './Card';
-import Delete from './Delete';
+import Edit from './Edit';
 import Dashboard from './Dashboard';
 
 const router = createBrowserRouter([
   // insert your path here
   {
     path: '/',
-    element: <App />,
+    element: <App />
   },
   {
     path: '/Login',
-    element: <Login />,
+    element: <Login />
   },
   {
     path: '/Signup',
-    element: <Signup />,
+    element: <Signup />
   },
   {
     path: '/Dashboard',
-    element: <Dashboard />,
+    element: <Dashboard />
   },
   {
     path: '/Create',
-    element: <Create />,
+    element: <Create />
   },
   {
-    path: '/Card',
-    element: <Card />,
+    path: '/Edit',
+    element: <Edit />
   },
-  {
-    path: '/Delete',
-    element: <Delete />,
-  },
-]);
+  
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-);
+)
