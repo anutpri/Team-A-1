@@ -1,102 +1,99 @@
+import { useState, useEffect } from 'react';
 import Layout from './Layout';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Card.css';
-// import PropTypes from 'prop-types';
-// import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-const Card = () => {
-  return (
-    <div className='cardOne'>
-      <ActivityCard />
-    </div>
-  );
-};
+const ActivityCard = () => {
+  //Mock database on localhost
+  const [userActivity, setUserActivity] = useState([]);
 
-const ActivityCard = ({
-  userName,
-  activityName,
-  description,
-  startDateTime,
-  finishDateTime,
-  activityType,
-  duration,
-  distance,
-  onDelete,
-  onEdit,
-}) => {
+  const Card = [
+    {
+      id: 1,
+      userName: 'WARUT NIYOMKA',
+      description:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, numquam eveniet vero assumenda odio, similique repellendus reiciendis illum ad quas velit ducimus, quam dolorum nostrum doloribus voluptate quasi maiores. Unde!',
+      activityType: 'Walking',
+      startDateTime: '04/09/2023',
+      finishDateTime: '04/09/2023',
+      durationTime: '00:53:41',
+      distance: '4.0 KM',
+    },
+  ];
+
+  //Get data in local database
+  useEffect(() => {
+    const storedActivity =
+      JSON.parse(localStorage.getItem('userActivity')) || [];
+    setUserActivity(storedActivity);
+  }, []);
+
   return (
     <Layout>
-      <div className='Card'>
-        <header>
-          <div className='cardHeader'>
-            <table>
-              <tr>
-                <th>
-                  <h1>WARUT NIYOMKA{userName}</h1>
-                </th>
-                <th>
-                  <img
-                    src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                    width='45px'
-                    heigth='45px'
-                  />
-                </th>
-                <th>
-                  <img
-                    src='https://www.svgrepo.com/show/244044/delete.svg'
-                    width='40px'
-                    heigth='40px'
-                  />
-                </th>
-              </tr>
+      <div>
+        {userActivity.map((user) => (
+          <div className='card' key={user.id}>
+            <div className='cardHeader'>
+              <h2 className='userName'>WARUT NIYOMKA</h2>
+              <span>
+                <img
+                  className='editIcon'
+                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                  width='45px'
+                  heigth='45px'
+                />
+                <img
+                  className='deleteIcon'
+                  src='https://www.svgrepo.com/show/244044/delete.svg'
+                  width='40px'
+                  heigth='40px'
+                />
+              </span>
+            </div>
+            <table className='typeAndName'>
+              <td className='activityype'>{user.activityType}</td>
+              <td>
+                <h4 className='activity-name'>{user.activityName}</h4>
+              </td>
             </table>
-            <table>
-              <tr>
-                <th>
-                  <img
-                    src='https://images.vexels.com/media/users/3/239009/isolated/preview/2c0cee4ba304f6dae23351608ea878a3-figure-walking-cut-out.png'
-                    width='50px'
-                    height='50px'
-                  />
-                  {/* <h6>Walking{activityType}</h6> */}
-                </th>
-                <td>
-                  <h4>Go to shopping{activityName}</h4>
-                </td>
-              </tr>
-            </table>
-            {/* <label id='acTypeL'>Walking{activityType}</label> */}
             <hr />
+            {/* <ion-icon color="primary" size="large" name="create-outline"></ion-icon> */}
+            {/* <ion-icon color="danger" size="large" name="trash-outline"></ion-icon> */}
+
+            <div className='cardBody'>
+              {/* <p className='name'>WARUT NIYOMKA</p> */}
+              <label className='description'>{user.description}</label>
+            </div>
+
+            <div className='activityTab'>
+              <div className='activity-left-tab'>
+                {/* <img className='activity-image' src={item.image} /> */}
+                {/* <p className='activity-type'>{user.activityType}</p> */}
+                <div className='detailHeader'>
+                  <table>
+                    <th>startDateTime</th>
+                    <th>finishDateTime</th>
+                  </table>
+                  <span>{user.startDateTime}</span>
+                </div>
+                <div className='detail'>
+                  <p>Duration</p>
+                  <span>{user.durationTime}</span>
+                </div>
+              </div>
+              <div className='activity-right-tab'>
+                <div className='detail'>
+                  {/* <p>finishDateTime</p> */}
+                  <span>{user.finishDateTime}</span>
+                </div>
+                <div className='detail'>
+                  <p>Distance</p>
+                  <span>{user.distance}</span>
+                </div>
+              </div>
+              {/* <hr /> */}
+            </div>
           </div>
-        </header>
-        <div className='cardBody'>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui
-            nesciunt animi aliquid sapiente magnam quisquam quasi ipsam aliquam
-            nisi ab, a, enim, minima consequuntur rem temporibus? Fugit natus
-            adipisci provident?{description}
-          </p>
-          {/* <th>Start Time</th> <th>Finish Time</th>
-            </tr>
-            <tr>
-              <td>06:00 PM</td>
-              <td>07:30 PM</td>
-            </tr>
-          </table>
-          <table>
-            <tr>
-              <th>Duration</th>
-              <th>Distance</th>
-            </tr>
-            <tr>
-              <td>1.30 h</td>
-              <td>5 KM</td> */}
-          <label id='startL'>Start-DateTime{startDateTime}</label>{' '}
-          <label id='finishL'>Finish-DateTime{finishDateTime}</label>{' '}
-          <label id='setDuL'>Duration{duration}</label>{' '}
-          <label id='setDisL'>Distance{distance}</label>{' '}
-        </div>
+        ))}
       </div>
     </Layout>
   );

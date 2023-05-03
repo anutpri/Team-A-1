@@ -82,7 +82,7 @@ const Create = () => {
     };
     setUserActivity([...userActivity, newUserActivity]);
     clearDataForm();
-    alert('Save successful!');
+    alert('Save successfully!');
   };
 
   const handleCancel = () => {
