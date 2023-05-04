@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Layout from './Layout';
 import Create from './Create';
+import Card from './Card';
+
 // import Edit from './Edit';
 
 function App() {

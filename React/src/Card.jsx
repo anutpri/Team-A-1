@@ -1,96 +1,113 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import './Card.css';
+export let acId = '';
 
-const ActivityCard = () => {
-  //Mock database on localhost
+const Activities = () => {
+  const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
 
-  const Card = [
-    {
-      id: 1,
-      userName: 'WARUT NIYOMKA',
-      description:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, numquam eveniet vero assumenda odio, similique repellendus reiciendis illum ad quas velit ducimus, quam dolorum nostrum doloribus voluptate quasi maiores. Unde!',
-      activityType: 'Walking',
-      startDateTime: '04/09/2023',
-      finishDateTime: '04/09/2023',
-      durationTime: '00:53:41',
-      distance: '4.0 KM',
-    },
-  ];
-
-  //Get data in local database
+  //get data from local database
   useEffect(() => {
-    const storedActivity =
-      JSON.parse(localStorage.getItem('userActivity')) || [];
-    setUserActivity(storedActivity);
+    const storedData = JSON.parse(localStorage.getItem('userActivity'));
+    if (storedData) {
+      setUserActivity(storedData);
+    }
   }, []);
+
+  // function to handle clicking on the edit button for a user activity
+  const handleEditButton = (id) => {
+    // get the user activity to be edited based on its id
+    const editActivity = userActivity.filter(
+      (userActivity) => userActivity.id === id
+    )[0];
+    // set the global variable acId to the id of the user activity to be edited
+    acId = editActivity.id;
+    // navigate to the edit page
+    navigate('/Edit');
+  };
+
+  // function to handle clicking on the delete button for a user activity
+  const handleDeleteButton = (id) => {
+    // create a new array of user activities without the one to be deleted
+    const deleteActivity = userActivity.filter(
+      (userActivity) => userActivity.id !== id
+    );
+    // get the stored user activity data from localStorage
+    const storedData = JSON.parse(localStorage.getItem('userActivity'));
+    // find the index of the user activity to be deleted
+    const index = storedData.findIndex(
+      (activityEdit) => activityEdit.id === acId
+    );
+
+    // delete the user activity to be deleted and add the rest of the user activities
+    storedData.splice(index, 1, ...deleteActivity);
+    // update the stored data in localStorage
+    localStorage.setItem('userActivity', JSON.stringify(storedData));
+    // update the userActivity state with the new array of user activities
+    setUserActivity(deleteActivity);
+    // show an alert to indicate that the user activity has been successfully deleted
+    alert('Delete successful!');
+  };
 
   return (
     <Layout>
       <div>
         {userActivity.map((user) => (
-          <div className='card' key={user.id}>
-            <div className='cardHeader'>
-              <h2 className='userName'>WARUT NIYOMKA</h2>
+          <div className='activity-card' key={user.id}>
+            <div className='card-header'>
+              <h2 className='name'>WARUT NIYOMKA</h2>
               <span>
-                <img
-                  className='editIcon'
-                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                  width='45px'
-                  heigth='45px'
-                />
-                <img
-                  className='deleteIcon'
-                  src='https://www.svgrepo.com/show/244044/delete.svg'
-                  width='40px'
-                  heigth='40px'
-                />
+                <button id='edit' onClick={() => handleEditButton(user.id)}>
+                  <img
+                    src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                    width='40px'
+                    heigth='40px'
+                    border='0'
+                  />{' '}
+                </button>
+                <button id='delete' onClick={() => handleDeleteButton(user.id)}>
+                  <img
+                    src='https://www.svgrepo.com/show/244044/delete.svg'
+                    width='40px'
+                    heigth='40px'
+                    border='0'
+                  />{' '}
+                </button>
               </span>
             </div>
-            <table className='typeAndName'>
-              <td className='activityype'>{user.activityType}</td>
-              <td>
-                <h4 className='activity-name'>{user.activityName}</h4>
-              </td>
-            </table>
-            <hr />
-            {/* <ion-icon color="primary" size="large" name="create-outline"></ion-icon> */}
-            {/* <ion-icon color="danger" size="large" name="trash-outline"></ion-icon> */}
 
-            <div className='cardBody'>
-              {/* <p className='name'>WARUT NIYOMKA</p> */}
+            <div className='activity-card-detail'>
+              <p className='activity-name'>{user.activityName}</p>
+              <hr />
+              <br />
               <label className='description'>{user.description}</label>
-            </div>
 
-            <div className='activityTab'>
-              <div className='activity-left-tab'>
-                {/* <img className='activity-image' src={item.image} /> */}
-                {/* <p className='activity-type'>{user.activityType}</p> */}
-                <div className='detailHeader'>
-                  <table>
-                    <th>startDateTime</th>
-                    <th>finishDateTime</th>
-                  </table>
-                  <span>{user.startDateTime}</span>
+              <div className='activity-tab'>
+                <div className='activity-left-tab'>
+                  {/* <img className='activity-image' src={item.image} /> */}
+                  <p className='activity-type'>{user.activityType}</p>
                 </div>
-                <div className='detail'>
-                  <p>Duration</p>
-                  <span>{user.durationTime}</span>
-                </div>
-              </div>
-              <div className='activity-right-tab'>
-                <div className='detail'>
-                  {/* <p>finishDateTime</p> */}
-                  <span>{user.finishDateTime}</span>
-                </div>
-                <div className='detail'>
-                  <p>Distance</p>
-                  <span>{user.distance}</span>
+                <div className='activity-right-tab'>
+                  <div className='detail'>
+                    <p>Start:</p>
+                    <span>{user.startDateTime}</span>
+                    <br />
+                    <p>Finished:</p>
+                    <span>{user.finishDateTime}</span>
+                  </div>
+                  <div className='detail'>
+                    <p>Duration:</p>
+                    <span>{user.durationTime}</span>
+                    {/* </div> */}
+                    {/* <div className='detail'> */}
+                    <p>Distance:</p>
+                    <span>{user.distance}</span>
+                  </div>
                 </div>
               </div>
-              {/* <hr /> */}
+              <hr />
             </div>
           </div>
         ))}
@@ -99,4 +116,4 @@ const ActivityCard = () => {
   );
 };
 
-export default ActivityCard;
+export default Activities;
