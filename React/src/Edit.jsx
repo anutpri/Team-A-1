@@ -119,7 +119,7 @@ const Edit = () => {
     // Clear the data form and navigate to the dashboard
     clearDataForm();
     // Show a success message
-    alert('Save successful!');
+    alert('Saved successfully!');
     // Navigate to the Dashboard page
     navigate('/Dashboard');
   };
