@@ -113,60 +113,6 @@ const Activities = () => {
         ))}
       </div>
     </Layout>
-
-    // <Layout>
-    //   <div>
-    //     {userActivity.map((item) => (
-    //       <div className='activity-card' key={user.id}>
-    //         <div className='header'>
-    //           <h2 className='activity-name'>{item.activityName}</h2>
-    //           {/* <span className='icon'>
-    //             <ion-icon
-    //               color='primary'
-    //               size='large'
-    //               name='create-outline'
-    //             ></ion-icon>
-    //             <ion-icon
-    //               color='danger'
-    //               size='large'
-    //               name='trash-outline'
-    //             ></ion-icon>
-    //           </span> */}
-    //         </div>
-
-    //         <div className='activity-card-detail'>
-    //           <p className='name'>{user.activityName}</p>
-    //           <hr />
-    //           <br />
-    //           <label className='description'>{user.description}</label>
-
-    //           <div className='activity-tab'>
-    //             <div className='activity-left-tab'>
-    //               {/* <img className='activity-image' src={item.image} /> */}
-    //               <p className='activity-type'>{user.activityType}</p>
-    //             </div>
-    //             <div className='activity-right-tab'>
-    //               <div className='detail'>
-    //                 <p>Date</p>
-    //                 <span>{user.startDateTime}</span>
-    //                 <span>{user.finishDateTime}</span>
-    //               </div>
-    //               <div className='detail'>
-    //                 <p>Duration</p>
-    //                 <span>{user.durationTime}</span>
-    //               </div>
-    //               <div className='detail'>
-    //                 <p>Distance</p>
-    //                 <span>{user.distance}</span>
-    //               </div>
-    //             </div>
-    //           </div>
-    //           <hr />
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </Layout>
   );
 };
 
