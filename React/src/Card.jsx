@@ -52,7 +52,7 @@ const Activities = () => {
   };
 
   return (
-    <Layout>
+    
       <div>
         {userActivity.map((user) => (
           <div className='activity-card' key={user.id}>
@@ -112,7 +112,7 @@ const Activities = () => {
           </div>
         ))}
       </div>
-    </Layout>
+    
   );
 };
 
