@@ -35,6 +35,11 @@ const Navbar = () => {
               Card
             </a>
           </li>
+          <li className='nav-item'>
+            <a href={'/Profile'} className='nav-link'>
+              Profile
+            </a>
+          </li>
         </ul>
       </div>
 
