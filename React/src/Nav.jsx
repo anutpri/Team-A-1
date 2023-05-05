@@ -2,6 +2,7 @@ import fitbook from './assets/FITBOOK.png';
 import './Nav.css';
 
 const Navbar = () => {
+
   return (
     <div className='container'>
       <header className='d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom customBackgroundColor'>
