@@ -1,0 +1,90 @@
+.activity-card {
+    position: fixed;
+    width: 700px;
+    height: 529px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #D9D9D9;
+    opacity: 0.8;
+    border-radius: 50px;
+}
+
+.activity-card > .card-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 50px 30px;
+}
+
+.activity-card > .card-header > h2 {
+    font-size: 30px;
+}
+
+.activity-card-detail {
+    margin: 30px 50px 30px;
+}
+
+.activity-card-detail > .name {
+    font-size: 22px;
+}
+
+.activity-card-detail > .description {
+    font-size: 18px;
+}
+
+.activity-card-detail > hr {
+    border: 2px solid #FFFFFF;
+    margin-top: 10px;
+}
+
+.activity-tab {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0 30px 0;
+}
+
+.activity-tab > div:nth-child(1) > img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    height: 4em;
+    width: 4em;
+}
+
+.activity-tab > div:nth-child(2) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+}
+
+.activity-tab > .activity-left-tab > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.activity-tab > .activity-right-tab > .detail > p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.activity-tab > .activity-right-tab > .detail > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+      }

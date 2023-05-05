@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Create.css';
+import { acId } from './Activities-Temp';
+// import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
-const Create = () => {
+const Edit = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
   const [activityName, setActivityName] = useState('');
@@ -28,16 +29,27 @@ const Create = () => {
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('userActivity'));
     if (storedData) {
-      setUserActivity(storedData);
+      const activityToEdit = storedData.find(
+        (activityEdit) => activityEdit.id === acId
+      );
+      if (activityToEdit) {
+        setUserActivity(activityToEdit);
+        setActivityName(activityToEdit.activityName);
+        setDescription(activityToEdit.description);
+        setStartDateTime(activityToEdit.startDateTime);
+        setFinishDateTime(activityToEdit.finishDateTime);
+        setActivityType(activityToEdit.activityType);
+        setDurationTime(activityToEdit.durationTime);
+        setDistance(activityToEdit.distance);
+      } else {
+        setError('Activity not found1');
+      }
+    } else {
+      setError('Activity not found2');
     }
   }, []);
 
-  //set data to local database
-  useEffect(() => {
-    localStorage.setItem('userActivity', JSON.stringify(userActivity));
-  }, [userActivity]);
-
-  const handleAddUserActivity = () => {
+  const handleEditUserActivity = () => {
     // check if activityName is empty
     if (!activityName.trim()) {
       setError('Activity name is required');
@@ -79,9 +91,10 @@ const Create = () => {
       setError('Duration time is required and should be at least 10 minutes');
       return;
     }
-    // create a new user activity object
-    const newUserActivity = {
-      id: Date.now(),
+
+    // update a user activity object
+    const updatedUserActivity = {
+      ...userActivity,
       activityName,
       description,
       startDateTime,
@@ -91,18 +104,23 @@ const Create = () => {
       distance,
     };
 
-    // add the new user activity object to the userActivity state array
-    setUserActivity([...userActivity, newUserActivity]);
-    // save the updated userActivity state array to localStorage
-    localStorage.setItem(
-      'userActivity',
-      JSON.stringify([...userActivity, newUserActivity])
+    // Retrieve user activity data from local storage
+    const storedData = JSON.parse(localStorage.getItem('userActivity'));
+    // Find index of activity to be edited
+    const index = storedData.findIndex(
+      (activityEdit) => activityEdit.id === acId
     );
-    // clear the input form fields
+    // Update the user activity with the new data
+    storedData[index] = updatedUserActivity;
+    // Save the updated data to local storage
+    localStorage.setItem('userActivity', JSON.stringify(storedData));
+    // Update state with the updated user activity
+    setUserActivity(updatedUserActivity);
+    // Clear the data form and navigate to the dashboard
     clearDataForm();
-    // show a success message
+    // Show a success message
     alert('Saved successfully!');
-    // navigate to the Dashboard page
+    // Navigate to the Dashboard page
     navigate('/Dashboard');
   };
 
@@ -143,22 +161,24 @@ const Create = () => {
           {/* Logo image */}
         </a>
       </header>
-      <h2 id='header1'>CREATE A NEW CARD</h2>
+      <h2 id='header1'>EDIT AN ACTIVITY CARD</h2>
       <div className='inputData'>
         <label>Activity Name</label> <br></br>
-        {/* setActivityName when input onChange */}
+        {/* setActivityName when input onChange and default value = activityName*/}
         <input
           id='acName'
           type='text'
+          value={activityName}
           onChange={(event) => setActivityName(event.target.value)}
         />
         <br></br>
         <br></br>
         <label>Description</label> <br></br>
-        {/* setDescription when input onChange */}
+        {/* setDescription when input onChange and default value = description*/}
         <input
           id='descript'
           type='text'
+          value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
         <br></br>
@@ -166,17 +186,19 @@ const Create = () => {
         <label id='startL'>Start-DateTime</label>{' '}
         <label id='finishL'>Finish-DateTime</label>
         <br></br>
-        {/* setStartDateTime when input onChange */}
+        {/* setStartDateTime when input onChange and default value = startDateTime*/}
         <input
           id='start'
           type='datetime-local'
+          value={startDateTime}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setStartDateTime(event.target.value)}
         />
-        {/* setFinishDateTime when input onChange */}
+        {/* setFinishDateTime when input onChange and default value = finishDateTime*/}
         <input
           id='finish'
           type='datetime-local'
+          value={finishDateTime}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setFinishDateTime(event.target.value)}
         />
@@ -186,9 +208,10 @@ const Create = () => {
         <label id='acTypeL'>Activity Type</label>{' '}
         <label id='setDuL'>Duration Time</label>{' '}
         <label id='setDisL'>Distance </label>
-        {/* setActivityType when input onChange */}
+        {/* setActivityType when input onChange and default value = activityType*/}
         <select
           id='acType'
+          value={activityType}
           onChange={(event) => setActivityType(event.target.value)}
         >
           <option value=''>-- Select --</option>
@@ -199,19 +222,21 @@ const Create = () => {
             </option>
           ))}
         </select>
-        {/* setDurationTime when input onChange */}
+        {/* setDurationTime when input onChange and default value = durationTime*/}
         <input
           id='setDu'
           placeholder='Minutes'
+          value={durationTime}
           min='10'
           step='10'
           type='number'
           onChange={(event) => setDurationTime(event.target.value)}
         />
-        {/* setDistance when input onChange */}
+        {/* setDistance when input onChange and default value = distance*/}
         <input
           id='setDis'
           placeholder='kilometer'
+          value={distance}
           min='0.0'
           step='0.1'
           type='number'
@@ -221,10 +246,10 @@ const Create = () => {
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
         {/* Display the error message */}
-        <button id='save' onClick={handleAddUserActivity}>
+        <button id='save' onClick={handleEditUserActivity}>
           Save
         </button>{' '}
-        {/* Call handleAddUserActivity when click */}
+        {/* Call handleEditUserActivity when click */}
         <button id='cancel' onClick={handleCancel}>
           Cancel
         </button>{' '}
@@ -234,4 +259,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Edit;
