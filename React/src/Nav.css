@@ -37,7 +37,7 @@
   .nav-sign {
     margin-top: 0.55%;
     display: flex;
-    
+    background-color: #6F67B4 !important;
     margin-left: 22% !important;
    
     
@@ -50,5 +50,6 @@
     font-weight: 600;
     color: #666;
     white-space: nowrap;
+    
   }
   

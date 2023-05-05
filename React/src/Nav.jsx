@@ -33,9 +33,9 @@ const Navbar = () => {
               Card
             </a>
           </li>
-          </ul>
+        </ul>
 
-          <ul className='nav-sign'>
+        <ul className='nav-sign'>
           <li className='nav-item'>
             <a href={'/Login'} className='nav-link'>
               Sign in 
