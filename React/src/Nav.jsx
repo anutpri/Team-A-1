@@ -7,7 +7,8 @@ const Navbar = () => {
     <a href={'/'}> <img className='fit' src={fitbook} alt='fitbook'/> </a>
         
       <div className='nav-ul'>
-        <ul className='nav'>
+      <div className='nav'>
+        <ul>
           <li className='nav-item'>
             <a href={'/'} className='nav-link' aria-current='page'>
               Main
@@ -34,8 +35,10 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+      </div>
 
-        <ul className='nav-sign'>
+        <div className='nav-sign'>
+        <ul>
           <li className='nav-item'>
             <a href={'/Login'} className='nav-link'>
               Sign in 
@@ -47,7 +50,7 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-      
+        </div>
     </div>
   </div>
   );
