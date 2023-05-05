@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { acId } from './Activities-Temp';
+import { acId } from './Card';
 // import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
