@@ -13,6 +13,7 @@ import Profile from './Profile';
 import Edit from './Edit';
 import Dashboard from './Dashboard';
 import Card from './Card';
+import Crud from './CRUD';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: '/Profile',
     element: <Profile />,
+  },
+  {
+    path: '/CRUD',
+    element: <Crud />,
   },
 ]);
 

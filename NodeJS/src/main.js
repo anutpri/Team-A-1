@@ -14,11 +14,11 @@ webServer.get("/", (request, response) => {
   response.send("Hello World");
 });
 
-webServer.get("/company", (request, response) => {
+webServer.get("/test", (request, response) => {
   response.json(company);
 });
 
-webServer.post("/company", (request, response) => {
+webServer.post("/test", (request, response) => {
   const companyId = company.length +1;
   const name = request.body.name;
   const taxId = `tax-${request.body.taxId}`;

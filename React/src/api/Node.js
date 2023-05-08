@@ -7,13 +7,13 @@ const SERVER = `${HOSTNAME}:${PORT}`;
 
 export const getCompanies = async () => {
   // code down below
-  const response = await axios.get(`${SERVER}/company`);
+  const response = await axios.get(`${SERVER}/test`);
   const body = response.data;
   return body;
 };
 
 export const createCompanies = async (body) => {
   // code down below
-  const response = await axios.post(`${SERVER}/company`, body);
+  const response = await axios.post(`${SERVER}/test`, body);
   alert(response.data);
 };
