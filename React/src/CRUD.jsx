@@ -1,28 +1,32 @@
 import { useState, useEffect } from "react";
-import { getCompanies, createCompanies } from "./api/Node";
+import { getUser, createUser } from "./api/Node";
 
 function Crud() {
-  const [companies, setCompanies] = useState([]);
+  const [users, setusers] = useState([]);
   const [name, setName] = useState();
-  const [taxId, setTaxId] = useState();
+  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
   const [load, toggleReload] = useState(false);
 
   useEffect(() => {
-    const getCompany = async () => {
-      const companies = await getCompanies();
-      setCompanies(companies);
+    const getuser = async () => {
+      const users = await getUser();
+      setusers(users);
       
     };
 
-    getCompany();
+    getuser();
   }, [load]);
 
   const save = async () => {
-    const newCompany = {
+    const newuser = {
       name,
-      taxId,
+      email,
+      username,
+      password,
     };
-    await createCompanies(newCompany);
+    await createUser(newuser);
     toggleReload(!load);
   };
 
@@ -35,27 +39,40 @@ function Crud() {
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          type="number"
-          placeholder="Tax ID"
-          onChange={(e) => setTaxId(e.target.value)}
+          type="text"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button onClick={save}>Save</button>
       </div>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Tax ID</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
           </tr>
         </thead>
         <tbody>
-          {companies.map((company) => {
+          {users.map((user) => {
             return (
-              <tr key={company.companyId}>
-                <td>{company.companyId}</td>
-                <td>{company.name}</td>
-                <td>{company.taxId}</td>
+              
+              <tr key={user.userId}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.username}</td>
+                <td>{user.password}</td>
               </tr>
             );
           })}
