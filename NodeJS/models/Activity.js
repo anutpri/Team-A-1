@@ -9,9 +9,9 @@ const activitySchema = new Schema({
       },
       description: String,
       username: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref:"username"
+        ref:"User"
       },
       activity_type: {
         type: String,
