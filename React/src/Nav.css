@@ -1,3 +1,69 @@
-.customBackgroundColor{
+.header1 {
     background-color: #6F67B4;
+    
+  }
+  
+  .fit {
+    margin-left: 3% !important;
+    margin-top: 1% !important;
+    margin-bottom: 1% !important;
+    width: 8rem;
+    height: 2.5rem;
+  }
+  
+  .nav-ul {
+    background-color: white;
+    display: flex;
+    
+  
+    
+  }
+
+  .nav {
+    margin-left: 9%;
+    
+  }
+
+  .nav li {
+    list-style: none;
+    display: inline-block;
+  }
+
+  .nav-item a {
+    color: #666;
+    border-radius: 0.6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .nav-item a:hover {
+    color: white;
+    background-color: #6F67B4;
+   
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .nav-sign {
+    margin-top: 0.55%;
+    
+    width: 42%;
+    padding-right: 10%;
+    margin-left: auto;
+    
+  }
+.nav-sign ul {
+  
+  float: left;
 }
+  
+  .nav-sign li {
+    list-style-type: none;
+    font-weight: 600;
+    color: #666;
+    display: inline-block;
+    padding-right: 3rem;
+    
+    
+  }
+  

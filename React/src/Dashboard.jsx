@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from './Layout'
-import Activities from './Activities-Temp';
+import Activities from './Card';
 
 const Dashboard = () => {
 

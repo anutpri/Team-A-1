@@ -9,7 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
 import Create from './Create';
-
+import Profile from './Profile';
 import Edit from './Edit';
 import Dashboard from './Dashboard';
 import Activities from './Card';
@@ -42,10 +42,12 @@ const router = createBrowserRouter([
     element: <Edit />,
   },
   {
-
-
     path: '/Card',
     element: <Activities />,
+  },
+  {
+    path: '/Profile',
+    element: <Profile />,
   },
 ]);
 
