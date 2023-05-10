@@ -4,6 +4,7 @@ import './Nav.css';
 const Navbar = () => {
 
   return (
+
   <div  className='header1'>
     <a href={'/'}> <img className='fit' src={fitbook} alt='fitbook'/> </a>
         

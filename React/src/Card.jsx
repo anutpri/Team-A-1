@@ -53,9 +53,11 @@ const Activities = () => {
 
   return (
     
-      <div>
+
+      <div className='container-fluid d-flex flex-column align-items-center'>
+
         {userActivity.map((user) => (
-          <div className='activity-card' key={user.id}>
+          <div className='activity-card mb-3' key={user.id}>
             <div className='card-header'>
               <h2 className='name'>WARUT NIYOMKA</h2>
               <span>
