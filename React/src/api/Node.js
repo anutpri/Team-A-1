@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PORT = 3001;
+const PORT = 3000;
 const HOSTNAME = "http://127.0.0.1";
 const SERVER = `${HOSTNAME}:${PORT}`;
 
@@ -14,6 +14,6 @@ export const getUser = async () => {
 
 export const createUser = async (body) => {
   // code down below
-  const response = await axios.post(`${SERVER}/insert`, body);
+  const response = await axios.post(`${SERVER}/newuser`, body);
   alert(response.data);
 };
