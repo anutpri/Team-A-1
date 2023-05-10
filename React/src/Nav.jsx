@@ -4,7 +4,7 @@ import './Nav.css';
 const Navbar = () => {
 
   return (
-    <div className='container'>
+    <div className='container-fluid'>
       <header className='d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom customBackgroundColor'>
         <a
           href={'/'}

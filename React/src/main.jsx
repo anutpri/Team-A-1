@@ -12,7 +12,8 @@ import Create from './Create';
 
 import Edit from './Edit';
 import Dashboard from './Dashboard';
-import Card from './Card';
+import Activities from './Card';
+import MyDashboard from './MyDashboard';
 
 const router = createBrowserRouter([
   // insert your path here
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/Dashboard',
-    element: <Dashboard />,
+    element: <MyDashboard />,
   },
   {
     path: '/Create',
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
 
 
     path: '/Card',
-    element: <Card />,
+    element: <Activities />,
   },
 ]);
 
