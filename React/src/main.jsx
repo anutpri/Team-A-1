@@ -14,6 +14,8 @@ import Edit from './Edit';
 import Dashboard from './Dashboard';
 import Activities from './Card';
 import MyDashboard from './MyDashboard';
+import Crud from './CRUD';
+
 
 const router = createBrowserRouter([
   // insert your path here
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: '/Profile',
     element: <Profile />,
+  },
+  {
+    path: '/CRUD',
+    element: <Crud />,
   },
 ]);
 
