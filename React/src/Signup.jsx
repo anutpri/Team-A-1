@@ -18,24 +18,7 @@ const Signup = () => {
   // to navigate the cancel button to main
   const navigate = useNavigate();
 
-  // to maintain all the states so that on submit button you can send all the required information to the backend APIs
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    if (id === "userName") {
-      setUserName(value);
-    }
-    if (id === "email") {
-      setEmail(value);
-    }
-    if (id === "password") {
-      setPassword(value);
-    }
-    if (id === "cfPassword") {
-      setCfPassword(value);
-    }
-  };
-
-  const handleSignup = (event) => {
+  const handleSignup = async (event) => {
     event.preventDefault();
 
     if (!username.trim()) {
@@ -72,14 +55,18 @@ const Signup = () => {
       email,
       password,
     };
-
-    createUser(newuser);
     
+    try {
+      await createUser(newuser);
+    } catch (error) {
+      setError(error.message);
+    }
+
     alert('Register successfully!');
     // navigate to the Dashboard page
-    console.log(newuser);
-    navigate('/Profile');
     
+    navigate('/Profile');
+  
     
   };
 
