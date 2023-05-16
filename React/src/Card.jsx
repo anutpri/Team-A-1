@@ -52,69 +52,66 @@ const Activities = () => {
   };
 
   return (
-    
+    <div className='container-fluid d-flex flex-column align-items-center'>
+      {userActivity.map((user) => (
+        <div className='activity-card mb-3' key={user.id}>
+          <div className='card-header'>
+            <h2 className='name'>{user.activityName}</h2>
+            <span>
+              <button id='edit' onClick={() => handleEditButton(user.id)}>
+                <img
+                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                  width='40px'
+                  heigth='40px'
+                  border='0'
+                />{' '}
+              </button>
+              <button id='delete' onClick={() => handleDeleteButton(user.id)}>
+                <img
+                  src='https://www.svgrepo.com/show/244044/delete.svg'
+                  width='40px'
+                  heigth='40px'
+                  border='0'
+                />{' '}
+              </button>
+            </span>
+          </div>
 
-      <div className='container-fluid d-flex flex-column align-items-center'>
+          <div className='activity-card-detail'>
+            {/* <p className='activity-name'>{user.activityName}</p> */}
+            <label className='description'>{user.description}</label>
+            <hr />
+            {/* <br /> */}
+            {/* <label className='description'>{user.description}</label> */}
 
-        {userActivity.map((user) => (
-          <div className='activity-card mb-3' key={user.id}>
-            <div className='card-header'>
-              <h2 className='name'>WARUT NIYOMKA</h2>
-              <span>
-                <button id='edit' onClick={() => handleEditButton(user.id)}>
-                  <img
-                    src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                    width='40px'
-                    heigth='40px'
-                    border='0'
-                  />{' '}
-                </button>
-                <button id='delete' onClick={() => handleDeleteButton(user.id)}>
-                  <img
-                    src='https://www.svgrepo.com/show/244044/delete.svg'
-                    width='40px'
-                    heigth='40px'
-                    border='0'
-                  />{' '}
-                </button>
-              </span>
-            </div>
-
-            <div className='activity-card-detail'>
-              <p className='activity-name'>{user.activityName}</p>
-              <hr />
-              <br />
-              <label className='description'>{user.description}</label>
-
-              <div className='activity-tab'>
-                <div className='activity-left-tab'>
-                  {/* <img className='activity-image' src={item.image} /> */}
-                  <p className='activity-type'>{user.activityType}</p>
+            <div className='activity-tab'>
+              <div className='activity-left-tab'>
+                {/* <img className='activity-image' src={item.image} /> */}
+                <p className='activity-type'>{user.activityType}</p>
+              </div>
+              <div className='activity-right-tab'>
+                <div className='detail'>
+                  <p>Start:</p>
+                  <span>{user.startDateTime}</span>
+                  <br />
+                  <p>Finished:</p>
+                  <span>{user.finishDateTime}</span>
                 </div>
-                <div className='activity-right-tab'>
-                  <div className='detail'>
-                    <p>Start:</p>
-                    <span>{user.startDateTime}</span>
-                    <br />
-                    <p>Finished:</p>
-                    <span>{user.finishDateTime}</span>
-                  </div>
-                  <div className='detail'>
-                    <p>Duration:</p>
-                    <span>{user.durationTime}</span>
-                    {/* </div> */}
-                    {/* <div className='detail'> */}
-                    <p>Distance:</p>
-                    <span>{user.distance}</span>
-                  </div>
+                <div className='detail'>
+                  <p>Duration:</p>
+                  <span>{user.durationTime}</span>
+                  {/* </div> */}
+                  {/* <div className='detail'> */}
+                  <p>Distance:</p>
+                  <span>{user.distance}</span>
                 </div>
               </div>
-              <hr />
             </div>
+            <hr />
           </div>
-        ))}
-      </div>
-    
+        </div>
+      ))}
+    </div>
   );
 };
 
