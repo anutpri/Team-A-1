@@ -27,6 +27,7 @@ function Crud() {
       password,
     };
     await createUser(newuser);
+    console.log(newuser);
     toggleReload(!load);
   };
 

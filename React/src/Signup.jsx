@@ -5,10 +5,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
+import { getUser, createUser } from "./api/Node";
 
 // useState = when users hit submit button you can send the data to the backend API
 const Signup = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cfPassword, setCfPassword] = useState("");
@@ -36,6 +37,18 @@ const Signup = () => {
 
   const handleSignup = (event) => {
     event.preventDefault();
+
+    if (!username.trim()) {
+      setError('Username is required');
+      return;
+    }
+
+    if (username.length < 6) {
+      setError("Username must be at least 6 characters long");
+      return;
+    } 
+//wait to implement check duplicate username later
+
     // Check if email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -43,43 +56,46 @@ const Signup = () => {
       return;
     }
 
-    // Check if password meets minimum requirements
+    //Check if password meets minimum requirements
     if (password.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
-    } else {
-      // If a user is not found, display an error message
-      setError("Invalid email or password");
-    }
+    } 
 
-    // console.log(userName, email, password, cfPassword);
+    if (password !== cfPassword) {
+      setError("Password and confirm password does not match");
+      return;
+    } 
+
+    const newuser = {
+      username,
+      email,
+      password,
+    };
+
+    createUser(newuser);
+    
+    alert('Register successfully!');
+    // navigate to the Dashboard page
+    console.log(newuser);
+    navigate('/Profile');
+    
+    
   };
 
   return (
     <Layout>
-      <div class="header">
-        <div class="create">
+      <div className="header">
+        <div className="create">
           <h1>Create Account</h1>
         </div>
       </div>
 
-      {/* 
-      In case if we want to add this feature in the future
+      
 
-      <label class="withFB">Sign up with Facebook </label>
-        <br />
-        <label class="withGG">Sign up with Google</label>
-        <br />
-        <label class="withAP">Sign up with Apple</label>
-        <br />
-        <br />
-        <a>- OR -</a>
-        <br />
-        <br /> */}
-
-      <div class="Signup">
+      <div className="Signup">
         <input
-          value={userName}
+          
           type="text"
           placeholder="Username *"
           style={{ margin: "4px" }}
@@ -88,7 +104,7 @@ const Signup = () => {
         <br />
         <br />
         <input
-          value={email}
+          
           type="email"
           placeholder="Email *"
           style={{ margin: "4px" }}
@@ -97,7 +113,7 @@ const Signup = () => {
         <br />
         <br />
         <input
-          value={password}
+          
           type="password"
           placeholder="Password *"
           style={{ margin: "4px" }}
@@ -106,7 +122,7 @@ const Signup = () => {
         <br />
         <br />
         <input
-          value={cfPassword}
+          
           type="password"
           placeholder="Confirm Password *"
           style={{ margin: "4px" }}
