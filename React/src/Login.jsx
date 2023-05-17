@@ -2,22 +2,20 @@ import Layout from './Layout';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { checkEmail} from "./api/Node";
 
 const Login = () => {
+  const [userData, setUserData] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Array of user data for testing
-  const userData = [
-    { email: 'user1@gmail.com', password: 'password1' },
-    { email: 'user2@gmail.com', password: 'password2' },
-    { email: 'user3@gmail.com', password: 'password3' },
-  ];
+  
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
+
     // Check if email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -31,17 +29,24 @@ const Login = () => {
       return;
     }
 
-    // Check if email and password match a user in the userData array
-    const user = userData.find(
-      (user) => user.email === email && user.password === password
-    );
-    if (user) {
-      // If a user is found, the login is successful and redirected to App (main)
-      alert('Login successfully!');
-      navigate('/');
-    } else {
-      // If a user is not found, display an error message
-      setError('Invalid email or password');
+    try {
+      const user = await checkEmail(email);
+      console.log(user);
+      setUserData(user);
+      
+
+      // Check if email and password match a user
+      if (user.email === email && user.password === password) {
+        // If a user is found and password matches, the login is successful
+        alert('Login successful!');
+        navigate('/');
+      } else {
+        // If a user is not found or password doesn't match, display an error message
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Error getting user:', error);
+      setError('Error retrieving user data. Please try again later.');
     }
   };
 

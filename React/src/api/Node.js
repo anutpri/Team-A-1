@@ -15,9 +15,9 @@ export const getUser = async () => {
   }
 };
 
-export const checkUserName = async () => {
+export const checkUserName = async (username) => {
   try {
-    const response = await axios.get(`${SERVER}/users/username`);
+    const response = await axios.get(`${SERVER}/users/username/${username}`);
     const body = response.data;
     return body;
   } catch (error) {
@@ -25,9 +25,9 @@ export const checkUserName = async () => {
   }
 };
 
-export const checkEmail = async () => {
+export const checkEmail = async (email) => {
   try {
-    const response = await axios.get(`${SERVER}/users/email`);
+    const response = await axios.get(`${SERVER}/users/email/${email}`);
     const body = response.data;
     return body;
   } catch (error) {
