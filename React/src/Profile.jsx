@@ -1,12 +1,14 @@
 import Layout from "./Layout";
 import kai from "./assets/kai.jpeg";
+import { userData } from "./api/Session";
+import { updateUserData } from "./api/Session";
 
 export default function Profile(){
     return (
         
             <div className="container text-center">
                 <img src={kai} style={{width:"20%"}} className="rounded"/>
-                <h2 className="mt-4">Ricky Kai</h2>
+                <h2 className="mt-4">{userData.username}</h2>
                 
                 <div className="d-flex justify-content-evenly mt-5">
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>

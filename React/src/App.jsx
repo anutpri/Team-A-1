@@ -3,23 +3,17 @@ import './App.css';
 import Layout from './Layout';
 import Create from './Create';
 import Card from './Card';
+import { userData } from "./api/Session";
 
-// import Edit from './Edit';
+
 
 function App() {
-  //Mock database on localhost
-  const [userActivity, setUserActivity] = useState([]);
 
-  //Get data in local database
-  useEffect(() => {
-    const storedActivity =
-      JSON.parse(localStorage.getItem('userActivity')) || [];
-    setUserActivity(storedActivity);
-  }, []);
-
-  return (
+  
+   return (
     <Layout>
-      <div>This is main page</div>
+      <div>Welcome <a>{userData && userData.username}</a></div>
+      
     </Layout>
   );
 }

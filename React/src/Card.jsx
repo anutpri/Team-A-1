@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import './Card.css';
 export let acId = '';
+import { userData } from "./api/Session";
+import { updateUserData } from "./api/Session";
+
 
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -59,7 +62,7 @@ const Activities = () => {
         {userActivity.map((user) => (
           <div className='activity-card mb-3' key={user.id}>
             <div className='card-header'>
-              <h2 className='name'>WARUT NIYOMKA</h2>
+              <h2 className='name'>{userData.username}</h2>
               <span>
                 <button id='edit' onClick={() => handleEditButton(user.id)}>
                   <img

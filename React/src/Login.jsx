@@ -2,10 +2,12 @@ import Layout from './Layout';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import { checkEmail} from "./api/Node";
+import { checkEmail } from "./api/Node";
+import { userData } from "./api/Session";
+import { updateUserData } from "./api/Session";
 
 const Login = () => {
-  const [userData, setUserData] = useState([]);
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -31,9 +33,9 @@ const Login = () => {
 
     try {
       const user = await checkEmail(email);
-      console.log(user);
-      setUserData(user);
       
+      updateUserData(user);
+      console.log(userData);
 
       // Check if email and password match a user
       if (user.email === email && user.password === password) {
