@@ -2,22 +2,22 @@ import Layout from './Layout';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import { checkEmail } from "./api/Node";
+import { userData } from "./api/Session";
+import { updateUserData } from "./api/Session";
 
 const Login = () => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Array of user data for testing
-  const userData = [
-    { email: 'user1@gmail.com', password: 'password1' },
-    { email: 'user2@gmail.com', password: 'password2' },
-    { email: 'user3@gmail.com', password: 'password3' },
-  ];
+  
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
+
     // Check if email is valid
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
@@ -31,38 +31,45 @@ const Login = () => {
       return;
     }
 
-    // Check if email and password match a user in the userData array
-    const user = userData.find(
-      (user) => user.email === email && user.password === password
-    );
-    if (user) {
-      // If a user is found, the login is successful and redirected to App (main)
-      alert('Login successfully!');
-      navigate('/');
-    } else {
-      // If a user is not found, display an error message
-      setError('Invalid email or password');
+    try {
+      const user = await checkEmail(email);
+      
+      updateUserData(user);
+      console.log(userData);
+
+      // Check if email and password match a user
+      if (user.email === email && user.password === password) {
+        // If a user is found and password matches, the login is successful
+        alert('Login successful!');
+        navigate('/');
+      } else {
+        // If a user is not found or password doesn't match, display an error message
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Error getting user:', error);
+      setError('Error retrieving user data. Please try again later.');
     }
   };
 
   return (
     <Layout>
-      <div class='header'>
-        <div class='title'>
+      <div className='header'>
+        <div className='title'>
           <p>Sign In to</p>
           <p>Change</p>
           <p>Your Life</p> <br />
           <p id='if'>
             If you don't have an account <br></br>
             <span>you can</span>{' '}
-            <a class='Regis' href={'/Signup'}>
+            <a className='Regis' href={'/Signup'}>
               Register Here!
             </a>
           </p>
         </div>
       </div>
 
-      <div class='Login'>
+      <div className='Login'>
         <input
           type='text'
           placeholder='Enter Email'
@@ -76,7 +83,7 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <br></br>
-        <a class='Forgot'>Forgot Password?</a>
+        <a className='Forgot'>Forgot Password?</a>
         <br></br>
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
