@@ -1,11 +1,11 @@
 import Layout from "./Layout";
-// import { Context } from "./UserContext"
-// import { useContext } from "react"
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import { getUser, createUser } from "./api/Node";
+import { userData } from "./api/Session";
+import { updateUserData } from "./api/Session";
 
 // useState = when users hit submit button you can send the data to the backend API
 const Signup = () => {
@@ -58,6 +58,7 @@ const Signup = () => {
     
     try {
       await createUser(newuser);
+      updateUserData(newuser);
     } catch (error) {
       setError(error.message);
     }
@@ -65,7 +66,7 @@ const Signup = () => {
     alert('Register successfully!');
     // navigate to the Dashboard page
     
-    navigate('/Profile');
+    navigate('/');
   
     
   };
