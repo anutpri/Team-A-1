@@ -47,22 +47,22 @@ const Login = () => {
 
   return (
     <Layout>
-      <div ClassName='header'>
-        <div ClassName='title'>
+      <div className='header'>
+        <div className='title'>
           <p>Sign In to</p>
           <p>Change</p>
           <p>Your Life</p> <br />
           <p id='if'>
             If you don't have an account <br></br>
             <span>you can</span>{' '}
-            <a ClassName='Regis' href={'/Signup'}>
+            <a className='Regis' href={'/Signup'}>
               Register Here!
             </a>
           </p>
         </div>
       </div>
 
-      <div ClassName='Login'>
+      <div className='Login'>
         <input
           type='text'
           placeholder='Enter Email'
@@ -76,7 +76,7 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <br></br>
-        <a ClassName='Forgot'>Forgot Password?</a>
+        <a className='Forgot'>Forgot Password?</a>
         <br></br>
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
