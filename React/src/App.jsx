@@ -12,7 +12,7 @@ function App() {
   
    return (
     <Layout>
-      <div>Welcome <a>{userData.username}</a></div>
+      <div>Welcome <a>{userData && userData.username}</a></div>
       
     </Layout>
   );

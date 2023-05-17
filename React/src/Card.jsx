@@ -62,7 +62,7 @@ const Activities = () => {
         {userActivity.map((user) => (
           <div className='activity-card mb-3' key={user.id}>
             <div className='card-header'>
-              <h2 className='name'>{userData.username}</h2>
+              <h2 className='name'>{userData && userData.username}</h2>
               <span>
                 <button id='edit' onClick={() => handleEditButton(user.id)}>
                   <img

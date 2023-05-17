@@ -8,7 +8,7 @@ export default function Profile(){
         
             <div className="container text-center">
                 <img src={kai} style={{width:"20%"}} className="rounded"/>
-                <h2 className="mt-4">{userData.username}</h2>
+                <h2 className="mt-4">{userData && userData.username}</h2>
                 
                 <div className="d-flex justify-content-evenly mt-5">
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>
