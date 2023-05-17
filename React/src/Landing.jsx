@@ -1,6 +1,12 @@
 import Layout from "./Layout";
 import styles from "./Landing.module.css";
 
+import a1 from './images/ac-1.jpg';
+import a2 from './images/ac-2.jpg';
+import a3 from './images/ac-3.jpg';
+import a4 from './images/ac-4.jpg';
+import a5 from './images/ac-5.jpg';
+
 function Landing(){
     return (
         <Layout>
@@ -21,17 +27,17 @@ function Landing(){
             </div>
 
             {/* Add Activities form Bootstrap */}
-            <div className="container px-4 py-5" id="custom-cards">
-                <h2 className="pb-2 border-bottom">Activities</h2>
+            {/* <div className="container px-4 py-5" id="custom-cards">
+                <h2 className="pb-2 border-bottom">Activities</h2> */}
 
                 {/* Add Custom Carousel */}
-                <div className="container">
+                {/* <div className="container">
                     <div className="row">
                         <div className="col-md-12">
                             <div className="featured-carousel owl-carousel">
                                 <div className="item">
                                     <div className="work">
-                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:"./images/ac-1.jpg"}}>
+                                        <div className={`img d-flex align-items-end justify-content-center ${styles.myBackgroundImage}`}>
                                             <div className="text w-100">
                                                 <span className="cat">Bicycling</span>
                                                 <h3><a href="#">A beginner-friendly workout that promotes weight loss and reduces cholesterol</a></h3>
@@ -41,7 +47,7 @@ function Landing(){
                                 </div>
                                 <div className="item">
                                     <div className="work">
-                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:"images/ac-2.jpg"}}>
+                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:`url("./images/ac-2.jpg")`}}>
                                             <div className="text w-100">
                                                 <span className="cat">Running</span>
                                                 <h3><a href="#">Running with friends: Never alone, always motivated</a></h3>
@@ -51,7 +57,7 @@ function Landing(){
                                 </div>
                                 <div className="item">
                                     <div className="work">
-                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:"images/ac-3.jpg"}}>
+                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:`url("./images/ac-3.jpg")`}}>
                                             <div className="text w-100">
                                                 <span className="cat">Weight Training</span>
                                                 <h3><a href="#">Boost endurance, build strength, and improve fitness</a></h3>
@@ -61,7 +67,7 @@ function Landing(){
                                 </div>
                                 <div className="item">
                                     <div className="work">
-                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:"images/ac-4.jpg"}}>
+                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:`url("./images/ac-4.jpg")`}}>
                                             <div className="text w-100">
                                                 <span className="cat">Walking</span>
                                                 <h3><a href="#">Track, walk, succeed: Enjoyable strides towards your goals</a></h3>
@@ -71,7 +77,7 @@ function Landing(){
                                 </div>
                                 <div className="item">
                                     <div className="work">
-                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:"images/ac-5.jpg"}}>
+                                        <div className="img d-flex align-items-end justify-content-center" style={{backgroundImage:`url("./images/ac-5.jpg")`}}>
                                             <div className="text w-100">
                                                 <span className="cat">Dancing</span>
                                                 <h3><a href="#">Body movements with the music to express emotions and interact with society</a></h3>
@@ -83,8 +89,59 @@ function Landing(){
                         </div>
                     </div>
                 </div>
-            </div> 
-           
+            </div>  */}
+
+            <div className="container px-4 py-5">
+            <h2 className="pb-2 border-bottom">Activities</h2>
+            <div id="carouselExampleAutoplaying" className={`carousel slide mt-5 ${styles.carouselLayout}`} data-bs-ride="carousel">
+                <div className="carousel-inner">
+                    <div className="carousel-item active">
+                        <img src={a1} className="d-inline-block w-50" alt="acitivity" />
+                        <div className="text w-50 ps-3 d-inline-block">
+                            <span className="cat">Bicycling</span>
+                            <h3>A beginner-friendly workout that promotes weight loss and reduces cholesterol</h3>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <img src={a2} className="d-inline-block w-50" alt="acitivity" />
+                        <div className="text w-50 ps-3 d-inline-block">
+                            <span className="cat">Running</span>
+                            <h3>Running with friends: Never alone, always motivated</h3>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <img src={a3} className="d-inline-block w-50" alt="acitivity" />
+                        <div className="text w-50 ps-3 d-inline-block">
+                            <span className="cat">Weight Training</span>
+                            <h3>Boost endurance, build strength, and improve fitness</h3>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <img src={a4} className="d-inline-block w-50" alt="acitivity" />
+                        <div className="text w-50 ps-3 d-inline-block">
+                            <span className="cat">Walking</span>
+                            <h3>Track, walk, succeed: Enjoyable strides towards your goals</h3>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <img src={a5} className="d-inline-block w-50" alt="acitivity" />
+                        <div className="text w-50 ps-3 d-inline-block">
+                            <span className="cat">Dancing</span>
+                            <h3>Body movements with the music to express emotions and interact with society</h3>
+                        </div>
+                    </div>
+                    
+                </div>
+                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                </button>
+            </div>
+            </div>
 
             {/* Add Features form Bootstrap */}
             <div className="container px-4 py-5" id="hanging-icons">
