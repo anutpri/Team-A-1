@@ -58,19 +58,19 @@ const Activities = () => {
           <div className='card-header'>
             <h2 className='name'>{user.activityName}</h2>
             <span>
-              <button id='edit' onClick={() => handleEditButton(user.id)}>
-                <img
-                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                  width='40px'
-                  heigth='40px'
-                  border='0'
-                />{' '}
-              </button>
               <button id='delete' onClick={() => handleDeleteButton(user.id)}>
                 <img
                   src='https://www.svgrepo.com/show/244044/delete.svg'
-                  width='40px'
-                  heigth='40px'
+                  width='30px'
+                  heigth='30px'
+                  border='0'
+                />{' '}
+              </button>
+              <button id='edit' onClick={() => handleEditButton(user.id)}>
+                <img
+                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                  width='30px'
+                  heigth='30px'
                   border='0'
                 />{' '}
               </button>
