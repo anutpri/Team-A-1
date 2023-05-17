@@ -15,6 +15,26 @@ export const getUser = async () => {
   }
 };
 
+export const checkUserName = async () => {
+  try {
+    const response = await axios.get(`${SERVER}/users/username`);
+    const body = response.data;
+    return body;
+  } catch (error) {
+    throw new Error('Error retrieving user data. Please try again later.');
+  }
+};
+
+export const checkEmail = async () => {
+  try {
+    const response = await axios.get(`${SERVER}/users/email`);
+    const body = response.data;
+    return body;
+  } catch (error) {
+    throw new Error('Error retrieving user data. Please try again later.');
+  }
+};
+
 export const createUser = async (body) => {
   
   try {
