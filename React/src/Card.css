@@ -1,7 +1,7 @@
 .activity-card {
     /* position: fixed; */
-    width: 700px;
-    height: 529px;
+    width: 580px;
+    height: 420px;
     /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
@@ -33,7 +33,7 @@
 }
 
 .activity-card-detail > hr {
-    border: 2px solid #FFFFFF;
+    border: 2px solid #6F67B4;
     margin-top: 10px;
 }
 
