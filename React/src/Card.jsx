@@ -9,13 +9,7 @@ const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
   const username = userData.username;
-  // //get data from local database
-  // useEffect(() => {
-  //   const storedData = JSON.parse(localStorage.getItem('userActivity'));
-  //   if (storedData) {
-  //     setUserActivity(storedData);
-  //   }
-  // }, []);
+  
 
   useEffect(() => {
 
@@ -28,20 +22,10 @@ const Activities = () => {
     
   }, [username]);
 
-  // console.log(userActivity);
+  console.log(userActivity);
 
   // function to handle clicking on the edit button for a user activity
   const handleEditButton = async (activity) => {
-
-   
-   
-    // get the user activity to be edited based on its id
-    // const editActivity = userActivity.filter(
-    //   (userActivity) => userActivity._id === _id
-    // )[0];
-
-    // set the global variable acId to the id of the user activity to be edited
-    // acId = _id;
     try {
       updateActivityData(activity);
       
@@ -118,10 +102,10 @@ const Activities = () => {
               <div className='activity-right-tab'>
                 <div className='detail'>
                   <p>Start:</p>
-                  <span>{activity.startDateTime}</span>
+                  <span>{activity.startDateTime ? activity.startDateTime.slice(0, 16) : ''}</span>
                   <br />
                   <p>Finished:</p>
-                  <span>{activity.finishDateTime}</span>
+                  <span>{activity.finishDateTime ? activity.finishDateTime.slice(0, 16) : ''}</span>
                 </div>
                 <div className='detail'>
                   <p>Duration:</p>

@@ -26,19 +26,6 @@ const Create = () => {
     { id: 5, type: 'Dancing' },
   ];
 
-  // //get data from local database
-  // useEffect(() => {
-  //   const storedData = JSON.parse(localStorage.getItem('userActivity'));
-  //   if (storedData) {
-  //     setUserActivity(storedData);
-  //   }
-  // }, []);
-
-  // //set data to local database
-  // useEffect(() => {
-  //   localStorage.setItem('userActivity', JSON.stringify(userActivity));
-  // }, [userActivity]);
-
   const handleAddUserActivity = async () => {
     // check if activityName is empty
     if (!activityName.trim()) {
@@ -93,21 +80,13 @@ const Create = () => {
       startDateTime,
       finishDateTime,
     };
-    console.log(newUserActivity);
+    
     try {
       await createActivity(newUserActivity);
       
     } catch (error) {
       setError(error.message);
     }
-
-    // // add the new user activity object to the userActivity state array
-    // setUserActivity([...userActivity, newUserActivity]);
-    // // save the updated userActivity state array to localStorage
-    // localStorage.setItem(
-    //   'userActivity',
-    //   JSON.stringify([...userActivity, newUserActivity])
-    // );
 
     // clear the input form fields
     clearDataForm();

@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { activityData } from "./api/Session";
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
+import { updateActivity } from "./api/Node";
 
 const Edit = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
-  const [userActivity, setUserActivity] = useState([]);
   const [activityName, setActivityName] = useState('');
   const [description, setDescription] = useState('');
   const [startDateTime, setStartDateTime] = useState('');
@@ -30,7 +30,6 @@ const Edit = () => {
     const activityToEdit = activityData;
 
   if (activityToEdit) {
-    setUserActivity(activityToEdit);
     setActivityName(activityToEdit.activityName);
     setDescription(activityToEdit.description);
     setStartDateTime(activityToEdit.startDateTime);
@@ -43,10 +42,8 @@ const Edit = () => {
   }
       
 }, [activityData]);
-  
-console.log(userActivity);
 
-  const handleEditUserActivity = () => {
+  const handleEditUserActivity = async () => {
     // check if activityName is empty
     if (!activityName.trim()) {
       setError('Activity name is required');
@@ -91,8 +88,9 @@ console.log(userActivity);
 
     // update a user activity object
     const username = activityData.username;
+    const _id = activityData._id;
+
     const updatedUserActivity = {
-      
       activityName,
       description,
       username,
@@ -103,7 +101,13 @@ console.log(userActivity);
       distance,
     };
 
-    setUserActivity(updatedUserActivity);
+    try {
+      await updateActivity(_id, updatedUserActivity);
+      
+    } catch (error) {
+      setError(error.message);
+    }
+    
     // Clear the data form and navigate to the dashboard
     clearDataForm();
     // Show a success message
