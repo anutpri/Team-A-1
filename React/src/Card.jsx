@@ -4,6 +4,7 @@ import './Card.css';
 import { userData, updateActivityData } from "./api/Session";
 import { getActivityByUser, deleteActivity } from "./api/Node";
 
+
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
@@ -43,7 +44,6 @@ const Activities = () => {
   };
 
   return (
-
     <div className='container-fluid d-flex flex-column align-items-center'>
       {userActivity.map((activity) => (
       <div className='activity-card mb-3' key={activity._id}>
@@ -52,23 +52,22 @@ const Activities = () => {
             <span>
               <button id='edit' onClick={() => handleEditButton(activity)}>
                 <img
-                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                  width='40px'
-                  heigth='40px'
+                  src='https://www.svgrepo.com/show/244044/delete.svg'
+                  width='30px'
+                  heigth='30px'
                   border='0'
                 />{' '}
               </button>
               <button id='delete' onClick={() => handleDeleteButton(activity._id)}>
                 <img
-                  src='https://www.svgrepo.com/show/244044/delete.svg'
-                  width='40px'
-                  heigth='40px'
+                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                  width='30px'
+                  heigth='30px'
                   border='0'
                 />{' '}
               </button>
             </span>
           </div>
-
 
           <div className='activity-card-detail'>
             {/* <p className='activity-name'>{user.activityName}</p> */}
@@ -83,20 +82,29 @@ const Activities = () => {
                 <p className='activity-type'>{activity.activityType}</p>
               </div>
               <div className='activity-right-tab'>
-                <div className='detail'>
-                  <p>Start:</p>
-                  <span>{activity.startDateTime ? activity.startDateTime.slice(0, 16) : ''}</span>
+                <div className='detail1'>
+                  <span>
+                    <strong>Start:</strong>
+                  </span>
+                  <span> {activity.startDateTime ? activity.startDateTime.slice(0, 16) : ''}</span>
                   <br />
-                  <p>Finished:</p>
-                  <span>{activity.finishDateTime ? activity.finishDateTime.slice(0, 16) : ''}</span>
+                  <span>
+                    <strong>Finished:</strong>
+                  </span>
+                  <span> {activity.finishDateTime ? activity.finishDateTime.slice(0, 16) : ''}</span>
                 </div>
-                <div className='detail'>
-                  <p>Duration:</p>
-                  <span>{activity.durationTime}</span>
+                <div className='detail2'>
+                  <span>
+                    <strong>Duration:</strong>
+                  </span>
+                  <span> {activity.durationTime} min(s)</span>
                   {/* </div> */}
                   {/* <div className='detail'> */}
-                  <p>Distance:</p>
-                  <span>{activity.distance}</span>
+                  <br />
+                  <span>
+                    <strong>Distance:</strong>
+                  </span>
+                  <span> {activity.distance} km</span>
                 </div>
               </div>
             </div>
