@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { activityData } from "./api/Session";
-// import './Edit.css'
+import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
 const Edit = () => {
@@ -60,10 +60,10 @@ console.log(userActivity);
     }
 
     // check if startDateTime is before current date-time
-    if (new Date(startDateTime) < new Date()) {
-      setError('Start date-time must be after current date-time');
-      return;
-    }
+    // if (new Date(startDateTime) < new Date()) {
+    //   setError('Start date-time must be after current date-time');
+    //   return;
+    // }
 
     // check if startDateTime or finishDateTime is empty
     if (!startDateTime || !finishDateTime) {
@@ -90,10 +90,12 @@ console.log(userActivity);
     }
 
     // update a user activity object
+    const username = activityData.username;
     const updatedUserActivity = {
-      ...userActivity,
+      
       activityName,
       description,
+      username,
       startDateTime,
       finishDateTime,
       activityType,
@@ -101,17 +103,6 @@ console.log(userActivity);
       distance,
     };
 
-    // Retrieve user activity data from local storage
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    // Find index of activity to be edited
-    const index = storedData.findIndex(
-      (activityEdit) => activityEdit.id === acId
-    );
-    // Update the user activity with the new data
-    storedData[index] = updatedUserActivity;
-    // Save the updated data to local storage
-    localStorage.setItem('userActivity', JSON.stringify(storedData));
-    // Update state with the updated user activity
     setUserActivity(updatedUserActivity);
     // Clear the data form and navigate to the dashboard
     clearDataForm();
