@@ -50,7 +50,7 @@ const Activities = () => {
           <div className='card-header'>
             <h2 className='name'>{activity.username}</h2>
             <span>
-              <button id='edit' onClick={() => handleEditButton(activity)}>
+              <button id='delete' onClick={() => handleDeleteButton(activity._id)}>
                 <img
                   src='https://www.svgrepo.com/show/244044/delete.svg'
                   width='30px'
@@ -58,7 +58,7 @@ const Activities = () => {
                   border='0'
                 />{' '}
               </button>
-              <button id='delete' onClick={() => handleDeleteButton(activity._id)}>
+              <button id='edit' onClick={() => handleEditButton(activity)}>
                 <img
                   src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
                   width='30px'

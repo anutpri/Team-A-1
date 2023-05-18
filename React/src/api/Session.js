@@ -1,5 +1,5 @@
-export let userData = JSON.parse(sessionStorage.getItem('userData')) || null;
-export let activityData = JSON.parse(sessionStorage.getItem('activityData')) || null;
+export let userData = JSON.parse(sessionStorage.getItem('userData')) || '';
+export let activityData = JSON.parse(sessionStorage.getItem('activityData')) || '';
 
 export const updateUserData = (data) => {
   userData = data;
