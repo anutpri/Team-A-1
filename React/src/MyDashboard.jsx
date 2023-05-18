@@ -1,4 +1,3 @@
-feature-card
 import React from 'react';
 import Activities from './Card';
 import Profile from './Profile';
@@ -21,30 +20,4 @@ export default function MyDashboard() {
       </div>
     </Layout>
   );
-
-import React from "react";
-import Activities from "./Card";
-import Profile from "./Profile";
-import Layout from "./Layout";
-import { userData } from "./api/Session";
-import MyProfile from "./MyProfile";
-
-export default function MyDashboard(){
-    
-    return(
-        <Layout>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-sm-5">
-                        <MyProfile/>
-                        
-                    </div>
-                    <div className="col-sm-7">
-                        <Activities/>
-                    </div>
-                </div>
-            </div>
-        </Layout>
-    );
-develop-new
 }
