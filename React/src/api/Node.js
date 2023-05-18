@@ -48,3 +48,65 @@ export const createUser = async (body) => {
     }
   }
 };
+
+export const getActivity = async () => {
+  try {
+    const response = await axios.get(`${SERVER}/activities`);
+    const body = response.data;
+    return body;
+  } catch (error) {
+    throw new Error('Error retrieving activities data. Please try again later.');
+  }
+};
+
+export const getActivityByUser = async (username) => {
+  try {
+    const response = await axios.get(`${SERVER}/activities/username/${username}`);
+    const body = response.data;
+    return body;
+  } catch (error) {
+    throw new Error('Error retrieving activities data. Please try again later.');
+  }
+};
+
+export const createActivity = async (body) => {
+  
+  try {
+    const response = await axios.post(`${SERVER}/activities`, body);
+    
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      throw new Error('Error creating activity:', error);
+    } else {
+      throw new Error('Error creating activity. Please try again later.');
+    }
+  }
+};
+
+export const updateActivity = async (_id,body) => {
+  
+  try {
+    const response = await axios.patch(`${SERVER}/activities/${_id}`, body);
+    
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      throw new Error('Error updating activity:', error);
+    } else {
+      throw new Error('Error updating activity. Please try again later.');
+    }
+  }
+};
+
+export const deleteActivity = async (_id) => {
+  
+  try {
+    const response = await axios.delete(`${SERVER}/activities/${_id}`);
+    
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      throw new Error('Error deleting activity:', error);
+    } else {
+      throw new Error('Error deleting activity. Please try again later.');
+    }
+  }
+};

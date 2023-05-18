@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Create.css';
 import fitbook from './assets/FITBOOK.png';
+import { createActivity } from "./api/Node";
+import { userData } from "./api/Session";
 
 const Create = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
-  const [userActivity, setUserActivity] = useState([]);
+  // const [userActivity, setUserActivity] = useState([]);
   const [activityName, setActivityName] = useState('');
   const [description, setDescription] = useState('');
   const [startDateTime, setStartDateTime] = useState('');
@@ -24,20 +26,7 @@ const Create = () => {
     { id: 5, type: 'Dancing' },
   ];
 
-  //get data from local database
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    if (storedData) {
-      setUserActivity(storedData);
-    }
-  }, []);
-
-  //set data to local database
-  useEffect(() => {
-    localStorage.setItem('userActivity', JSON.stringify(userActivity));
-  }, [userActivity]);
-
-  const handleAddUserActivity = () => {
+  const handleAddUserActivity = async () => {
     // check if activityName is empty
     if (!activityName.trim()) {
       setError('Activity name is required');
@@ -79,25 +68,26 @@ const Create = () => {
       setError('Duration time is required and should be at least 10 minutes');
       return;
     }
+    const username = userData.username;
     // create a new user activity object
     const newUserActivity = {
-      id: Date.now(),
       activityName,
       description,
+      username,
+      activityType,
+      distance,
+      durationTime,
       startDateTime,
       finishDateTime,
-      activityType,
-      durationTime,
-      distance,
     };
+    
+    try {
+      await createActivity(newUserActivity);
+      
+    } catch (error) {
+      setError(error.message);
+    }
 
-    // add the new user activity object to the userActivity state array
-    setUserActivity([...userActivity, newUserActivity]);
-    // save the updated userActivity state array to localStorage
-    localStorage.setItem(
-      'userActivity',
-      JSON.stringify([...userActivity, newUserActivity])
-    );
     // clear the input form fields
     clearDataForm();
     // show a success message

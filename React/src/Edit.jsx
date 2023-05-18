@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { acId } from './Card';
-// import './Edit.css'
+import { activityData } from "./api/Session";
+import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
+import { updateActivity } from "./api/Node";
 
 const Edit = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
-  const [userActivity, setUserActivity] = useState([]);
   const [activityName, setActivityName] = useState('');
   const [description, setDescription] = useState('');
   const [startDateTime, setStartDateTime] = useState('');
@@ -25,31 +25,25 @@ const Edit = () => {
     { id: 5, type: 'Dancing' },
   ];
 
-  //get data from local database
+  
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    if (storedData) {
-      const activityToEdit = storedData.find(
-        (activityEdit) => activityEdit.id === acId
-      );
-      if (activityToEdit) {
-        setUserActivity(activityToEdit);
-        setActivityName(activityToEdit.activityName);
-        setDescription(activityToEdit.description);
-        setStartDateTime(activityToEdit.startDateTime);
-        setFinishDateTime(activityToEdit.finishDateTime);
-        setActivityType(activityToEdit.activityType);
-        setDurationTime(activityToEdit.durationTime);
-        setDistance(activityToEdit.distance);
-      } else {
-        setError('Activity not found1');
-      }
-    } else {
-      setError('Activity not found2');
-    }
-  }, []);
+    const activityToEdit = activityData;
 
-  const handleEditUserActivity = () => {
+  if (activityToEdit) {
+    setActivityName(activityToEdit.activityName);
+    setDescription(activityToEdit.description);
+    setStartDateTime(activityToEdit.startDateTime);
+    setFinishDateTime(activityToEdit.finishDateTime);
+    setActivityType(activityToEdit.activityType);
+    setDurationTime(activityToEdit.durationTime);
+    setDistance(activityToEdit.distance);
+  } else {
+    setError('Error Activity not found');
+  }
+      
+}, [activityData]);
+
+  const handleEditUserActivity = async () => {
     // check if activityName is empty
     if (!activityName.trim()) {
       setError('Activity name is required');
@@ -63,10 +57,10 @@ const Edit = () => {
     }
 
     // check if startDateTime is before current date-time
-    if (new Date(startDateTime) < new Date()) {
-      setError('Start date-time must be after current date-time');
-      return;
-    }
+    // if (new Date(startDateTime) < new Date()) {
+    //   setError('Start date-time must be after current date-time');
+    //   return;
+    // }
 
     // check if startDateTime or finishDateTime is empty
     if (!startDateTime || !finishDateTime) {
@@ -93,10 +87,13 @@ const Edit = () => {
     }
 
     // update a user activity object
+    const username = activityData.username;
+    const _id = activityData._id;
+
     const updatedUserActivity = {
-      ...userActivity,
       activityName,
       description,
+      username,
       startDateTime,
       finishDateTime,
       activityType,
@@ -104,18 +101,13 @@ const Edit = () => {
       distance,
     };
 
-    // Retrieve user activity data from local storage
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    // Find index of activity to be edited
-    const index = storedData.findIndex(
-      (activityEdit) => activityEdit.id === acId
-    );
-    // Update the user activity with the new data
-    storedData[index] = updatedUserActivity;
-    // Save the updated data to local storage
-    localStorage.setItem('userActivity', JSON.stringify(storedData));
-    // Update state with the updated user activity
-    setUserActivity(updatedUserActivity);
+    try {
+      await updateActivity(_id, updatedUserActivity);
+      
+    } catch (error) {
+      setError(error.message);
+    }
+    
     // Clear the data form and navigate to the dashboard
     clearDataForm();
     // Show a success message
@@ -190,7 +182,7 @@ const Edit = () => {
         <input
           id='start'
           type='datetime-local'
-          value={startDateTime}
+          value={startDateTime ? startDateTime.slice(0, 16) : ''}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setStartDateTime(event.target.value)}
         />
@@ -198,7 +190,7 @@ const Edit = () => {
         <input
           id='finish'
           type='datetime-local'
-          value={finishDateTime}
+          value={finishDateTime ? finishDateTime.slice(0, 16) : ''}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setFinishDateTime(event.target.value)}
         />
