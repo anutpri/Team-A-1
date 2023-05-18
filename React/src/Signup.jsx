@@ -66,7 +66,7 @@ const Signup = () => {
     alert('Register successfully!');
     // navigate to the Dashboard page
     
-    navigate('/');
+    navigate('/Dashboard');
   
     
   };

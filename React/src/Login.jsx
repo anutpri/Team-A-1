@@ -41,7 +41,7 @@ const Login = () => {
       if (user.email === email && user.password === password) {
         // If a user is found and password matches, the login is successful
         alert('Login successful!');
-        navigate('/');
+        navigate('/Dashboard');
       } else {
         // If a user is not found or password doesn't match, display an error message
         setError('Invalid email or password');
