@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css';
-export let acId = '';
 import { userData, updateActivityData } from "./api/Session";
-import { getActivityByUser } from "./api/Node";
+import { getActivityByUser, deleteActivity } from "./api/Node";
 
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -37,26 +36,10 @@ const Activities = () => {
   };
 
   // function to handle clicking on the delete button for a user activity
-  const handleDeleteButton = (id) => {
-    // create a new array of user activities without the one to be deleted
-    const deleteActivity = userActivity.filter(
-      (userActivity) => userActivity.id !== id
-    );
-    // get the stored user activity data from localStorage
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    // find the index of the user activity to be deleted
-    const index = storedData.findIndex(
-      (activityEdit) => activityEdit.id === acId
-    );
-
-    // delete the user activity to be deleted and add the rest of the user activities
-    storedData.splice(index, 1, ...deleteActivity);
-    // update the stored data in localStorage
-    localStorage.setItem('userActivity', JSON.stringify(storedData));
-    // update the userActivity state with the new array of user activities
-    setUserActivity(deleteActivity);
-    // show an alert to indicate that the user activity has been successfully deleted
+  const handleDeleteButton = async (_id) => {
+    deleteActivity(_id);
     alert('Delete successful!');
+    location.reload();
   };
 
   return (

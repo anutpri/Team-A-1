@@ -1,10 +1,8 @@
 import Layout from "./Layout";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
-import { getUser, createUser } from "./api/Node";
-import { userData } from "./api/Session";
+import { createUser } from "./api/Node";
 import { updateUserData } from "./api/Session";
 
 // useState = when users hit submit button you can send the data to the backend API

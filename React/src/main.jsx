@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -11,7 +10,6 @@ import Signup from './Signup';
 import Create from './Create';
 import Profile from './Profile';
 import Edit from './Edit';
-import Dashboard from './Dashboard';
 import Activities from './Card';
 import MyDashboard from './MyDashboard';
 
@@ -53,10 +51,7 @@ const router = createBrowserRouter([
     path: '/Profile',
     element: <Profile />,
   },
-  {
-    path: '/CRUD',
-    element: <Crud />,
-  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

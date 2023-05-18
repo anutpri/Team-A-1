@@ -78,7 +78,7 @@ export const createActivity = async (body) => {
     if (error.response && error.response.status === 400) {
       throw new Error('Error creating activity:', error);
     } else {
-      throw new Error('Error creating user. Please try again later.');
+      throw new Error('Error creating activity. Please try again later.');
     }
   }
 };
@@ -92,7 +92,21 @@ export const updateActivity = async (_id,body) => {
     if (error.response && error.response.status === 400) {
       throw new Error('Error updating activity:', error);
     } else {
-      throw new Error('Error updating user. Please try again later.');
+      throw new Error('Error updating activity. Please try again later.');
+    }
+  }
+};
+
+export const deleteActivity = async (_id) => {
+  
+  try {
+    const response = await axios.delete(`${SERVER}/activities/${_id}`);
+    
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      throw new Error('Error deleting activity:', error);
+    } else {
+      throw new Error('Error deleting activity. Please try again later.');
     }
   }
 };
