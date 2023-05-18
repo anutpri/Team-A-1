@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css';
 export let acId = '';
-import { userData } from "./api/Session";
-import { updateUserData } from "./api/Session";
+import { userData, updateActivityData } from "./api/Session";
 import { getActivityByUser } from "./api/Node";
 
 const Activities = () => {
@@ -29,17 +28,26 @@ const Activities = () => {
     
   }, [username]);
 
-  console.log(userActivity);
+  // console.log(userActivity);
+
   // function to handle clicking on the edit button for a user activity
-  const handleEditButton = async (id) => {
+  const handleEditButton = async (activity) => {
 
    
+   
     // get the user activity to be edited based on its id
-    const editActivity = userActivity.filter(
-      (userActivity) => userActivity.id === id
-    )[0];
+    // const editActivity = userActivity.filter(
+    //   (userActivity) => userActivity._id === _id
+    // )[0];
+
     // set the global variable acId to the id of the user activity to be edited
-    acId = editActivity.id;
+    // acId = _id;
+    try {
+      updateActivityData(activity);
+      
+    } catch (error) {
+      setError(error.message);
+    }
     // navigate to the edit page
     navigate('/Edit');
   };
@@ -70,12 +78,12 @@ const Activities = () => {
   return (
 
     <div className='container-fluid d-flex flex-column align-items-center'>
-      {userActivity.map((user) => (
-      <div className='activity-card mb-3' key={user._id}>
+      {userActivity.map((activity) => (
+      <div className='activity-card mb-3' key={activity._id}>
           <div className='card-header'>
-            <h2 className='name'>{user.username}</h2>
+            <h2 className='name'>{activity.username}</h2>
             <span>
-              <button id='edit' onClick={() => handleEditButton(user._id)}>
+              <button id='edit' onClick={() => handleEditButton(activity)}>
                 <img
                   src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
                   width='40px'
@@ -83,7 +91,7 @@ const Activities = () => {
                   border='0'
                 />{' '}
               </button>
-              <button id='delete' onClick={() => handleDeleteButton(user._id)}>
+              <button id='delete' onClick={() => handleDeleteButton(activity._id)}>
                 <img
                   src='https://www.svgrepo.com/show/244044/delete.svg'
                   width='40px'
@@ -97,7 +105,7 @@ const Activities = () => {
 
           <div className='activity-card-detail'>
             {/* <p className='activity-name'>{user.activityName}</p> */}
-            <label className='description'>{user.description}</label>
+            <label className='description'>{activity.description}</label>
             <hr />
             {/* <br /> */}
             {/* <label className='description'>{user.description}</label> */}
@@ -105,23 +113,23 @@ const Activities = () => {
             <div className='activity-tab'>
               <div className='activity-left-tab'>
                 {/* <img className='activity-image' src={item.image} /> */}
-                <p className='activity-type'>{user.activityType}</p>
+                <p className='activity-type'>{activity.activityType}</p>
               </div>
               <div className='activity-right-tab'>
                 <div className='detail'>
                   <p>Start:</p>
-                  <span>{user.startDateTime}</span>
+                  <span>{activity.startDateTime}</span>
                   <br />
                   <p>Finished:</p>
-                  <span>{user.finishDateTime}</span>
+                  <span>{activity.finishDateTime}</span>
                 </div>
                 <div className='detail'>
                   <p>Duration:</p>
-                  <span>{user.durationTime}</span>
+                  <span>{activity.durationTime}</span>
                   {/* </div> */}
                   {/* <div className='detail'> */}
                   <p>Distance:</p>
-                  <span>{user.distance}</span>
+                  <span>{activity.distance}</span>
                 </div>
               </div>
             </div>

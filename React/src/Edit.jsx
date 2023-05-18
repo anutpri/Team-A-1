@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { acId } from './Card';
+import { activityData } from "./api/Session";
 // import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 
@@ -25,29 +25,26 @@ const Edit = () => {
     { id: 5, type: 'Dancing' },
   ];
 
-  //get data from local database
+  
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    if (storedData) {
-      const activityToEdit = storedData.find(
-        (activityEdit) => activityEdit.id === acId
-      );
-      if (activityToEdit) {
-        setUserActivity(activityToEdit);
-        setActivityName(activityToEdit.activityName);
-        setDescription(activityToEdit.description);
-        setStartDateTime(activityToEdit.startDateTime);
-        setFinishDateTime(activityToEdit.finishDateTime);
-        setActivityType(activityToEdit.activityType);
-        setDurationTime(activityToEdit.durationTime);
-        setDistance(activityToEdit.distance);
-      } else {
-        setError('Activity not found1');
-      }
-    } else {
-      setError('Activity not found2');
-    }
-  }, []);
+    const activityToEdit = activityData;
+
+  if (activityToEdit) {
+    setUserActivity(activityToEdit);
+    setActivityName(activityToEdit.activityName);
+    setDescription(activityToEdit.description);
+    setStartDateTime(activityToEdit.startDateTime);
+    setFinishDateTime(activityToEdit.finishDateTime);
+    setActivityType(activityToEdit.activityType);
+    setDurationTime(activityToEdit.durationTime);
+    setDistance(activityToEdit.distance);
+  } else {
+    setError('Error Activity not found');
+  }
+      
+}, [activityData]);
+  
+console.log(userActivity);
 
   const handleEditUserActivity = () => {
     // check if activityName is empty
@@ -190,7 +187,7 @@ const Edit = () => {
         <input
           id='start'
           type='datetime-local'
-          value={startDateTime}
+          value={startDateTime ? startDateTime.slice(0, 16) : ''}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setStartDateTime(event.target.value)}
         />
@@ -198,7 +195,7 @@ const Edit = () => {
         <input
           id='finish'
           type='datetime-local'
-          value={finishDateTime}
+          value={finishDateTime ? finishDateTime.slice(0, 16) : ''}
           placeholder='YYYY-MM-DD:HH:MM:SS'
           onChange={(event) => setFinishDateTime(event.target.value)}
         />
