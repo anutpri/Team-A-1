@@ -93,7 +93,7 @@ const Create = () => {
     // show a success message
     alert('Saved successfully!');
     // navigate to the Dashboard page
-    navigate('/');
+    navigate('/Dashboard');
   };
 
   // define a function to handle the cancel button click event
