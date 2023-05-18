@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from './Layout';
 import './Card.css';
 export let acId = '';
 import { userData } from "./api/Session";
 import { updateUserData } from "./api/Session";
-
+import { getActivityByUser } from "./api/Node";
 
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
+  const username = userData.username;
+  // //get data from local database
+  // useEffect(() => {
+  //   const storedData = JSON.parse(localStorage.getItem('userActivity'));
+  //   if (storedData) {
+  //     setUserActivity(storedData);
+  //   }
+  // }, []);
 
-  //get data from local database
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userActivity'));
-    if (storedData) {
-      setUserActivity(storedData);
-    }
-  }, []);
 
+    const getUserActivity = async () => {
+      const users = await getActivityByUser(username);
+      setUserActivity(users);
+      
+    };
+    getUserActivity();
+    
+  }, [username]);
+
+  console.log(userActivity);
   // function to handle clicking on the edit button for a user activity
-  const handleEditButton = (id) => {
+  const handleEditButton = async (id) => {
+
+   
     // get the user activity to be edited based on its id
     const editActivity = userActivity.filter(
       (userActivity) => userActivity.id === id
@@ -58,11 +71,11 @@ const Activities = () => {
 
     <div className='container-fluid d-flex flex-column align-items-center'>
       {userActivity.map((user) => (
-        <div className='activity-card mb-3' key={user.id}>
+      <div className='activity-card mb-3' key={user._id}>
           <div className='card-header'>
-            <h2 className='name'>{userData && userData.username}</h2>
+            <h2 className='name'>{user.username}</h2>
             <span>
-              <button id='edit' onClick={() => handleEditButton(user.id)}>
+              <button id='edit' onClick={() => handleEditButton(user._id)}>
                 <img
                   src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
                   width='40px'
@@ -70,7 +83,7 @@ const Activities = () => {
                   border='0'
                 />{' '}
               </button>
-              <button id='delete' onClick={() => handleDeleteButton(user.id)}>
+              <button id='delete' onClick={() => handleDeleteButton(user._id)}>
                 <img
                   src='https://www.svgrepo.com/show/244044/delete.svg'
                   width='40px'

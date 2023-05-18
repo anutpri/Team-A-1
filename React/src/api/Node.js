@@ -59,6 +59,16 @@ export const getActivity = async () => {
   }
 };
 
+export const getActivityByUser = async (username) => {
+  try {
+    const response = await axios.get(`${SERVER}/activities/username/${username}`);
+    const body = response.data;
+    return body;
+  } catch (error) {
+    throw new Error('Error retrieving activities data. Please try again later.');
+  }
+};
+
 export const createActivity = async (body) => {
   
   try {
