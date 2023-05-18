@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Create.css';
 import fitbook from './assets/FITBOOK.png';
+import { createActivity } from "./api/Node";
+import { userData } from "./api/Session";
 
 const Create = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
