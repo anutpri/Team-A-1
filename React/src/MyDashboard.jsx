@@ -3,6 +3,7 @@ import Activities from "./Card";
 import Profile from "./Profile";
 import Layout from "./Layout";
 import { userData } from "./api/Session";
+import MyProfile from "./MyProfile";
 
 export default function MyDashboard(){
     
@@ -11,7 +12,7 @@ export default function MyDashboard(){
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-5">
-                        <Profile/>
+                        <MyProfile/>
                         
                     </div>
                     <div className="col-sm-7">
