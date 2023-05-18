@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './Login';
 import Signup from './Signup';
@@ -12,10 +11,9 @@ import Profile from './Profile';
 import Edit from './Edit';
 import Activities from './Card';
 import MyDashboard from './MyDashboard';
-
 import Landing from './Landing';
 
-import Crud from './CRUD';
+
 
 const router = createBrowserRouter([
   // insert your path here
