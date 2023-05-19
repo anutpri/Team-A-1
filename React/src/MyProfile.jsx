@@ -7,7 +7,7 @@ import {React} from "react";
 export default function MyProfile(){
     
     const birthdateObj = new Date(userData.birthdate);
-    const age = new Date().getFullYear() - birthdateObj.getFullYear();
+    const age = new Date().getFullYear() - birthdateObj.getFullYear() || '';
 
     return (
         
@@ -25,7 +25,7 @@ export default function MyProfile(){
                         <h4>HEIGHT</h4>
                     </div>
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>
-                        <h4>{age && age} Years</h4>
+                        <h4>{age} Years</h4>
                         <h4>AGE</h4>
                     </div>
                 </div>
