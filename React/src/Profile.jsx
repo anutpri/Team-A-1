@@ -1,21 +1,59 @@
 import Layout from "./Layout";
 import person from "./assets/person.png";
-import { userData } from "./api/Session";
-import { updateUserData } from "./api/Session";
+import { userData, updateUserData } from "./api/Session";
 import styles from "./Profile.module.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { updateUser } from "./api/Node";
 
 //Update Profile to has input for adding more info
 export default function Profile() {
-  const [date, setDate] = useState();
+  
+  const [birthdate, setBirthdate] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
-  const [name, setName] = useState();
+  
+    useEffect(() => {
+      const userToupdate = updateUser;
 
-  const handleAddMoreInfo = (event)=>{
+    if (userToupdate) {
+      setBirthdate(userToupdate.birthdate);
+      setWeight(userToupdate.weight);
+      setHeight(userToupdate.height);
+      
+    } else {
+      setError('Error User not found');
+    }
+        
+    }, [updateUser]);
+
+  const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
-    alert(`Add More Info: BirthDate->${date}, Weight->${weight}, Height->${height}`);
-    setDate('');
+
+    const _id = updateUser._id;
+    const email = updateUser.email;
+    const username = updateUser.username;
+    const password = updateUser.password;
+
+    const updatedUser = { 
+      
+      email,
+      username,
+      password,
+      birthdate,
+      weight,
+      height,
+    } ;
+
+    try {
+      await updateUser(_id, updatedUser);
+      
+    } catch (error) {
+      setError(error.message);
+    }
+
+
+    alert(`Add More Info: BirthDate->${birthdate}, Weight->${weight}, Height->${height}`);
+    setBirthdate('');
     setWeight('');
     setHeight('');
   };
@@ -34,8 +72,8 @@ export default function Profile() {
               id="birthdate"
               placeholder="Birth date"
               style={{ margin: "4px" }}
-              value={date}
-              onChange={(event) => setDate(event.target.value)}
+              value={birthdate}
+              onChange={(event) => setBirthdate(event.target.value)}
             />
             <br />
             <br />

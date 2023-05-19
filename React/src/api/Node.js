@@ -49,6 +49,20 @@ export const createUser = async (body) => {
   }
 };
 
+export const updateUser = async (_id,body) => {
+  
+  try {
+    const response = await axios.patch(`${SERVER}/users/${_id}`, body);
+    
+  } catch (error) {
+    if (error.response && error.response.status === 400) {
+      throw new Error('Error updating user:', error);
+    } else {
+      throw new Error('Error updating user. Please try again later.');
+    }
+  }
+};
+
 export const getActivity = async () => {
   try {
     const response = await axios.get(`${SERVER}/activities`);
