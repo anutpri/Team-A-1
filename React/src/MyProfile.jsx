@@ -6,9 +6,9 @@ import {React} from "react";
 //Add MyProfile for using inside MyDashboard
 export default function MyProfile(){
     
-    const birthdateObj = new Date(userData.birthdate);
-    const age = new Date().getFullYear() - birthdateObj.getFullYear() || '';
-
+    const birthdateObj = userData.birthdate;
+    const age = birthdateObj ? new Date().getFullYear() - new Date(birthdateObj).getFullYear() : '';
+       
     return (
         
             <div className="container text-center">

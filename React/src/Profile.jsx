@@ -14,7 +14,7 @@ export default function Profile() {
   const [height, setHeight] = useState();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  
     useEffect(() =>{
       const userToupdate = userData;
 
@@ -22,8 +22,7 @@ export default function Profile() {
       setBirthdate(userToupdate.birthdate);
       setWeight(userToupdate.weight);
       setHeight(userToupdate.height);
-      updateUserData(userToupdate);
-      console.log(userToupdate);
+      
     } else {
       setError('Error User not found');
     }
@@ -32,12 +31,10 @@ export default function Profile() {
 
   const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
-
-    const _id = userData._id;
+    
     const email = userData.email;
     const username = userData.username;
     const password = userData.password;
-
     const updatedUserData = { 
       
       email,
@@ -47,12 +44,15 @@ export default function Profile() {
       weight,
       height,
     } ;
-
+   
     try {
-      await updateUser(_id, updatedUserData);
+
       const user = await checkEmail(email);
+      const _id = user._id;
+      console.log(_id);
+      const userNow = await updateUser(_id, updatedUserData);
       
-      updateUserData(user);
+      updateUserData(userNow);
       
     } catch (error) {
       setError(error.message);
