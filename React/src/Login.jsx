@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { checkEmail } from "./api/Node";
-import { userData } from "./api/Session";
-import { updateUserData } from "./api/Session";
+import { userData, updateUserData } from "./api/Session";
 
 const Login = () => {
   
@@ -48,7 +47,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error getting user:', error);
-      setError('Error retrieving user data. Please try again later.');
+      setError('Email not found. Please try again.');
     }
   };
 

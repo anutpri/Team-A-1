@@ -2,8 +2,8 @@ import Layout from "./Layout";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
-import { createUser } from "./api/Node";
-import { updateUserData } from "./api/Session";
+import { createUser, checkEmail } from "./api/Node";
+import { userData, updateUserData } from "./api/Session";
 
 // useState = when users hit submit button you can send the data to the backend API
 const Signup = () => {
@@ -48,6 +48,28 @@ const Signup = () => {
       return;
     } 
 
+      // try {
+      //   const user = await checkEmail(email);
+
+      //   // Check if email and username already used
+      //   if (user.email === email) {
+
+      //     setError('Email has already been used');
+      //     return;
+      //   }
+
+      //   if (user.username === username) {
+
+      //     setError('Username has already been used');
+      //     return;
+      //   }
+
+      // } catch (error) {
+      //   console.error('Error register:', error);
+      //   setError('Error user data. Please try again.');
+      // }
+    
+
     const newuser = {
       username,
       email,
@@ -57,16 +79,14 @@ const Signup = () => {
     try {
       await createUser(newuser);
       updateUserData(newuser);
+      alert('Register successfully!');
+
+    // navigate to the Dashboard page
+      navigate('/Dashboard');
     } catch (error) {
-      setError(error.message);
+      setError('A username or email has already been used.');
     }
 
-    alert('Register successfully!');
-    // navigate to the Dashboard page
-    
-    navigate('/Dashboard');
-  
-    
   };
 
   return (

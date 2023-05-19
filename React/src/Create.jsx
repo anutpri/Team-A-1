@@ -4,6 +4,7 @@ import './Create.css';
 import fitbook from './assets/FITBOOK.png';
 import { createActivity } from './api/Node';
 import { userData } from './api/Session';
+import { DateTime } from 'luxon';
 
 const Create = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -41,7 +42,7 @@ const Create = () => {
 
     // check if startDateTime is before current date-time
     if (new Date(startDateTime) < new Date()) {
-      setError('Start date-time must be after current date-time');
+      setError('Start date-time must be current date-time or later');
       return;
     }
 
@@ -159,15 +160,21 @@ const Create = () => {
         <input
           id='start'
           type='datetime-local'
-          placeholder='YYYY-MM-DD:HH:MM:SS'
-          onChange={(event) => setStartDateTime(event.target.value)}
+          onChange={(event) => {
+            const inputTime = event.target.value;
+            const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
+            setStartDateTime(inputDateTime);
+          }}
         />
         {/* setFinishDateTime when input onChange */}
         <input
           id='finish'
           type='datetime-local'
-          placeholder='YYYY-MM-DD:HH:MM:SS'
-          onChange={(event) => setFinishDateTime(event.target.value)}
+          onChange={(event) => {
+            const inputTime = event.target.value;
+            const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
+            setFinishDateTime(inputDateTime);
+          }}
         />
         <br></br>
         <br></br>

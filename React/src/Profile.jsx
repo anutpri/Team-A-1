@@ -1,23 +1,67 @@
 import Layout from "./Layout";
 import person from "./assets/person.png";
-import { userData } from "./api/Session";
-import { updateUserData } from "./api/Session";
+import { userData, updateUserData } from "./api/Session";
 import styles from "./Profile.module.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { updateUser, checkEmail } from "./api/Node";
+import { useNavigate } from "react-router-dom";
 
 //Update Profile to has input for adding more info
 export default function Profile() {
-  const [date, setDate] = useState();
+  
+  const [birthdate, setBirthdate] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
-  const [name, setName] = useState();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
+    useEffect(() =>{
+      const userToupdate = userData;
 
-  const handleAddMoreInfo = (event)=>{
+    if (userToupdate) {
+      setBirthdate(userToupdate.birthdate);
+      setWeight(userToupdate.weight);
+      setHeight(userToupdate.height);
+      
+    } else {
+      setError('Error User not found');
+    }
+        
+    }, [userData]);
+
+  const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
-    alert(`Add More Info: BirthDate->${date}, Weight->${weight}, Height->${height}`);
-    setDate('');
+    
+    const email = userData.email;
+    const username = userData.username;
+    const password = userData.password;
+    const updatedUserData = { 
+      
+      email,
+      username,
+      password,
+      birthdate,
+      weight,
+      height,
+    } ;
+   
+    try {
+
+      const user = await checkEmail(email);
+      const _id = user._id;
+      const userNow = await updateUser(_id, updatedUserData);
+      
+    } catch (error) {
+      setError(error.message);
+    }
+
+
+    alert(`Add More Info: BirthDate->${birthdate}, Weight->${weight}, Height->${height}`);
+    setBirthdate('');
     setWeight('');
     setHeight('');
+    navigate('/Dashboard');
+
   };
 
   return (
@@ -34,8 +78,8 @@ export default function Profile() {
               id="birthdate"
               placeholder="Birth date"
               style={{ margin: "4px" }}
-              value={date}
-              onChange={(event) => setDate(event.target.value)}
+              value={birthdate}
+              onChange={(event) => setBirthdate(event.target.value)}
             />
             <br />
             <br />
@@ -58,8 +102,9 @@ export default function Profile() {
               onChange={(event) => setHeight(event.target.value)}
             />
             <br />
+            {error && <p style={{ color: "red" }}>{error}</p>}{" "}
             <br />
-            <button>Submit</button>
+            <button onClick={handleAddMoreInfo}>Submit</button>
           </form>
         </div>
       </div>

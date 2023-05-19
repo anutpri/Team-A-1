@@ -16,6 +16,9 @@ export default function MyDashboard() {
   const createActivityBtn = () => {
     navigate('/Create');
   };
+  const updateProfileBtn = () => {
+    navigate('/Profile');
+  };
 
   return (
     <Layout>
@@ -28,6 +31,9 @@ export default function MyDashboard() {
             <span>
               <button id='btnCreate' type='button' onClick={createActivityBtn}>
                 Create Activity
+              </button>
+              <button id='btnupProfile' type='button' onClick={updateProfileBtn}>
+                Update Profile
               </button>
             </span>
           </div>

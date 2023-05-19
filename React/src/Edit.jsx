@@ -4,6 +4,7 @@ import { activityData } from "./api/Session";
 import './Edit.css'
 import fitbook from './assets/FITBOOK.png';
 import { updateActivity } from "./api/Node";
+import { DateTime } from 'luxon';
 
 const Edit = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -182,17 +183,23 @@ const Edit = () => {
         <input
           id='start'
           type='datetime-local'
-          value={startDateTime ? startDateTime.slice(0, 16) : ''}
-          placeholder='YYYY-MM-DD:HH:MM:SS'
-          onChange={(event) => setStartDateTime(event.target.value)}
+          defaultValue={startDateTime ? new Date(startDateTime).toISOString().slice(0, 16) : ''}
+          onChange={(event) => {
+            const inputTime = event.target.value;
+            const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
+            setStartDateTime(inputDateTime);
+          }}
         />
         {/* setFinishDateTime when input onChange and default value = finishDateTime*/}
         <input
           id='finish'
           type='datetime-local'
-          value={finishDateTime ? finishDateTime.slice(0, 16) : ''}
-          placeholder='YYYY-MM-DD:HH:MM:SS'
-          onChange={(event) => setFinishDateTime(event.target.value)}
+          defaultValue={finishDateTime ? new Date(finishDateTime).toISOString().slice(0, 16) : ''}
+          onChange={(event) => {
+            const inputTime = event.target.value;
+            const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
+            setFinishDateTime(inputDateTime);
+          }}
         />
         <br></br>
         <br></br>

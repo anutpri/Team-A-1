@@ -8,11 +8,11 @@ import { getActivityByUser, deleteActivity } from "./api/Node";
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const [userActivity, setUserActivity] = useState([]);
-  const username = userData.username;
-  
+
+  console.log(userData);
 
   useEffect(() => {
-
+    const username = userData ? userData.username : '';
     const getUserActivity = async () => {
       const users = await getActivityByUser(username);
       setUserActivity(users);
@@ -20,7 +20,7 @@ const Activities = () => {
     };
     getUserActivity();
     
-  }, [username]);
+  }, [userData]);
 
   console.log(userActivity);
 
