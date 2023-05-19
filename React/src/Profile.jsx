@@ -49,10 +49,7 @@ export default function Profile() {
 
       const user = await checkEmail(email);
       const _id = user._id;
-      console.log(_id);
       const userNow = await updateUser(_id, updatedUserData);
-      
-      updateUserData(userNow);
       
     } catch (error) {
       setError(error.message);
