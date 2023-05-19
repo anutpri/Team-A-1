@@ -4,6 +4,7 @@ import { userData, updateUserData } from "./api/Session";
 import styles from "./Profile.module.css";
 import React, { useState, useEffect } from "react";
 import { updateUser } from "./api/Node";
+import { useNavigate } from "react-router-dom";
 
 //Update Profile to has input for adding more info
 export default function Profile() {
@@ -11,9 +12,10 @@ export default function Profile() {
   const [birthdate, setBirthdate] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
-  
+  const navigate = useNavigate();
+
     useEffect(() => {
-      const userToupdate = updateUser;
+      const userToupdate = userData;
 
     if (userToupdate) {
       setBirthdate(userToupdate.birthdate);
@@ -24,17 +26,19 @@ export default function Profile() {
       setError('Error User not found');
     }
         
-    }, [updateUser]);
+    }, [userData]);
+
+    console.log(userData);
 
   const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
 
-    const _id = updateUser._id;
-    const email = updateUser.email;
-    const username = updateUser.username;
-    const password = updateUser.password;
+    const _id = userData._id;
+    const email = userData.email;
+    const username = userData.username;
+    const password = userData.password;
 
-    const updatedUser = { 
+    const updatedUserData = { 
       
       email,
       username,
@@ -45,7 +49,7 @@ export default function Profile() {
     } ;
 
     try {
-      await updateUser(_id, updatedUser);
+      await updateUser(_id, updatedUserData);
       
     } catch (error) {
       setError(error.message);
@@ -56,6 +60,8 @@ export default function Profile() {
     setBirthdate('');
     setWeight('');
     setHeight('');
+    navigate('/Dashboard');
+
   };
 
   return (
@@ -97,7 +103,7 @@ export default function Profile() {
             />
             <br />
             <br />
-            <button>Submit</button>
+            <button onClick={handleAddMoreInfo}>Submit</button>
           </form>
         </div>
       </div>
