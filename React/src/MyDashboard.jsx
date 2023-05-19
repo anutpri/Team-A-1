@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import Activities from "./Card";
 import Profile from "./Profile";
 import Layout from "./Layout";
@@ -7,7 +7,8 @@ import MyProfile from "./MyProfile";
 
 //Add MyProfile to use instead of Profile
 export default function MyDashboard(){
-    
+    const [name, setName] = useState();
+
     return(
         <Layout>
             <div className="container-fluid">

@@ -2,9 +2,12 @@ import Layout from "./Layout";
 import person from "./assets/person.png";
 import { userData } from "./api/Session";
 import { updateUserData } from "./api/Session";
+import {React, useState} from "react";
 
 //Add MyProfile for using inside MyDashboard
 export default function MyProfile(){
+    const [name, setName] = useState();
+
     return (
         
             <div className="container text-center">

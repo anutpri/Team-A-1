@@ -10,6 +10,7 @@ export default function Profile() {
   const [date, setDate] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
+  const [name, setName] = useState();
 
   const handleAddMoreInfo = (event)=>{
     event.preventDefault();
