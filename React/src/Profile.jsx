@@ -3,7 +3,7 @@ import person from "./assets/person.png";
 import { userData, updateUserData } from "./api/Session";
 import styles from "./Profile.module.css";
 import React, { useState, useEffect } from "react";
-import { updateUser } from "./api/Node";
+import { updateUser, checkEmail } from "./api/Node";
 import { useNavigate } from "react-router-dom";
 
 //Update Profile to has input for adding more info
@@ -12,23 +12,23 @@ export default function Profile() {
   const [birthdate, setBirthdate] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(() =>{
       const userToupdate = userData;
 
     if (userToupdate) {
       setBirthdate(userToupdate.birthdate);
       setWeight(userToupdate.weight);
       setHeight(userToupdate.height);
-      
+      updateUserData(userToupdate);
+      console.log(userToupdate);
     } else {
       setError('Error User not found');
     }
         
     }, [userData]);
-
-    console.log(userData);
 
   const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
@@ -50,6 +50,9 @@ export default function Profile() {
 
     try {
       await updateUser(_id, updatedUserData);
+      const user = await checkEmail(email);
+      
+      updateUserData(user);
       
     } catch (error) {
       setError(error.message);
@@ -102,6 +105,7 @@ export default function Profile() {
               onChange={(event) => setHeight(event.target.value)}
             />
             <br />
+            {error && <p style={{ color: "red" }}>{error}</p>}{" "}
             <br />
             <button onClick={handleAddMoreInfo}>Submit</button>
           </form>
