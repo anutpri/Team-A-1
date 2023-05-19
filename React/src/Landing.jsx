@@ -1,5 +1,6 @@
 import Layout from "./Layout";
 import styles from "./Landing.module.css";
+import { useNavigate } from "react-router-dom";
 
 import a1 from './images/ac-1.jpg';
 import a2 from './images/ac-2.jpg';
@@ -8,6 +9,13 @@ import a4 from './images/ac-4.jpg';
 import a5 from './images/ac-5.jpg';
 
 function Landing(){
+
+    const navigate = useNavigate();
+
+    const tryitBtnClick = ()=>{ 
+        navigate('/Signup');
+    }
+
     return (
         <Layout>
             {/* Add Heros from Bootstrap */}
@@ -17,7 +25,7 @@ function Landing(){
                     <h1 className="display-4 fw-bold lh-1">What is Fitbook?</h1>
                     <p className="lead">Fitbook is an activity tracker web application designed for busy individuals who want to track their physical activity but don't have much time for it.</p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                        <button type="button" className={`btn btn-primary btn-lg px-4 me-md-2 fw-bold ${styles.btnColor}`}>Try it</button>
+                        <button type="button" onClick={tryitBtnClick} className={`btn btn-primary btn-lg px-4 me-md-2 fw-bold ${styles.btnColor}`}>Try it</button>
                     </div>
                 </div>
                 <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
