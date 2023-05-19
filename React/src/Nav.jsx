@@ -21,7 +21,7 @@ const Navbar = () => {
               Dashboard
             </a>
           </li>
-          {/* <li className='nav-item'>
+          <li className='nav-item'>
             <a href={'/Profile'} className='nav-link'>
               Profile
             </a>
@@ -40,7 +40,7 @@ const Navbar = () => {
             <a href={'/Card'} className='nav-link'>
               Card
             </a>
-          </li> */}
+          </li>
         </ul>
       </div>
 
