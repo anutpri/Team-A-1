@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Create.css';
 import fitbook from './assets/FITBOOK.png';
-import { createActivity } from "./api/Node";
-import { userData } from "./api/Session";
+import { createActivity } from './api/Node';
+import { userData } from './api/Session';
 
 const Create = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -80,10 +80,9 @@ const Create = () => {
       startDateTime,
       finishDateTime,
     };
-    
+
     try {
       await createActivity(newUserActivity);
-      
     } catch (error) {
       setError(error.message);
     }
@@ -201,7 +200,7 @@ const Create = () => {
         {/* setDistance when input onChange */}
         <input
           id='setDis'
-          placeholder='kilometer'
+          placeholder='Kilometer'
           min='0.0'
           step='0.1'
           type='number'

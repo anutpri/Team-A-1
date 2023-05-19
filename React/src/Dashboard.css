@@ -1,0 +1,20 @@
+.createActivity button {
+    background: #6F67B4;
+    border-radius: 0.6rem;
+    width: 20%;
+    height: 50%;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+button:hover {
+    background-color: #ec5348;
+  }
+
+#btnCreate {
+    margin-left: 10%;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}

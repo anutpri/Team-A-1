@@ -3,6 +3,10 @@
     color: white;
 }
 
+.btnColor:hover{
+    background-color: #ec5348;
+    color: white;
+}
 
 .carouselLayout{
     width: 60%;
