@@ -1,12 +1,13 @@
 import Layout from "./Layout";
 import person from "./assets/person.png";
 import { userData } from "./api/Session";
-import { updateUserData } from "./api/Session";
-import {React, useState} from "react";
+import {React} from "react";
 
 //Add MyProfile for using inside MyDashboard
 export default function MyProfile(){
-    const [name, setName] = useState();
+    
+    const birthdateObj = new Date(userData.birthdate);
+    const age = new Date().getFullYear() - birthdateObj.getFullYear();
 
     return (
         
@@ -16,15 +17,15 @@ export default function MyProfile(){
                 
                 <div className="d-flex justify-content-evenly mt-5">
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>
-                        <h4>75 Kgs</h4>
+                        <h4>{userData && userData.weight} Kgs</h4>
                         <h4>WEIGHT</h4>
                     </div>
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>
-                        <h4>170 cm</h4>
+                        <h4>{userData && userData.height} cm</h4>
                         <h4>HEIGHT</h4>
                     </div>
                     <div className="p-3 text-white rounded" style={{background:"#6F67B4"}}>
-                        <h4>49 Years</h4>
+                        <h4>{age && age} Years</h4>
                         <h4>AGE</h4>
                     </div>
                 </div>
