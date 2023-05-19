@@ -5,6 +5,7 @@ import { updateUserData } from "./api/Session";
 import styles from "./Profile.module.css";
 import { useState } from "react";
 
+//Update Profile to has input for adding more info
 export default function Profile() {
   const [date, setDate] = useState();
   const [weight, setWeight] = useState();

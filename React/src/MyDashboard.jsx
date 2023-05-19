@@ -5,6 +5,7 @@ import Layout from "./Layout";
 import { userData } from "./api/Session";
 import MyProfile from "./MyProfile";
 
+//Add MyProfile to use instead of Profile
 export default function MyDashboard(){
     
     return(

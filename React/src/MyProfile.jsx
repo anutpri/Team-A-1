@@ -3,6 +3,7 @@ import person from "./assets/person.png";
 import { userData } from "./api/Session";
 import { updateUserData } from "./api/Session";
 
+//Add MyProfile for using inside MyDashboard
 export default function MyProfile(){
     return (
         
