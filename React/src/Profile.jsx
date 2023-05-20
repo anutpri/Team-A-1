@@ -9,59 +9,61 @@ import { useNavigate } from "react-router-dom";
 //Update Profile to has input for adding more info
 export default function Profile() {
   
-  const [birthdate, setBirthdate] = useState();
-  const [weight, setWeight] = useState();
-  const [height, setHeight] = useState();
+  const [userInfo, setUserInfo] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const email = userData.email;
   
-    useEffect(() =>{
-      const userToupdate = userData;
-
-    if (userToupdate) {
-      setBirthdate(userToupdate.birthdate);
-      setWeight(userToupdate.weight);
-      setHeight(userToupdate.height);
-      
-    } else {
-      setError('Error User not found');
-    }
-        
-    }, [userData]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const showData = await checkEmail(email);
+  
+        if (showData) {
+          setUserInfo(showData);
+          setBirthdate(showData.birthdate);
+          setWeight(showData.weight);
+          setHeight(showData.height);
+        } else {
+          setError('Error: User not found');
+        }
+      } catch (error) {
+        setError(`Error: ${error.message}`);
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   const handleAddMoreInfo = async (event)=>{
     event.preventDefault();
-    
-    const email = userData.email;
-    const username = userData.username;
-    const password = userData.password;
-    const updatedUserData = { 
-      
-      email,
-      username,
-      password,
-      birthdate,
-      weight,
-      height,
-    } ;
-   
-    try {
 
-      const user = await checkEmail(email);
-      const _id = user._id;
-      const userNow = await updateUser(_id, updatedUserData);
+    try {
+      const _id = userInfo._id;
+      const updatedData = { 
+        
+        email:userInfo.email,
+        username:userInfo.username,
+        password:userInfo.password,
+        birthdate,
+        weight,
+        height,
+      } ;
+
+      const userNow = await updateUser(_id, updatedData);
       
+      alert(`Updated Info: BirthDate->${birthdate}, Weight->${weight}, Height->${height}`);
+      setBirthdate('');
+      setWeight('');
+      setHeight('');
+      navigate('/Dashboard');
+
     } catch (error) {
       setError(error.message);
     }
-
-
-    alert(`Add More Info: BirthDate->${birthdate}, Weight->${weight}, Height->${height}`);
-    setBirthdate('');
-    setWeight('');
-    setHeight('');
-    navigate('/Dashboard');
-
   };
 
   return (

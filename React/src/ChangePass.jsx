@@ -66,8 +66,7 @@ export default function ChangePass() {
       } ;
 
       const userNow = await updateUser(_id, updatePass);
-      console.log(userNow);
-
+      
       alert(`Your Passwords have been updated`);
       setCurrentPassword('');
       setinputPassword('');
