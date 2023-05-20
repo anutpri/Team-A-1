@@ -12,6 +12,7 @@ import Edit from './Edit';
 import Activities from './Card';
 import MyDashboard from './MyDashboard';
 import Landing from './Landing';
+import ChangePass from './ChangePass';
 
 
 
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: '/Profile',
     element: <Profile />,
+  },
+  {
+    path: '/ChangePass',
+    element: <ChangePass />,
   },
   
 ]);

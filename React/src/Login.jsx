@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { checkEmail } from "./api/Node";
 import { userData, updateUserData } from "./api/Session";
+import { sha256 } from 'js-sha256';
 
 const Login = () => {
   
@@ -36,8 +37,12 @@ const Login = () => {
       updateUserData(user);
       console.log(userData);
 
+      // Hash the input password using SHA-256
+      const passwordHash = sha256(password);
+      console.log(passwordHash);
+
       // Check if email and password match a user
-      if (user.email === email && user.password === password) {
+      if (user.email === email && user.password === passwordHash) {
         // If a user is found and password matches, the login is successful
         alert('Login successful!');
         navigate('/Dashboard');
