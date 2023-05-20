@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css';
-import { userData, updateActivityData } from "./api/Session";
-import { getActivityByUser, deleteActivity } from "./api/Node";
-
+import { userData, updateActivityData } from './api/Session';
+import { getActivityByUser, deleteActivity } from './api/Node';
 
 const Activities = () => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
@@ -16,10 +15,8 @@ const Activities = () => {
     const getUserActivity = async () => {
       const users = await getActivityByUser(username);
       setUserActivity(users);
-      
     };
     getUserActivity();
-    
   }, [userData]);
 
   console.log(userActivity);
@@ -28,7 +25,6 @@ const Activities = () => {
   const handleEditButton = async (activity) => {
     try {
       updateActivityData(activity);
-      
     } catch (error) {
       setError(error.message);
     }
@@ -46,11 +42,16 @@ const Activities = () => {
   return (
     <div className='container-fluid d-flex flex-column align-items-center'>
       {userActivity.map((activity) => (
-      <div className='activity-card mb-3' key={activity._id}>
+        <div className='activity-card mb-3' key={activity._id}>
           <div className='card-header'>
-            <h2 className='name'>{activity.username}</h2>
+            <h2 className='name'>
+              {activity.username}: {activity.activityName}
+            </h2>
             <span>
-              <button id='delete' onClick={() => handleDeleteButton(activity._id)}>
+              <button
+                id='delete'
+                onClick={() => handleDeleteButton(activity._id)}
+              >
                 <img
                   src='https://www.svgrepo.com/show/244044/delete.svg'
                   width='30px'
@@ -86,12 +87,22 @@ const Activities = () => {
                   <span>
                     <strong>Start:</strong>
                   </span>
-                  <span> {activity.startDateTime ? activity.startDateTime.slice(0, 16) : ''}</span>
+                  <span>
+                    {' '}
+                    {activity.startDateTime
+                      ? activity.startDateTime.slice(0, 16)
+                      : ''}
+                  </span>
                   <br />
                   <span>
                     <strong>Finished:</strong>
                   </span>
-                  <span> {activity.finishDateTime ? activity.finishDateTime.slice(0, 16) : ''}</span>
+                  <span>
+                    {' '}
+                    {activity.finishDateTime
+                      ? activity.finishDateTime.slice(0, 16)
+                      : ''}
+                  </span>
                 </div>
                 <div className='detail2'>
                   <span>
