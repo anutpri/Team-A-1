@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 import Activities from './Card';
-import Profile from './Profile';
 import Layout from './Layout';
 import { userData } from './api/Session';
 import MyProfile from './MyProfile';
@@ -16,8 +15,13 @@ export default function MyDashboard() {
   const createActivityBtn = () => {
     navigate('/Create');
   };
+
   const updateProfileBtn = () => {
     navigate('/Profile');
+  };
+
+  const changePasswordBtn = () => {
+    navigate('/ChangePass');
   };
 
   return (
@@ -34,6 +38,9 @@ export default function MyDashboard() {
               </button>
               <button id='btnupProfile' type='button' onClick={updateProfileBtn}>
                 Update Profile
+              </button>
+              <button id='btnchnagePass' type='button' onClick={changePasswordBtn}>
+                Change Password
               </button>
             </span>
           </div>
