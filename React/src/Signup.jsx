@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 import { createUser, checkEmail } from "./api/Node";
 import { userData, updateUserData } from "./api/Session";
+import { sha256 } from 'js-sha256';
 
 // useState = when users hit submit button you can send the data to the backend API
 const Signup = () => {
@@ -48,32 +49,10 @@ const Signup = () => {
       return;
     } 
 
-      // try {
-      //   const user = await checkEmail(email);
-
-      //   // Check if email and username already used
-      //   if (user.email === email) {
-
-      //     setError('Email has already been used');
-      //     return;
-      //   }
-
-      //   if (user.username === username) {
-
-      //     setError('Username has already been used');
-      //     return;
-      //   }
-
-      // } catch (error) {
-      //   console.error('Error register:', error);
-      //   setError('Error user data. Please try again.');
-      // }
-    
-
     const newuser = {
       username,
       email,
-      password,
+      password: sha256(password), // Encrypt the password
     };
     
     try {
