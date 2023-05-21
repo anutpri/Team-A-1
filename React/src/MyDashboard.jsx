@@ -24,6 +24,10 @@ export default function MyDashboard() {
     navigate('/ChangePass');
   };
 
+  const logoutBtn = () => {
+    navigate('/');
+  };
+
   return (
     <Layout>
       <div className='container-fluid'>
@@ -34,13 +38,24 @@ export default function MyDashboard() {
           <div className='createActivity'>
             <span>
               <button id='btnCreate' type='button' onClick={createActivityBtn}>
-                Create Activity
+                Create Activity Card
               </button>
-              <button id='btnupProfile' type='button' onClick={updateProfileBtn}>
+              <button
+                id='btnupProfile'
+                type='button'
+                onClick={updateProfileBtn}
+              >
                 Update Profile
               </button>
-              <button id='btnchnagePass' type='button' onClick={changePasswordBtn}>
+              <button
+                id='btnchnagePass'
+                type='button'
+                onClick={changePasswordBtn}
+              >
                 Change Password
+              </button>
+              <button id='logoutBtn' type='button' onClick={logoutBtn}>
+                Log Out
               </button>
             </span>
           </div>
