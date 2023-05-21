@@ -30,39 +30,34 @@ export default function MyDashboard() {
 
   return (
     <Layout>
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-sm-5'>
-            <MyProfile />
+      <div className='myProfile'>
+        {/* <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-sm-5'> */}
+        <MyProfile />
+        {/* </div>
           </div>
-          <div className='createActivity'>
-            <span>
-              <button id='btnCreate' type='button' onClick={createActivityBtn}>
-                Create Activity Card
-              </button>
-              <button
-                id='btnupProfile'
-                type='button'
-                onClick={updateProfileBtn}
-              >
-                Update Profile
-              </button>
-              <button
-                id='btnchnagePass'
-                type='button'
-                onClick={changePasswordBtn}
-              >
-                Change Password
-              </button>
-              <button id='logoutBtn' type='button' onClick={logoutBtn}>
-                Log Out
-              </button>
-            </span>
-          </div>
-          <div className='col-sm-7'>
-            <Activities />
-          </div>
-        </div>
+        </div> */}
+      </div>
+
+      <div className='settingBtn'>
+        <button id='btnCreate' type='button' onClick={createActivityBtn}>
+          Create Activity Card
+        </button>
+        <button id='btnProfile' type='button' onClick={updateProfileBtn}>
+          Update Profile
+        </button>
+        <button id='btnChangePass' type='button' onClick={changePasswordBtn}>
+          Change Password
+        </button>
+        <button id='logoutBtn' type='button' onClick={logoutBtn}>
+          Log Out
+        </button>
+      </div>
+
+      <div className='activityCard'>
+        <p className='cardsText'>Activity Card(s)</p>
+        <Activities />
       </div>
     </Layout>
   );
