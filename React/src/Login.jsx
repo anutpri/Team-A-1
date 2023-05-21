@@ -56,6 +56,10 @@ const Login = () => {
     }
   };
 
+  const gotoForgetPassword = () => {
+    navigate('/ForgetPass');
+  };
+
   return (
     <Layout>
       <div className='header'>
@@ -87,7 +91,7 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <br></br>
-        <a className='Forgot'>Forgot Password?</a>
+        <a className='Forgot' onClick={gotoForgetPassword}>Forgot Password?</a>
         <br></br>
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}

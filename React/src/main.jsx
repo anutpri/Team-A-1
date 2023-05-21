@@ -13,6 +13,7 @@ import Activities from './Card';
 import MyDashboard from './MyDashboard';
 import Landing from './Landing';
 import ChangePass from './ChangePass';
+import ForgetPassword from './ForgetPassword';
 
 
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: '/ChangePass',
     element: <ChangePass />,
+  },
+  {
+    path: '/ForgetPass',
+    element: <ForgetPassword />,
   },
   
 ]);
