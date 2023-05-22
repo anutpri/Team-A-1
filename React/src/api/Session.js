@@ -10,3 +10,8 @@ export const updateActivityData = (data) => {
   activityData = data;
   sessionStorage.setItem('activityData', JSON.stringify(activityData));
 };
+
+export const clearSessionData = () => {
+  sessionStorage.removeItem('userData');
+  sessionStorage.removeItem('activityData');
+};

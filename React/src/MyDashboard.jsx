@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import Activities from './Card';
 import Layout from './Layout';
-import { userData } from './api/Session';
+import { userData, clearSessionData } from './api/Session';
 import MyProfile from './MyProfile';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
@@ -25,6 +25,7 @@ export default function MyDashboard() {
   };
 
   const logoutBtn = () => {
+    clearSessionData();
     navigate('/');
   };
 
