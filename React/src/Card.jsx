@@ -2,47 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css';
 import { userData, updateActivityData } from './api/Session';
-import { getUser, getActivityByUser, deleteActivity } from './api/Node';
+import { getActivity, getActivityByUser, deleteActivity } from './api/Node';
 
 const Activities = (props) => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const parameterValue = props.para;
   const [userActivity, setUserActivity] = useState([]);
+ 
 
   console.log(parameterValue);
 
   useEffect(() => {
-    // if (parameterValue) {
-    //   const username = parameterValue.username;
+    
     if (parameterValue) {
       const username = parameterValue.username;
 
-      //   const getUserActivity = async () => {
-      //     const user = await getActivityByUser(username);
-      //     console.log(user);
-      //     setUserActivity(user);
-      //   };
       const getUserActivity = async () => {
         const user = await getActivityByUser(username);
         console.log(user);
         setUserActivity(user);
       };
-
-      //   getUserActivity();
-      // } else {
       getUserActivity();
+
     } else {
-      const getActivity = async () => {
-        const users = await getUser();
+      const getAllActivity = async () => {
+        const users = await getActivity();
         setUserActivity(users);
-        // };
       };
-
-      getActivity();
+      getAllActivity();
     }
-  }, []);
+  }, [parameterValue]);
 
-  console.log(userActivity);
+ 
 
   // function to handle clicking on the edit button for a user activity
   const handleEditButton = async (activity) => {
@@ -70,7 +61,7 @@ const Activities = (props) => {
             <h2 className='name'>
               {activity.username}: {activity.activityName}
             </h2>
-            <span>
+            {parameterValue && ( <span>
               <button
                 id='delete'
                 onClick={() => handleDeleteButton(activity._id)}
@@ -90,7 +81,7 @@ const Activities = (props) => {
                   border='0'
                 />{' '}
               </button>
-            </span>
+            </span>)}
           </div>
 
           <div className='activity-card-detail'>

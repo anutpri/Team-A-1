@@ -53,7 +53,7 @@ const Create = () => {
     }
 
     // check if finishDateTime is before startDateTime
-    if (new Date(startDateTime) >= new Date(finishDateTime)) {
+    if (new Date(startDateTime) > new Date(finishDateTime)) {
       setError('Finish date-time must be after start date-time');
       return;
     }
