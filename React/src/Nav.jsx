@@ -1,13 +1,11 @@
 import fitbook from './assets/FITBOOK.png';
 import './Nav.css';
 import { userData } from './api/Session';
-import { useNavigate } from 'react-router-dom';
+
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const tryitBtnClick = () => {
-    navigate('/Login');
-  };
+  
+  
   return (
 
   <div  className='header1'>
@@ -59,11 +57,9 @@ const Navbar = () => {
         <ul>
         {!userData && (
           <li className='nav-item'>
-            {/* <a href={'/Login'} className='nav-link'>
+            <a href={'/Login'} className='nav-link'>
               Sign in 
-            </a> */}
-            <a onClick={tryitBtnClick}>Login</a>
-            
+            </a>
           </li>)}
           {!userData && (
           <li className='nav-item'>
