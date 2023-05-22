@@ -8,8 +8,6 @@ import './Dashboard.css';
 
 //Add MyProfile to use instead of Profile
 export default function MyDashboard() {
-  const [name, setName] = useState();
-
   const navigate = useNavigate();
 
   const createActivityBtn = () => {
@@ -59,7 +57,7 @@ export default function MyDashboard() {
 
       <div className='activityCard'>
         <p className='cardsText'>Activity Card(s)</p>
-        <Activities />
+        <Activities para={userData}/>
       </div>
     </Layout>
   );

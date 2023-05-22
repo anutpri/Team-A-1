@@ -14,7 +14,7 @@ import MyDashboard from './MyDashboard';
 import Landing from './Landing';
 import ChangePass from './ChangePass';
 import ForgetPassword from './ForgetPassword';
-
+import Community from './Community';
 
 
 const router = createBrowserRouter([
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Landing />,
+  },
+  {
+    path: '/Community',
+    element: <Community />,
   },
   {
     path: '/Login',

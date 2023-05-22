@@ -17,6 +17,11 @@ const Navbar = () => {
               Main
             </a>
           </li>
+          <li className='nav-item'>
+            <a href={'/Community'} className='nav-link' aria-current='page'>
+              Community
+            </a>
+          </li>
           {userData && (
           <li className='nav-item'>
             <a href='/Dashboard' className='nav-link'>
