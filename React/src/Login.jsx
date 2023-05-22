@@ -41,11 +41,11 @@ const Login = () => {
       // Check if email and password match a user
       if (user.email === email && user.password === passwordHash) {
         // If a user is found and password matches, the login is successful
-        alert('Login successful!');
+        alert('Logged in successfully!');
         navigate('/Dashboard');
       } else {
         // If a user is not found or password doesn't match, display an error message
-        setError('Invalid email or password');
+        setError('Invalid email or password.');
       }
     } catch (error) {
       console.error('Error getting user:', error);
@@ -61,7 +61,7 @@ const Login = () => {
     <Layout>
       <div className='header'>
         <div className='title'>
-          <p>Sign In to</p>
+          <p>Log In to</p>
           <p>Change</p>
           <p>Your Life</p> <br />
           <p id='if'>
@@ -95,7 +95,7 @@ const Login = () => {
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
         {/* Display the error message */}
-        <button onClick={handleLogin}>Sign In</button>
+        <button onClick={handleLogin}>Log In</button>
       </div>
     </Layout>
   );

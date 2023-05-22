@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { activityData } from "./api/Session";
-import './Edit.css'
+import { activityData } from './api/Session';
+import './Edit.css';
 import fitbook from './assets/FITBOOK.png';
-import { updateActivity } from "./api/Node";
+import { updateActivity } from './api/Node';
 import { DateTime } from 'luxon';
 
 const Edit = () => {
@@ -21,28 +21,26 @@ const Edit = () => {
   const activityTypeList = [
     { id: 1, type: 'Running' },
     { id: 2, type: 'Walking' },
-    { id: 3, type: 'Bike cycling' },
-    { id: 4, type: 'Weight training' },
+    { id: 3, type: 'Bike Cycling' },
+    { id: 4, type: 'Weight Training' },
     { id: 5, type: 'Dancing' },
   ];
 
-  
   useEffect(() => {
     const activityToEdit = activityData;
 
-  if (activityToEdit) {
-    setActivityName(activityToEdit.activityName);
-    setDescription(activityToEdit.description);
-    setStartDateTime(activityToEdit.startDateTime);
-    setFinishDateTime(activityToEdit.finishDateTime);
-    setActivityType(activityToEdit.activityType);
-    setDurationTime(activityToEdit.durationTime);
-    setDistance(activityToEdit.distance);
-  } else {
-    setError('Error Activity not found');
-  }
-      
-}, [activityData]);
+    if (activityToEdit) {
+      setActivityName(activityToEdit.activityName);
+      setDescription(activityToEdit.description);
+      setStartDateTime(activityToEdit.startDateTime);
+      setFinishDateTime(activityToEdit.finishDateTime);
+      setActivityType(activityToEdit.activityType);
+      setDurationTime(activityToEdit.durationTime);
+      setDistance(activityToEdit.distance);
+    } else {
+      setError('Error Activity not found');
+    }
+  }, [activityData]);
 
   const handleEditUserActivity = async () => {
     // check if activityName is empty
@@ -104,11 +102,10 @@ const Edit = () => {
 
     try {
       await updateActivity(_id, updatedUserActivity);
-      
     } catch (error) {
       setError(error.message);
     }
-    
+
     // Clear the data form and navigate to the dashboard
     clearDataForm();
     // Show a success message
@@ -183,7 +180,11 @@ const Edit = () => {
         <input
           id='start'
           type='datetime-local'
-          defaultValue={startDateTime ? new Date(startDateTime).toISOString().slice(0, 16) : ''}
+          defaultValue={
+            startDateTime
+              ? new Date(startDateTime).toISOString().slice(0, 16)
+              : ''
+          }
           onChange={(event) => {
             const inputTime = event.target.value;
             const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
@@ -194,7 +195,11 @@ const Edit = () => {
         <input
           id='finish'
           type='datetime-local'
-          defaultValue={finishDateTime ? new Date(finishDateTime).toISOString().slice(0, 16) : ''}
+          defaultValue={
+            finishDateTime
+              ? new Date(finishDateTime).toISOString().slice(0, 16)
+              : ''
+          }
           onChange={(event) => {
             const inputTime = event.target.value;
             const inputDateTime = DateTime.fromISO(inputTime, { zone: 'utc' });
