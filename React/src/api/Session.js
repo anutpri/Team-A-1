@@ -1,4 +1,4 @@
-export let userData = JSON.parse(sessionStorage.getItem('userData')) || {};
+export let userData = JSON.parse(sessionStorage.getItem('userData'));
 export let activityData = JSON.parse(sessionStorage.getItem('activityData')) || {};
 
 export const updateUserData = (data) => {
@@ -9,4 +9,9 @@ export const updateUserData = (data) => {
 export const updateActivityData = (data) => {
   activityData = data;
   sessionStorage.setItem('activityData', JSON.stringify(activityData));
+};
+
+export const clearSessionData = () => {
+  sessionStorage.removeItem('userData');
+  sessionStorage.removeItem('activityData');
 };

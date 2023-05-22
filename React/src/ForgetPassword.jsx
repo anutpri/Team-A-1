@@ -8,7 +8,8 @@ export default function ForgetPassword() {
 
   const handleForgetFormSubmit = (event) => {
     event.preventDefault();
-    alert(`Your email is ${email}`);
+
+    alert(`Sorry for the inconvenience. This feature is under development; Please take a deep breath and re-think your password again.`);
     setEmail('');
   };
 

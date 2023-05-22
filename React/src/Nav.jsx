@@ -1,5 +1,6 @@
 import fitbook from './assets/FITBOOK.png';
 import './Nav.css';
+import { userData } from './api/Session';
 
 const Navbar = () => {
 
@@ -16,12 +17,13 @@ const Navbar = () => {
               Main
             </a>
           </li>
+          {userData && (
           <li className='nav-item'>
-            <a href={'/Dashboard'} className='nav-link'>
+            <a href='/Dashboard' className='nav-link'>
               Dashboard
             </a>
-          </li>
-          <li className='nav-item'>
+          </li> )}
+       {/* <li className='nav-item'>
             <a href={'/Profile'} className='nav-link'>
               Profile
             </a>
@@ -40,22 +42,24 @@ const Navbar = () => {
             <a href={'/Card'} className='nav-link'>
               Card
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
 
         <div className='nav-sign'>
         <ul>
+        {!userData && (
           <li className='nav-item'>
             <a href={'/Login'} className='nav-link'>
               Sign in 
             </a>
-          </li>
+          </li>)}
+          {!userData && (
           <li className='nav-item'>
             <a href={'/Signup'} className='nav-link'>
               Register 
             </a>
-          </li>
+          </li>)}
         </ul>
         </div>
     </div>
