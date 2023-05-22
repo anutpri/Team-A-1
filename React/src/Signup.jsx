@@ -61,7 +61,7 @@ const Signup = () => {
       alert('Registered successfully!');
 
       // navigate to the Dashboard page
-      navigate('/Dashboard');
+      navigate('/Profile');
     } catch (error) {
       setError('A username or email has already been used.');
     }

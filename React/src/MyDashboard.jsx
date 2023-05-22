@@ -23,9 +23,15 @@ export default function MyDashboard() {
   };
 
   const logoutBtn = () => {
-    clearSessionData();
-    navigate('/');
-    location.reload();
+    const answer = confirm('Are you sure you want to log out?');
+    if (answer == true) {
+      alert('Logged out successfully!');
+      clearSessionData();
+      navigate('/');
+      location.reload();
+    } else {
+      return false;
+    }
   };
 
   return (

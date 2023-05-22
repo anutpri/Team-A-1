@@ -69,15 +69,16 @@ export default function Profile() {
     <Layout>
       <div className='container text-center'>
         <img src={person} style={{ width: '20%' }} className='rounded' />
-        <h2 className='mt-4'>{userData && userData.username}</h2>
+        <h2 className='mt-4'>Hello {userData && userData.username}</h2>
 
-        <div className={`mt-5 ${styles.profileForm}`}>
-          <h2>Please add more your info</h2>
+        <div className={`mt-3 ${styles.profileForm}`}>
+          <h2>Please update your profile</h2>
           <form className='mt-4' onSubmit={handleAddMoreInfo}>
             <input
               type='date'
+              placeholder='BIRTHDATE DD/MM/YYYY'
+              onfocus="(this.type='placeholder')"
               id='birthdate'
-              placeholder='Birth date'
               style={{ margin: '4px' }}
               value={birthdate}
               onChange={(event) => setBirthdate(event.target.value)}
