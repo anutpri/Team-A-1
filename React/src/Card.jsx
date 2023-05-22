@@ -54,6 +54,10 @@ const Activities = (props) => {
 
   return (
     <div className='container-fluid d-flex flex-column align-items-center'>
+      <>
+        {' '}
+        <p className='cardsText'>My Card(s)</p>
+      </>
       {userActivity.map((activity) => (
         <div className='activity-card mb-3' key={activity._id}>
           <div className='card-header'>
