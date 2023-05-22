@@ -18,6 +18,8 @@
     font-size:x-large;
     font-weight: bold;
     text-align: center;
+    color: #666;
+
 }
 
 .activity-card > .card-header {
