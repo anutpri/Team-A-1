@@ -77,7 +77,6 @@ export default function Profile() {
             <input
               type='date'
               placeholder='BIRTHDATE DD/MM/YYYY'
-              onfocus="(this.type='placeholder')"
               id='birthdate'
               style={{ margin: '4px' }}
               value={birthdate}
