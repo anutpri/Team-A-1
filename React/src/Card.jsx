@@ -2,22 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Card.css';
 import { userData, updateActivityData } from './api/Session';
-import { getActivityByUser, deleteActivity } from './api/Node';
+import { getUser, getActivityByUser, deleteActivity } from './api/Node';
 
-const Activities = () => {
+const Activities = (props) => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
+  const parameterValue = props.para;
   const [userActivity, setUserActivity] = useState([]);
 
-  console.log(userData);
+  console.log(parameterValue);
 
   useEffect(() => {
-    const username = userData ? userData.username : '';
-    const getUserActivity = async () => {
-      const users = await getActivityByUser(username);
-      setUserActivity(users);
-    };
-    getUserActivity();
-  }, [userData]);
+    if (parameterValue) {
+      const username = parameterValue.username;
+  
+      const getUserActivity = async () => {
+        const user = await getActivityByUser(username);
+        console.log(user);
+        setUserActivity(user);
+      };
+  
+      getUserActivity();
+    } else {
+      const getActivity = async () => {
+        const users = await getUser();
+        setUserActivity(users);
+      };
+  
+      getActivity();
+    }
+  }, [parameterValue]);
 
   console.log(userActivity);
 
