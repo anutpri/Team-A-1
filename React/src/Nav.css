@@ -13,10 +13,7 @@
   
   .nav-ul {
     background-color: white;
-    display: flex;
-    
-  
-    
+    display: flex;  
   }
 
   .nav {
@@ -31,29 +28,28 @@
 
   .nav-item a {
     color: #666;
+    font-weight: bold;
     border-radius: 0.6rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-right: 3rem;
   }
 
   .nav-item a:hover {
     color: white;
     background-color: #6F67B4;
-   
     padding-top: 0rem;
     padding-bottom: 0rem;
   }
 
   .nav-sign {
     margin-top: 0.55%;
-    
     width: 42%;
     padding-right: 10%;
     margin-left: auto;
     
   }
 .nav-sign ul {
-  
   float: left;
 }
   
@@ -62,8 +58,11 @@
     font-weight: 600;
     color: #666;
     display: inline-block;
-    padding-right: 3rem;
-    
-    
+    padding-left: 1rem;
   }
   
+  .nav-sign li:hover {
+    color: white;
+    background-color: #6F67B4;
+    border-radius: 0.6rem;
+  }
