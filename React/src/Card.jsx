@@ -12,43 +12,34 @@ const Activities = (props) => {
   console.log(parameterValue);
 
   useEffect(() => {
-<<<<<<< Updated upstream
+    // if (parameterValue) {
+    //   const username = parameterValue.username;
     if (parameterValue) {
       const username = parameterValue.username;
-  
+
+      //   const getUserActivity = async () => {
+      //     const user = await getActivityByUser(username);
+      //     console.log(user);
+      //     setUserActivity(user);
+      //   };
       const getUserActivity = async () => {
         const user = await getActivityByUser(username);
         console.log(user);
         setUserActivity(user);
       };
-  
+
+      //   getUserActivity();
+      // } else {
       getUserActivity();
     } else {
       const getActivity = async () => {
         const users = await getUser();
         setUserActivity(users);
+        // };
       };
-  
-=======
-    // if (parameterValue) {
-    //   const username = parameterValue.username;
 
-    //   const getUserActivity = async () => {
-    //     const user = await getActivityByUser(username);
-    //     console.log(user);
-    //     setUserActivity(user);
-    //   };
-
-    //   getUserActivity();
-    // } else {
-    const getActivity = async () => {
-      const users = await getUser();
-      setUserActivity(users);
-      // };
-
->>>>>>> Stashed changes
       getActivity();
-    };
+    }
   }, []);
 
   console.log(userActivity);
@@ -73,10 +64,6 @@ const Activities = (props) => {
 
   return (
     <div className='container-fluid d-flex flex-column align-items-center'>
-      {/* <>
-        {' '}
-        <p className='cardsText'>My Card(s)</p>
-      </> */}
       {userActivity.map((activity) => (
         <div className='activity-card mb-3' key={activity._id}>
           <div className='card-header'>
