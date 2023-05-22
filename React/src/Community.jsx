@@ -9,12 +9,10 @@ export default function Community() {
 
   return (
     <Layout>
-       <div className='activityCard'>
-         <p className='cardsText'>All Activities</p>
-         <Activities />
-       </div>
+      <div className='activityCard'>
+        <p className='cardsText'>All Activity Cards</p>
+        <Activities />
+      </div>
     </Layout>
   );
 }
-
-  
