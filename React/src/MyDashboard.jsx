@@ -62,7 +62,7 @@ export default function MyDashboard() {
       </div>
 
       <div className='activityCard'>
-        <p className='cardsText'>Your Activities</p>
+        <p className='cardsText'>Your Activity Card(s)</p>
         <Activities para={userData} />
       </div>
     </Layout>
