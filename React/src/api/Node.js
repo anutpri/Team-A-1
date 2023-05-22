@@ -125,3 +125,19 @@ export const deleteActivity = async (_id) => {
     }
   }
 };
+
+export const sendEmail = async (email,pass) => {
+  const data = {
+    email: email, // Replace with the recipient's email address
+    newPassword: pass, // Replace with the new password
+  };
+
+  try {
+    const response = await axios.post(`${SERVER}/send-email`, data);
+    console.log(response.data); // Assuming the server sends back a response with data
+
+    console.log('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email', error);
+  }
+};

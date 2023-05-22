@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "./Layout";
 import forget from "./assets/forget.jpg";
 import styles from "./ForgetPassword.module.css";
+import { sendEmail } from './api/Node';
+import { sha256 } from 'js-sha256';
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState();
@@ -9,6 +11,10 @@ export default function ForgetPassword() {
   const handleForgetFormSubmit = (event) => {
     event.preventDefault();
 
+  const newPass = '123456789';
+  // const hashPass = sha256(newPass);
+    
+    sendEmail(email, newPass);
     alert(`Sorry for the inconvenience. This feature is under development; Please take a deep breath and re-think your password again.`);
     setEmail('');
   };
@@ -24,7 +30,6 @@ export default function ForgetPassword() {
               type="text"
               placeholder="Email"
               style={{ margin: "4px" }}
-              value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
             <br />
