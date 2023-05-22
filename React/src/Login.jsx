@@ -2,18 +2,15 @@ import Layout from './Layout';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import { checkEmail } from "./api/Node";
-import { userData, updateUserData } from "./api/Session";
+import { checkEmail } from './api/Node';
+import { userData, updateUserData } from './api/Session';
 import { sha256 } from 'js-sha256';
 
 const Login = () => {
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
-  
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -33,7 +30,7 @@ const Login = () => {
 
     try {
       const user = await checkEmail(email);
-      
+
       updateUserData(user);
       console.log(userData);
 
@@ -68,8 +65,8 @@ const Login = () => {
           <p>Change</p>
           <p>Your Life</p> <br />
           <p id='if'>
-            If you don't have an account <br></br>
-            <span>you can</span>{' '}
+            Don't have an account?<br></br>
+            <span>You can</span>{' '}
             <a className='Regis' href={'/Signup'}>
               Register Here!
             </a>
@@ -91,7 +88,9 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <br></br>
-        <a className='Forgot' onClick={gotoForgetPassword}>Forgot Password?</a>
+        <a className='Forgot' onClick={gotoForgetPassword}>
+          Forgot Password?
+        </a>
         <br></br>
         <br></br>
         {error && <p style={{ color: 'red' }}>{error}</p>}{' '}

@@ -45,6 +45,10 @@
   text-decoration: none;
 }
 
+.Regis:hover {
+  color: #ec5348;
+}
+
 .Login {
   display: block;
   float: right;
