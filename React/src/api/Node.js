@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const PORT = 8080;
-const HOSTNAME = "http://127.0.0.1";
+
+
+const PORT = import.meta.env.DATABASE_PORT;
+const HOSTNAME = import.meta.env.DATABASE_IP;
 const SERVER = `${HOSTNAME}:${PORT}`;
 
 
