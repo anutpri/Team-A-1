@@ -27,6 +27,7 @@ export default function MyDashboard() {
   const logoutBtn = () => {
     clearSessionData();
     navigate('/');
+    location.reload();
   };
 
   return (
