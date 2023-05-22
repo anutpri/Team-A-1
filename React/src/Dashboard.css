@@ -6,7 +6,7 @@
   display: flex;
   align-items: left;
   float: left;
-  margin-left: 15%;
+  margin-left: 20%;
   margin-top: 1%;
   margin-right: auto;
   width: 25rem;
@@ -23,12 +23,6 @@
     margin-top: 1%;
 } */
 
-.cardsText {
-    font-size:x-large;
-    font-weight: bold;
-    text-align: center;
-}
-
 .settingBtn button {
     background: #6F67B4;
     border-radius: 0.6rem;
@@ -38,7 +32,6 @@
     font-size: large;
     font-weight: bold;
     color: white;
-    
 }
 
 button:hover {
@@ -46,25 +39,25 @@ button:hover {
   }
 
 #btnCreate {
-    margin-left: 10%;
+    margin-left: 9%;
     margin-bottom: 3%;
     margin-top: 1%;
 }
 
 #btnProfile {
-    margin-left: 10%;
+    margin-left: 9%;
     margin-bottom: 3%;
     /* margin-top: 1%; */
 }
 
 #btnChangePass {
-    margin-left: 10%;
+    margin-left: 9%;
     margin-bottom: 3%;
     /* margin-top: 1%; */
 }
 
 #logoutBtn {
-    margin-left: 10%;
+    margin-left: 9%;
     margin-bottom: 3%;
     /* margin-top: 1%; */
 }
