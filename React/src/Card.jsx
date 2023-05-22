@@ -8,12 +8,10 @@ const Activities = (props) => {
   const navigate = useNavigate(); // getting the navigate function from react-router-dom
   const parameterValue = props.para;
   const [userActivity, setUserActivity] = useState([]);
- 
 
   console.log(parameterValue);
 
   useEffect(() => {
-    
     if (parameterValue) {
       const username = parameterValue.username;
 
@@ -23,7 +21,6 @@ const Activities = (props) => {
         setUserActivity(user);
       };
       getUserActivity();
-
     } else {
       const getAllActivity = async () => {
         const users = await getActivity();
@@ -32,8 +29,6 @@ const Activities = (props) => {
       getAllActivity();
     }
   }, [parameterValue]);
-
- 
 
   // function to handle clicking on the edit button for a user activity
   const handleEditButton = async (activity) => {
@@ -47,10 +42,16 @@ const Activities = (props) => {
   };
 
   // function to handle clicking on the delete button for a user activity
+  // function to confirm before deleting the card
   const handleDeleteButton = async (_id) => {
-    deleteActivity(_id);
-    alert('Deleted successfully!');
-    location.reload();
+    const answer = confirm('Are you sure you want to delete this card?');
+    if (answer == true) {
+      deleteActivity(_id);
+      alert('Deleted successfully!');
+      location.reload();
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -61,27 +62,29 @@ const Activities = (props) => {
             <h2 className='name'>
               {activity.username}: {activity.activityName}
             </h2>
-            {parameterValue && ( <span>
-              <button
-                id='delete'
-                onClick={() => handleDeleteButton(activity._id)}
-              >
-                <img
-                  src='https://www.svgrepo.com/show/244044/delete.svg'
-                  width='30px'
-                  heigth='30px'
-                  border='0'
-                />{' '}
-              </button>
-              <button id='edit' onClick={() => handleEditButton(activity)}>
-                <img
-                  src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
-                  width='30px'
-                  heigth='30px'
-                  border='0'
-                />{' '}
-              </button>
-            </span>)}
+            {parameterValue && (
+              <span>
+                <button
+                  id='delete'
+                  onClick={() => handleDeleteButton(activity._id)}
+                >
+                  <img
+                    src='https://www.svgrepo.com/show/244044/delete.svg'
+                    width='30px'
+                    heigth='30px'
+                    border='0'
+                  />{' '}
+                </button>
+                <button id='edit' onClick={() => handleEditButton(activity)}>
+                  <img
+                    src='https://icons.veryicon.com/png/o/miscellaneous/simple-line-icon/edit-259.png'
+                    width='30px'
+                    heigth='30px'
+                    border='0'
+                  />{' '}
+                </button>
+              </span>
+            )}
           </div>
 
           <div className='activity-card-detail'>

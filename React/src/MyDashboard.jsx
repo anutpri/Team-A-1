@@ -42,7 +42,7 @@ export default function MyDashboard() {
 
       <div className='settingBtn'>
         <button id='btnCreate' type='button' onClick={createActivityBtn}>
-          Create Activity Card
+          Create Your Card
         </button>
         <button id='btnProfile' type='button' onClick={updateProfileBtn}>
           Update Profile
@@ -57,7 +57,7 @@ export default function MyDashboard() {
 
       <div className='activityCard'>
         <p className='cardsText'>Your Activities</p>
-        <Activities para={userData}/>
+        <Activities para={userData} />
       </div>
     </Layout>
   );
