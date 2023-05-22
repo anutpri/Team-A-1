@@ -58,7 +58,7 @@ const Activities = (props) => {
   // function to handle clicking on the delete button for a user activity
   const handleDeleteButton = async (_id) => {
     deleteActivity(_id);
-    alert('Delete successful!');
+    alert('Deleted successfully!');
     location.reload();
   };
 
