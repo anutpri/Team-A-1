@@ -75,6 +75,10 @@
   margin-right: 2rem;
 }
 
+.Forgot:hover {
+  color: #ec5348;
+}
+
 .Login button {
   background: #6F67B4;
   border-radius: 0.6rem;
