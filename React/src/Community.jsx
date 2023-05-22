@@ -7,13 +7,10 @@ import { useNavigate } from 'react-router-dom';
 export default function Community() {
   const navigate = useNavigate();
 
-  
-  
-
   return (
     <Layout>
        <div className='activityCard'>
-         <p className='cardsText'>Activity Card(s)</p>
+         <p className='cardsText'>All Activities</p>
          <Activities />
        </div>
     </Layout>
