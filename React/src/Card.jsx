@@ -12,25 +12,25 @@ const Activities = (props) => {
   console.log(parameterValue);
 
   useEffect(() => {
-    if (parameterValue) {
-      const username = parameterValue.username;
+    // if (parameterValue) {
+    //   const username = parameterValue.username;
   
-      const getUserActivity = async () => {
-        const user = await getActivityByUser(username);
-        console.log(user);
-        setUserActivity(user);
-      };
+    //   const getUserActivity = async () => {
+    //     const user = await getActivityByUser(username);
+    //     console.log(user);
+    //     setUserActivity(user);
+    //   };
   
-      getUserActivity();
-    } else {
+    //   getUserActivity();
+    // } else {
       const getActivity = async () => {
         const users = await getUser();
         setUserActivity(users);
-      };
+      // };
   
       getActivity();
     }
-  }, [parameterValue]);
+  }, []);
 
   console.log(userActivity);
 
