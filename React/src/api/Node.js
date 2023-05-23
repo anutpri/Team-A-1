@@ -4,7 +4,7 @@ import axios from "axios";
 //  const HOSTNAME = import.meta.env.DATABASE_IP;
 //  const SERVER = `${HOSTNAME}`;
 
-const SERVER = "https://fitbookserver.onrender.com;
+const SERVER = "https://fitbookserver.onrender.com";
 
 export const getUser = async () => {
   try {
