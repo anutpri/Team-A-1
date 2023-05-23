@@ -1,12 +1,13 @@
 import axios from "axios";
 
 // const PORT = import.meta.env.DATABASE_PORT;
-//  const HOSTNAME = import.meta.env.DATABASE_IP;
-//  const SERVER = `${HOSTNAME}`;
+ const HOSTNAME = import.meta.env.VITE_DATABASE_IP;
+ const SERVER = `${HOSTNAME}`;
 
-const SERVER = "https://fitbookserver.onrender.com";
+// const SERVER = "https://fitbookserver.onrender.com";
 
 export const getUser = async () => {
+  
   try {
     const response = await axios.get(`${SERVER}/users`);
     const body = response.data;
@@ -65,6 +66,7 @@ export const updateUser = async (_id,body) => {
 };
 
 export const getActivity = async () => {
+  console.log(SERVER);
   try {
     const response = await axios.get(`${SERVER}/activities`);
     const body = response.data;
