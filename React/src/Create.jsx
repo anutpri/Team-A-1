@@ -23,7 +23,7 @@ const Create = () => {
     { id: 1, type: 'Running' },
     { id: 2, type: 'Walking' },
     { id: 3, type: 'Bike cycling' },
-    { id: 4, type: 'Weight Training' },
+    { id: 4, type: 'Weight training' },
     { id: 5, type: 'Dancing' },
   ];
 
