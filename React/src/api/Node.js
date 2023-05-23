@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // const PORT = import.meta.env.DATABASE_PORT;
- const HOSTNAME = import.meta.env.DATABASE_IP;
- const SERVER = `${HOSTNAME}`;
+//  const HOSTNAME = import.meta.env.DATABASE_IP;
+//  const SERVER = `${HOSTNAME}`;
 
-// const SERVER = "http://127.0.0.1:8080";
+const SERVER = "https://fitbookserver.onrender.com;
 
 export const getUser = async () => {
   try {
