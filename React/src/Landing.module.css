@@ -1,0 +1,14 @@
+.btnColor{
+    background-color: #6F67B4;
+    color: white;
+}
+
+.btnColor:hover{
+    background-color: #ec5348;
+    color: white;
+}
+
+.carouselLayout{
+    width: 60%;
+    margin-left: 20%;
+}

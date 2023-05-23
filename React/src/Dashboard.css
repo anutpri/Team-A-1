@@ -1,0 +1,63 @@
+.myProfile {
+/* max-width: 60%;
+  margin: 50%; */
+  /* background-color: aqua; */
+  position: relative;
+  display: flex;
+  align-items: left;
+  float: left;
+  margin-left: 16%;
+  margin-top: 1%;
+  margin-right: auto;
+  width: 25rem;
+  height: 20rem;
+  border-radius: 0.9rem;
+}
+
+
+/* .settingBtn {
+    background-color: red;
+} */
+
+/* .activityCard {
+    margin-top: 1%;
+} */
+
+.settingBtn button {
+    background: #6F67B4;
+    border-radius: 0.6rem;
+    width: 20rem;
+    height: 3rem;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+button:hover {
+    background-color: #ec5348;
+  }
+
+#btnCreate {
+    margin-left: 9%;
+    margin-bottom: 3%;
+    margin-top: 1%;
+}
+
+#btnProfile {
+    margin-left: 9%;
+    margin-bottom: 3%;
+    /* margin-top: 1%; */
+}
+
+#btnChangePass {
+    margin-left: 9%;
+    margin-bottom: 3%;
+    /* margin-top: 1%; */
+}
+
+#logoutBtn {
+    margin-left: 9%;
+    margin-bottom: 3%;
+    /* margin-top: 1%; */
+}
