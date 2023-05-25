@@ -9,7 +9,7 @@ const Activities = (props) => {
   const parameterValue = props.para;
   const [userActivity, setUserActivity] = useState([]);
 
-  console.log(parameterValue);
+  
 
   useEffect(() => {
     if (parameterValue) {
@@ -17,7 +17,7 @@ const Activities = (props) => {
 
       const getUserActivity = async () => {
         const user = await getActivityByUser(username);
-        console.log(user);
+        
         setUserActivity(user);
       };
       getUserActivity();

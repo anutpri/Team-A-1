@@ -32,11 +32,11 @@ const Login = () => {
       const user = await checkEmail(email);
 
       updateUserData(user);
-      console.log(userData);
+      
 
       // Hash the input password using SHA-256
       const passwordHash = sha256(password);
-      console.log(passwordHash);
+      
 
       // Check if email and password match a user
       if (user.email === email && user.password === passwordHash) {

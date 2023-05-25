@@ -66,7 +66,7 @@ export const updateUser = async (_id,body) => {
 };
 
 export const getActivity = async () => {
-  console.log(SERVER);
+  
   try {
     const response = await axios.get(`${SERVER}/activities`);
     const body = response.data;
